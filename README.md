@@ -1,4 +1,4 @@
-# ember-ticketfly-accordian
+# ember-ticketfly-accordion
 
 _An ARIA-compliant, dependency-free accordion system comprised of composable Ember components._
 
@@ -15,7 +15,7 @@ _An ARIA-compliant, dependency-free accordion system comprised of composable Emb
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd ember-ticketfly-accordian`
+* `cd ember-ticketfly-accordion`
 * `npm install`
 * `bower install`
 
@@ -38,19 +38,19 @@ For more information on using ember-cli, visit [http://ember-cli.com/](http://em
 
 
 
-[npm-badge]: https://img.shields.io/npm/v/ember-ticketfly-accordian.svg
-[npm-badge-url]: https://www.npmjs.com/package/ember-ticketfly-accordian
-[circle-badge]: https://circleci.com/gh/Ticketfly/ember-ticketfly-accordian/tree/master.svg?style=svg&circle-token={{CIRCLE_TOKEN}}
-[circle-badge-url]: https://circleci.com/gh/Ticketfly/ember-ticketfly-accordian/tree/master
-[coveralls-badge]: https://coveralls.io/repos/github/Ticketfly/ember-ticketfly-accordian/badge.svg?branch=master
-[coveralls-badge-url]: https://coveralls.io/github/Ticketfly/ember-ticketfly-accordian?branch=master
-[codeclimate-badge]: https://img.shields.io/codeclimate/github/Ticketfly/ember-ticketfly-accordian.svg
-[codeclimate-badge-url]: https://codeclimate.com/github/Ticketfly/ember-ticketfly-accordian
-[ember-observer-badge]: http://emberobserver.com/badges/ember-ticketfly-accordian.svg
-[ember-observer-badge-url]: http://emberobserver.com/addons/ember-ticketfly-accordian
-[license-badge]: https://img.shields.io/npm/l/ember-ticketfly-accordian.svg
+[npm-badge]: https://img.shields.io/npm/v/ember-ticketfly-accordion.svg
+[npm-badge-url]: https://www.npmjs.com/package/ember-ticketfly-accordion
+[circle-badge]: https://circleci.com/gh/Ticketfly/ember-ticketfly-accordion/tree/master.svg?style=svg&circle-token={{CIRCLE_TOKEN}}
+[circle-badge-url]: https://circleci.com/gh/Ticketfly/ember-ticketfly-accordion/tree/master
+[coveralls-badge]: https://coveralls.io/repos/github/Ticketfly/ember-ticketfly-accordion/badge.svg?branch=master
+[coveralls-badge-url]: https://coveralls.io/github/Ticketfly/ember-ticketfly-accordion?branch=master
+[codeclimate-badge]: https://img.shields.io/codeclimate/github/Ticketfly/ember-ticketfly-accordion.svg
+[codeclimate-badge-url]: https://codeclimate.com/github/Ticketfly/ember-ticketfly-accordion
+[ember-observer-badge]: http://emberobserver.com/badges/ember-ticketfly-accordion.svg
+[ember-observer-badge-url]: http://emberobserver.com/addons/ember-ticketfly-accordion
+[license-badge]: https://img.shields.io/npm/l/ember-ticketfly-accordion.svg
 [license-badge-url]: LICENSE.md
-[dependencies-badge]: https://img.shields.io/david/Ticketfly/ember-ticketfly-accordian.svg
-[dependencies-badge-url]: https://david-dm.org/Ticketfly/ember-ticketfly-accordian
-[devDependencies-badge]: https://img.shields.io/david/dev/Ticketfly/ember-ticketfly-accordian.svg
-[devDependencies-badge-url]: https://david-dm.org/Ticketfly/ember-ticketfly-accordian#info=devDependencies
+[dependencies-badge]: https://img.shields.io/david/Ticketfly/ember-ticketfly-accordion.svg
+[dependencies-badge-url]: https://david-dm.org/Ticketfly/ember-ticketfly-accordion
+[devDependencies-badge]: https://img.shields.io/david/dev/Ticketfly/ember-ticketfly-accordion.svg
+[devDependencies-badge-url]: https://david-dm.org/Ticketfly/ember-ticketfly-accordion#info=devDependencies

@@ -1,1 +1,0 @@
-export { default } from 'ember-ticketfly-accordian/components/tf-accordian';

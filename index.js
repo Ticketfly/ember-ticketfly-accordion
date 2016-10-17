@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-ticketfly-accordian'
+  name: 'ember-ticketfly-accordion'
 };

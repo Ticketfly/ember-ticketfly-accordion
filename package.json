@@ -1,5 +1,5 @@
 {
-  "name": "ember-ticketfly-accordian",
+  "name": "ember-ticketfly-accordion",
   "version": "0.0.0",
   "description": "An ARIA-compliant, dependency-free accordion system comprised of composable Ember components.",
   "directories": {
@@ -13,7 +13,7 @@
     "test:coverage": "cross-env COVERAGE=true ember test",
     "test:ci:coverage": "ember try:one $EMBER_TRY_SCENARIO && npm run test:coverage"
   },
-  "repository": "https://github.com/Ticketfly/ember-ticketfly-accordian",
+  "repository": "https://github.com/Ticketfly/ember-ticketfly-accordion",
   "engines": {
     "node": ">= 0.12.0"
   },
@@ -45,10 +45,10 @@
   },
   "keywords": [
     "ember-addon",
-    "accordian",
-    "ember accordian",
-    "accordian a11y",
-    "accordian ARIA",
+    "accordion",
+    "ember accordion",
+    "accordion a11y",
+    "accordion ARIA",
     "ember ticketfly",
     "ember panel"
   ],
