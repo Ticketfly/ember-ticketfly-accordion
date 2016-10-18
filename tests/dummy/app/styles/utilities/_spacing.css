@@ -1,0 +1,90 @@
+/*
+ * SPACING UTILITIES
+ *
+ * Utilities for setting padding and margin.
+ *
+ * Legend:
+ *
+ *  p - padding
+ *  m - margin
+ *  t - top
+ *  r - right
+ *  b - bottom
+ *  l - left
+ *
+ *  E.g. .u-pt2 = apply padding-top w/ spacing-2 value.
+ */
+.u-p0 { padding: 0 !important; }
+.u-p1 { padding: var(--spacing-1) !important; }
+.u-p2 { padding: var(--spacing-2) !important; }
+.u-p3 { padding: var(--spacing-3) !important; }
+.u-p4 { padding: var(--spacing-4) !important; }
+.u-p5 { padding: var(--spacing-5) !important; }
+
+.u-pt0 { padding-top: 0 !important; }
+.u-pt1 { padding-top: var(--spacing-1) !important; }
+.u-pt2 { padding-top: var(--spacing-2) !important; }
+.u-pt3 { padding-top: var(--spacing-3) !important; }
+.u-pt4 { padding-top: var(--spacing-4) !important; }
+.u-pt5 { padding-top: var(--spacing-5) !important; }
+
+.u-pr0 { padding-right: 0 !important; }
+.u-pr1 { padding-right: var(--spacing-1) !important; }
+.u-pr2 { padding-right: var(--spacing-2) !important; }
+.u-pr3 { padding-right: var(--spacing-3) !important; }
+.u-pr4 { padding-right: var(--spacing-4) !important; }
+.u-pr5 { padding-right: var(--spacing-5) !important; }
+
+.u-pb0 { padding-bottom: 0 !important; }
+.u-pb1 { padding-bottom: var(--spacing-1) !important; }
+.u-pb2 { padding-bottom: var(--spacing-2) !important; }
+.u-pb3 { padding-bottom: var(--spacing-3) !important; }
+.u-pb4 { padding-bottom: var(--spacing-4) !important; }
+.u-pb5 { padding-bottom: var(--spacing-5) !important; }
+
+.u-pl0 { padding-left: 0 !important; }
+.u-pl1 { padding-left: var(--spacing-1) !important; }
+.u-pl2 { padding-left: var(--spacing-2) !important; }
+.u-pl3 { padding-left: var(--spacing-3) !important; }
+.u-pl4 { padding-left: var(--spacing-4) !important; }
+.u-pl5 { padding-left: var(--spacing-5) !important; }
+
+.u-m-auto { margin: auto !important; }
+.u-m0 { margin: 0 !important; }
+.u-m1 { margin: var(--spacing-1) !important; }
+.u-m2 { margin: var(--spacing-2) !important; }
+.u-m3 { margin: var(--spacing-3) !important; }
+.u-m4 { margin: var(--spacing-4) !important; }
+.u-m5 { margin: var(--spacing-5) !important; }
+
+.u-mt-auto { margin-top: auto !important; }
+.u-mt0 { margin-top: 0 !important; }
+.u-mt1 { margin-top: var(--spacing-1) !important; }
+.u-mt2 { margin-top: var(--spacing-2) !important; }
+.u-mt3 { margin-top: var(--spacing-3) !important; }
+.u-mt4 { margin-top: var(--spacing-4) !important; }
+.u-mt5 { margin-top: var(--spacing-5) !important; }
+
+.u-mr-auto { margin-right: auto !important; }
+.u-mr0 { margin-right: 0 !important; }
+.u-mr1 { margin-right: var(--spacing-1) !important; }
+.u-mr2 { margin-right: var(--spacing-2) !important; }
+.u-mr3 { margin-right: var(--spacing-3) !important; }
+.u-mr4 { margin-right: var(--spacing-4) !important; }
+.u-mr5 { margin-right: var(--spacing-5) !important; }
+
+.u-mb-auto { margin-bottom: auto !important; }
+.u-mb0 { margin-bottom: 0 !important; }
+.u-mb1 { margin-bottom: var(--spacing-1) !important; }
+.u-mb2 { margin-bottom: var(--spacing-2) !important; }
+.u-mb3 { margin-bottom: var(--spacing-3) !important; }
+.u-mb4 { margin-bottom: var(--spacing-4) !important; }
+.u-mb5 { margin-bottom: var(--spacing-5) !important; }
+
+.u-ml-auto { margin-left: auto !important; }
+.u-ml0 { margin-left: 0 !important; }
+.u-ml1 { margin-left: var(--spacing-1) !important; }
+.u-ml2 { margin-left: var(--spacing-2) !important; }
+.u-ml3 { margin-left: var(--spacing-3) !important; }
+.u-ml4 { margin-left: var(--spacing-4) !important; }
+.u-ml5 { margin-left: var(--spacing-5) !important; }

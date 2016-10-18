@@ -1,0 +1,7 @@
+:root {
+  --dimension__tap-target--sm: 2rem;
+  --dimension__tap-target--md: 3rem;
+  --dimension__tap-target--lg: 5rem;
+
+  --dimension__navbar-height: 4rem;
+}

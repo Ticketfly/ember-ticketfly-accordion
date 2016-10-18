@@ -1,0 +1,12 @@
+.o-content-box,
+.o-content-box--lg {
+  box-sizing: border-box;
+}
+
+.o-content-box {
+  padding: $padding__content-box;
+}
+
+.o-content-box--lg {
+  padding: $padding__content-box--lg;
+}
