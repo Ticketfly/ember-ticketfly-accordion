@@ -7,5 +7,7 @@ export default Component.extend({
   classNames: ['tf-accordion__panel-toggle'],
   hook: 'tf-accordion__panel-toggle',
 
-  ariaRole: 'tab'
+  ariaRole: 'tab',
+
+  title: ''
 });
