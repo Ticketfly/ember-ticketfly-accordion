@@ -6,6 +6,6 @@ import layout from '../templates/components/tf-accordion-panel';
  */
 export default Component.extend({
   layout,
-  hook: 'tf-accordion__panel',
-  classNames: ['tf-accordion__panel']
+  hook: 'tf-accordion-panel',
+  classNames: ['tf-accordion-panel']
 });
