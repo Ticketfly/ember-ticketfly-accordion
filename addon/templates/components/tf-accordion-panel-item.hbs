@@ -1,0 +1,21 @@
+{{#if hasBlock}}
+
+  {{yield (hash
+    toggleHeader=(
+      component 'tf-accordion-panel-toggle'
+      id=toggleId
+    )
+
+    body=(
+      component 'tf-accordion-panel-body'
+      toggleId=toggleId
+    )
+  )}}
+
+{{else}}
+
+  {{!-- Render defaults --}}
+  {{tf-accordion-panel-toggle id=toggleId title=toggleTitle}}
+  {{tf-accordion-panel-body toggleId=toggleId content=panelContent}}
+
+{{/if}}

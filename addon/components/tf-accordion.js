@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import Component from 'ember-component';
 import layout from '../templates/components/tf-accordion';
 
-export default Ember.Component.extend({
+export default Component.extend({
   layout,
   attributeBindings: ['aria-multiselectable'],
 
   ariaRole: 'tablist',
-  'aria-multiselectable': "true"
+  'aria-multiselectable': 'true'
 });

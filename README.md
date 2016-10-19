@@ -12,25 +12,36 @@ _An ARIA-compliant, dependency-free accordion system comprised of composable Emb
 [![Dependencies][dependencies-badge]][dependencies-badge-url]
 [![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
 
-## Installation
+## Installing
+
+```sh
+ember install ember-ticketfly-accordion
+```
+
+## Compatibility
+
+This addon makes use of [contextual components](http://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_contextual-components), and is therefore
+intended to support versions of Ember >= `2.3.0`.
+
+## Collaborating
 
 * `git clone <repository-url>` this repository
 * `cd ember-ticketfly-accordion`
 * `npm install`
 * `bower install`
 
-## Running
+### Running
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
-## Running Tests
+### Running Tests
 
 * `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
-## Building
+### Building
 
 * `ember build`
 
