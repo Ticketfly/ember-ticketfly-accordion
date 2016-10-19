@@ -12,7 +12,7 @@ const CUSTOM_BODY_HOOK = 'test-panel-body';
 let message;
 let domNode;
 
-moduleForComponent('tf-accordion-panel-item', 'Integration | Component | tf accordion panel item', {
+moduleForComponent('tf-accordion__panel', 'Integration | Component | tf accordion panel', {
   integration: true,
 
   beforeEach() {
@@ -21,7 +21,7 @@ moduleForComponent('tf-accordion-panel-item', 'Integration | Component | tf acco
 });
 
 test('rendering child components with non-block usage', function(assert) {
-  this.render(hbs`{{tf-accordion-panel-item}}`);
+  this.render(hbs`{{tf-accordion-panel}}`);
   domNode = getDOMNode(this);
 
   message = 'renders a panel toggle element when used without block form';
@@ -39,10 +39,10 @@ test('yield an interface for child component with block usages', function (asser
   this.set('CUSTOM_BODY_HOOK', CUSTOM_BODY_HOOK);
 
   this.render(hbs`
-    {{#tf-accordion-panel-item as |panel|}}
+    {{#tf-accordion-panel as |panel|}}
       {{panel.toggleHeader hook=CUSTOM_HEADER_HOOK}}
       {{panel.body hook=CUSTOM_BODY_HOOK}}
-    {{/tf-accordion-panel-item}}
+    {{/tf-accordion-panel}}
   `);
 
   domNode = getDOMNode(this);

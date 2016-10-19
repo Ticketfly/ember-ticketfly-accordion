@@ -4,6 +4,7 @@ import layout from '../templates/components/tf-accordion-panel-body';
 export default Component.extend({
   layout,
   hook: 'tf-accordion__panel-body',
+  classNames: ['tf-accordion__panel-body'],
 
   ariaRole: 'tabpanel'
 });
