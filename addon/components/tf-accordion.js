@@ -26,6 +26,15 @@ export default Component.extend({
   ariaRole: 'tablist',
   'aria-multiselectable': 'true', // @see {@link https://github.com/BrianSipple/why-am-i-doing-this/blob/master/ember/aria-attribute-binding-in-components.md}
 
+  handleKeydown: null,
+
+  KEYCODE_LEFT: 37,
+  KEYCODE_UP: 38,
+  KEYCODE_RIGHT: 39,
+  KEYCODE_DOWN: 40,
+
+  focusedIndex: -1,
+
   /* ---------- API ---------- */
 
   /**
@@ -35,6 +44,16 @@ export default Component.extend({
    * but the most-recently expanded panel
    */
   multiExpand: false,
+
+  /**
+   * Whether or not focus should cycle around the panel during
+   * arrow-key navigation.
+   *
+   * For example, when the last panel is focused and the down arrow
+   * is pressed, cycling focus will focus the first panel. Otherwise, the
+   * last panel will remain focused.
+   */
+  cycleFocus: true,
 
   panels: computed(function() {
     return A();
@@ -76,11 +95,6 @@ export default Component.extend({
   }),
 
   /* ---------- LIFECYCLE ---------- */
-  didInsertElement() {
-    this._super(...arguments);
-
-    // scheduleOnce('actions', this, this._switchOpenPanel);
-  },
 
   willDestroyElement() {
     this._super(...arguments);
@@ -90,11 +104,28 @@ export default Component.extend({
     });
   },
 
+  /* ---------- COMPONENT ELEMENT EVENT LISTENERS ---------- */
+
+  keyDown(ev) {
+    const keyCode = ev.keyCode || ev.which;
+
+    if (keyCode === this.KEYCODE_LEFT || keyCode === this.KEYCODE_UP) {
+      ev.preventDefault();
+      this.incrementPanelFocus(-1);
+    }
+
+    if (keyCode === this.KEYCODE_RIGHT || keyCode === this.KEYCODE_DOWN) {
+      ev.preventDefault();
+      this.incrementPanelFocus(1);
+    }
+  },
+
   /* ---------- ACTIONS ---------- */
 
   actions: {
     onPanelSelection(panel) {
-      const valueForSelected = !get(panel, 'isExpanded');
+      const indexOfSelected = get(this, 'panels').indexOf(panel);
+      const valueForExpanded = !get(panel, 'isExpanded');
       const multiExpand = get(this, 'multiExpand');
 
       // close the other panels if we're not in `multiExpand` mode
@@ -102,11 +133,52 @@ export default Component.extend({
         get(this, 'panels').setEach('isExpanded', false);
       }
 
-      set(panel, 'isExpanded', valueForSelected);
+      set(panel, 'isExpanded', valueForExpanded);
+
+      scheduleOnce('afterRender', this, 'setFocusOnPanel', panel, indexOfSelected);
     }
   },
 
   /* ---------- PUBLIC METHODS ---------- */
+
+  incrementPanelFocus(increment) {
+    const cycleFocus = get(this, 'cycleFocus');
+    const focusedIndex = get(this, 'focusedIndex');
+    const numPanels = get(this, 'panels.length');
+    const { max, min } = Math;
+
+    let nextIndex;
+
+    if (cycleFocus) {
+      nextIndex = (focusedIndex + increment + numPanels) % numPanels;
+
+    } else {
+      nextIndex = increment > 0 ?
+        min(numPanels - 1, focusedIndex + 1)
+        :
+        max(0, focusedIndex -1);
+    }
+
+    const panelToFocus = get(this, 'panels').objectAt(nextIndex);
+
+    scheduleOnce('afterRender', this, 'setFocusOnPanel', panelToFocus, nextIndex);
+  },
+
+  setFocusOnPanel(panel, index) {
+    // const valueForExpanded = !get(panel, 'isExpanded');
+    // const multiExpand = get(this, 'multiExpand');
+
+    // // close the other panels if we're not in `multiExpand` mode
+    // if (!multiExpand) {
+    //   get(this, 'panels').setEach('isExpanded', false);
+    // }
+
+    // set(panel, 'isExpanded', valueForExpanded);
+    set(this, 'focusedIndex', index);
+    get(this, 'panels').setEach('isFocused', false);
+    set(panel, 'isFocused', true);
+    get(panel, 'tab.element').focus();
+  },
 
   /**
    * Adds a panel from the `panels` array

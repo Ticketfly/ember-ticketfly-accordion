@@ -13,8 +13,8 @@
 
     <h2>Example Usage</h2>
 
-    <section>
-      <h4>Standard Accordion</h4>
+    <section class="p-index__accordion-section">
+      <h4>Standard Accordion With Focus Cycling</h4>
 
       {{#tf-accordion class="p-index__standard-accordion c-accordion" as |accordion|}}
 
@@ -57,10 +57,19 @@
 
       {{/tf-accordion}}
 
-      <h4>Multi-Expand Accordion</h4>
+    </section>
 
-      {{#tf-accordion class="p-index__multi-expand-accrodion c-accordion" multiExpand=true as |accordion|}}
-                {{accordion.panel
+    <section class="p-index__accordion-section">
+
+      <h4>Multi-Expand Accordion Without Focus Cycling</h4>
+
+      {{#tf-accordion
+        class="p-index__multi-expand-accrodion c-accordion"
+        cycleFocus=false
+        multiExpand=true as |accordion|
+      }}
+
+        {{accordion.panel
           class="c-accordion__panel"
           tabClassName="c-accordion__panel-tab"
           bodyClassName="c-accordion__panel-body"
@@ -98,6 +107,7 @@
         {{/accordion.panel}}
 
       {{/tf-accordion}}
+
     </section>
 
     {{!-- TODO: Implement accordion that can work as a menu list
