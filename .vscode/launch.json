@@ -2,13 +2,58 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Tests",
+      "name": "Launch Dummy App",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/.bin/ember",
+      "stopOnEntry": false,
+      "args": [
+        "serve"
+      ],
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": null,
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "internalConsole",
+      "sourceMaps": false,
+      "outFiles": []
+    },
+    {
+      "name": "Launch Tests -- Headless",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/node_modules/.bin/ember",
       "stopOnEntry": false,
       "args": [
         "test"
+      ],
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": null,
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "internalConsole",
+      "sourceMaps": false,
+      "outFiles": []
+    },
+    {
+      "name": "Launch Tests -- Browser",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/.bin/ember",
+      "stopOnEntry": false,
+      "args": [
+        "test",
+        "--serve"
       ],
       "cwd": "${workspaceRoot}",
       "preLaunchTask": null,

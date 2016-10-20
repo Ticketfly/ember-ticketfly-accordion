@@ -32,7 +32,7 @@ module.exports = {
   _shouldImportStyles: function(target) {
     return (
       !process.env.EMBER_CLI_FASTBOOT &&
-      !this._isOwnDummyApp(target) &&
+      (!this._isOwnDummyApp(target) || target.env !== 'test') &&
       target.env !== 'test'
     );
   },
@@ -80,7 +80,7 @@ module.exports = {
     // return this._isAddon() ? node : path.join(this.project.nodeModulesPath, this.name, 'app', 'styles');
     // return path.join(this.project.nodeModulesPath, this.name, 'app', 'styles');
     return this._isOwnDummyApp(this._target) ? 
-      node 
+      path.join(process.cwd(), 'app', 'styles') 
       : 
       path.join(this.project.nodeModulesPath, this.name, 'app', 'styles');
   }

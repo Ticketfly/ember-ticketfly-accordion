@@ -1,4 +1,4 @@
-<section class="p-index u-fill-width u-fill-height">
+<section class="p-index u-fill-width u-fill-height u-overflow-hide u-overflow-auto-y">
 
   <section>
     <h1 class="o-content-box">Ember Ticketfly Accordion</h1>
@@ -15,27 +15,29 @@
 
     <h4>Tabbed Details View</h4>
 
-    {{#tf-accordion}}
-      {{tf-accordion-panel-item toggleTitle=model.overview.title panelContent=model.overview.conent}}
+    {{#tf-accordion as |accordion|}}
+      
+      {{accordion.panel tabTitle=model.overview.title panelContent=model.overview.conent}}
 
-      {{#tf-accordion-panel-item as |panel|}}
+      {{#accordion.panel as |panel|}}
         {{panel.toggleHeader title=model.media.title}}
-        {{#panel.toggleBody}}
+        {{#panel.body}}
           <h3>Trailers</h3>
           <h3>Screenshots</h3>
-        {{/panel.toggleBody}}
-      {{/tf-accordion-panel-item}}
+        {{/panel.body}}
+      {{/accordion.panel}}
 
-      {{tf-accordion-panel-item toggleTitle=model.storyline.title panelContent=model.storyline.conent}}
-      {{tf-accordion-panel-item toggleTitle=model.production.title panelContent=model.production.conent}}
+      {{accordion.panel tabTitle=model.storyline.title panelContent=model.storyline.conent}}
+      {{accordion.panel tabTitle=model.production.title panelContent=model.production.conent}}
 
-      {{#tf-accordion-panel-item as |panel|}}
+      {{#accordion.panel as |panel|}}
         {{panel.toggleHeader title=model.similarTitles.title}}
-        {{#panel.toggleBody tagName="ul"}}
+        {{#panel.body tagName="ul"}}
           <li>Gears of War 4</li>
           <li>Assassin's Creed: Syndicate</li>
-        {{/panel.toggleBody}}
-      {{/tf-accordion-panel-item}}
+        {{/panel.body}}
+      {{/accordion.panel}}
+
     {{/tf-accordion}}
 
     <h4>Navigaton Menu</h4>
@@ -43,8 +45,8 @@
       <ul>
         <li>About</li>
 
-        {{#tf-accordion tagName="li"}}
-          {{#tf-accordion-panel-item as |panel|}}
+        {{#tf-accordion tagName="li" as |accordion|}}
+          {{#accordion.panel as |panel|}}
             {{panel.toggleHeader title="Media"}}
 
             {{#panel.body tagName="ul"}}
@@ -52,7 +54,7 @@
               <li>Music</li>
               <li>Photos</li>
             {{/panel.body}}
-          {{/tf-accordion-panel-item}}
+          {{/accordion.panel}}
         {{/tf-accordion}}
 
       </ul>

@@ -39,9 +39,9 @@ test('yield an interface for child component with block usages', function (asser
   this.set('CUSTOM_BODY_HOOK', CUSTOM_BODY_HOOK);
 
   this.render(hbs`
-    {{#tf-accordion-panel as |panel|}}
-      {{panel.toggleHeader hook=CUSTOM_HEADER_HOOK}}
-      {{panel.body hook=CUSTOM_BODY_HOOK}}
+    {{#tf-accordion-panel as |panels|}}
+      {{panels.toggleHeader hook=CUSTOM_HEADER_HOOK}}
+      {{panels.body hook=CUSTOM_BODY_HOOK}}
     {{/tf-accordion-panel}}
   `);
 
