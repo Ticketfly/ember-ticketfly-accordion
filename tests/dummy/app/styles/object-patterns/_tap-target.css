@@ -1,0 +1,14 @@
+.o-tap-target--sm {
+  width: $dimension__tap-target--sm;
+  height: $dimension__tap-target--sm;
+}
+
+.o-tap-target--md {
+  width: $dimension__tap-target--md;
+  height: $dimension__tap-target--md;
+}
+
+.o-tap-target--lg {
+  width: $dimension__tap-target--lg;
+  height: $dimension__tap-target--lg;
+}

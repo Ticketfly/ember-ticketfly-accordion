@@ -1,0 +1,25 @@
+/**
+ * Styles here directly target HTML elements -- not classes.
+ *
+ * These are for concerns that rarely, if ever, change, and are meant to be
+ * a lighter version of something like normalize.css (https://necolas.github.io/normalize.css/)
+ * ("lighter" meaning only add stuff as needed... if needed... while generally trying to compose classes 😀)
+ */
+
+html {
+ font-size: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+}

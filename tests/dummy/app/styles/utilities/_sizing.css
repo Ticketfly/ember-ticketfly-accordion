@@ -1,0 +1,28 @@
+/**
+ * SAVVY >>> SIZING
+ *
+ *
+ * Utility classes for broadly styling an element ("broadly" meaning
+ * general influences such as "full height" or "full width")
+ */
+
+.u-full-bleed { height: 100vh; }
+.u-full-stretch { width: 100vw !important; }
+
+
+.u-fit-width { max-width: 100% !important; }
+.u-fill-width { width: 100% !important; }
+.u-inherit-width { width: inherit !important; }
+
+.u-fill-height { height: 100% !important; }
+.u-inherit-height { height: inherit !important; }
+
+/* Common percentage-based widths */
+.u-width-90 { width: 90% !important; }
+.u-width-80 { width: 80% !important; }
+.u-width-75 { width: 75% !important; }
+.u-width-70 { width: 70% !important; }
+.u-width-two-thirds { width: 66.667% !important; }
+.u-width-60 { width: 60% !important; }
+.u-width-50 { width: 50% !important; }
+.u-width-one-third { width: 33.333% !important; }

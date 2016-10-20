@@ -1,0 +1,62 @@
+<section class="p-index u-fill-width u-fill-height">
+
+  <section>
+    <h1 class="o-content-box">Ember Ticketfly Accordion</h1>
+  </section>
+
+
+  <section class="u-width-80 u-m-auto u-mt4">
+    <h2>Installation</h2>
+    <pre>
+      ember install ticketfly-ember-accordion
+    </pre>
+
+    <h2>Example Usage</h2>
+
+    <h4>Tabbed Details View</h4>
+
+    {{#tf-accordion}}
+      {{tf-accordion-panel-item toggleTitle=model.overview.title panelContent=model.overview.conent}}
+
+      {{#tf-accordion-panel-item as |panel|}}
+        {{panel.toggleHeader title=model.media.title}}
+        {{#panel.toggleBody}}
+          <h3>Trailers</h3>
+          <h3>Screenshots</h3>
+        {{/panel.toggleBody}}
+      {{/tf-accordion-panel-item}}
+
+      {{tf-accordion-panel-item toggleTitle=model.storyline.title panelContent=model.storyline.conent}}
+      {{tf-accordion-panel-item toggleTitle=model.production.title panelContent=model.production.conent}}
+
+      {{#tf-accordion-panel-item as |panel|}}
+        {{panel.toggleHeader title=model.similarTitles.title}}
+        {{#panel.toggleBody tagName="ul"}}
+          <li>Gears of War 4</li>
+          <li>Assassin's Creed: Syndicate</li>
+        {{/panel.toggleBody}}
+      {{/tf-accordion-panel-item}}
+    {{/tf-accordion}}
+
+    <h4>Navigaton Menu</h4>
+    <nav>
+      <ul>
+        <li>About</li>
+
+        {{#tf-accordion tagName="li"}}
+          {{#tf-accordion-panel-item as |panel|}}
+            {{panel.toggleHeader title="Media"}}
+
+            {{#panel.body tagName="ul"}}
+              <li>Videos</li>
+              <li>Music</li>
+              <li>Photos</li>
+            {{/panel.body}}
+          {{/tf-accordion-panel-item}}
+        {{/tf-accordion}}
+
+      </ul>
+    </nav>
+  </section>
+
+</section>
