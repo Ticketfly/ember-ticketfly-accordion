@@ -1,7 +1,13 @@
-/* global module, require */
+/* global module, require, process */
 'use strict';
 
 var path = require('path');
+
+var STYLESHEETS = {
+  core: 'ember-ticketfly-accordion-core',
+  spiffy: 'ember-ticketfly-accordion-spiffy'
+  // animations: 'ember-ticketfly-accordion-spiffy',
+};
 
 module.exports = {
   name: 'ember-ticketfly-accordion',
@@ -11,8 +17,24 @@ module.exports = {
     return true;
   },
 
+  _isDummyApp: function(app) {
+    return app.name === 'dummy';
+  },
+
+  _isOwnProject: function(app) {
+    return app.project.name() === this.name;
+  },
+
   _isOwnDummyApp: function(app) {
-    return app.name === 'dummy' && app.project.name() === this.name;
+    return this._isDummyApp(app) && this._isOwnProject(app);
+  },
+
+  _shouldImportStyles: function(target) {
+    return (
+      !process.env.EMBER_CLI_FASTBOOT &&
+      !this._isOwnDummyApp(target) &&
+      target.env !== 'test'
+    );
   },
 
   _isAddon: function() {
@@ -28,26 +50,36 @@ module.exports = {
    */
   included: function(app, parentAddon) {
     this._super.included.apply(this, arguments);
-
+    
     // Ensures that imports work for nested addons and engines
     // @see: https://github.com/ember-cli/ember-cli/issues/3718
     var parentApp = (typeof app.import !== 'function' && app.app) ? app.app : app;
-
     var target = parentAddon || parentApp;
-    this._consumingTarget = target; 
+    
+    this._target = target; 
+    this._targetConfig = this.project.config(this.app.env)['ember-ticketfly-accordion'] || {};
 
-    // if (!this._isAddon()) {
-    //   target.import('vendor/ember-ticketfly-accordion-core.css');
-    // }
-    if (!this._isOwnDummyApp(target)) {
-      target.import('vendor/ember-ticketfly-accordion-core.css');
+    if (this._shouldImportStyles(target)) {
+      var stylesToImport = this._targetConfig.importedStyles || {};
+      
+      var filesToImport = Object.keys(STYLESHEETS)
+        .filter(function(key) {
+          return key === 'core' || stylesToImport[key];
+        })
+        .map(function (key) {
+          return STYLESHEETS[key]; // ES6... ��
+        });
+
+      filesToImport.forEach(function (fileName) {
+        target.import('vendor/' + fileName + '.css');
+      });
     }
   },
 
   treeForVendor: function(node) {
     // return this._isAddon() ? node : path.join(this.project.nodeModulesPath, this.name, 'app', 'styles');
     // return path.join(this.project.nodeModulesPath, this.name, 'app', 'styles');
-    return this._isOwnDummyApp(this._consumingTarget) ? 
+    return this._isOwnDummyApp(this._target) ? 
       node 
       : 
       path.join(this.project.nodeModulesPath, this.name, 'app', 'styles');

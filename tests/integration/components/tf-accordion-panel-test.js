@@ -3,8 +3,8 @@ import hbs from 'htmlbars-inline-precompile';
 import getDOMNode from 'dummy/tests/helpers/get-dom-node';
 import { hook, initialize as initializeHook } from 'ember-hook';
 
-const DEFAULT_HEADER_HOOK = 'tf-accordion__panel-toggle';
-const DEFAULT_BODY_HOOK = 'tf-accordion__panel-body';
+const DEFAULT_HEADER_HOOK = 'tf-accordion-panel-toggle';
+const DEFAULT_BODY_HOOK = 'tf-accordion-panel-body';
 const CUSTOM_HEADER_HOOK = 'test-panel-toggle-header';
 const CUSTOM_BODY_HOOK = 'test-panel-body';
 
@@ -12,7 +12,7 @@ const CUSTOM_BODY_HOOK = 'test-panel-body';
 let message;
 let domNode;
 
-moduleForComponent('tf-accordion__panel', 'Integration | Component | tf accordion panel', {
+moduleForComponent('tf-accordion-panel', 'Integration | Component | tf accordion panel', {
   integration: true,
 
   beforeEach() {

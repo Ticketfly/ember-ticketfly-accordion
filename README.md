@@ -23,6 +23,49 @@ ember install ember-ticketfly-accordion
 This addon makes use of [contextual components](http://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_contextual-components), and is therefore
 intended to support versions of Ember >= `2.3.0`.
 
+## Configuration
+
+To provide `ember-ticketfly-accordion` with configuration options, define
+them in the following hash on the "ENV" object exported from your `config/environment.js` file:
+
+```js
+ENV['ember-ticketfly-accordion'] = {
+  // options go here
+};
+```
+
+### Selecting CSS Styles 
+
+`ember-ticketfly-accordion` includes a very small set of base 
+styles to ensure that its elements lay out correctly in the manner 
+of an accordion (that is, as a set of verically stacked panels).
+
+These can be found in `app/styles/ember-ticketfly-accordion-core.css`.
+
+But we can do better! If you'd like to control your own styling of 
+`ember-ticketfly-accordion`'s elements, feel free to refrain from further
+imports and just target the following class names:
+
+- `tf-accordion`
+- `tf-accordion-panel`
+- `tf-accordion-panel-toggle`
+- `tf-accordion-panel-body`
+
+That being said, you can enable a few additional stylesheet imports
+from your ENV configuration hash:
+
+```js
+ENV['ember-ticketfly-accordion'] = {
+  importedStyles: {
+    spiffy: true,
+    animations: true
+  }
+};
+``` 
+
+
+
+
 ## Collaborating
 
 * `git clone <repository-url>` this repository
