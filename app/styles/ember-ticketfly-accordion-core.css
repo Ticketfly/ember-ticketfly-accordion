@@ -2,8 +2,13 @@
   width: 100%;
 }
 
+.tf-accordion .tf-accordion-panel {
+  
+}
+
 .tf-accordion .tf-accordion-panel-toggle {
   width: 100%;
   border: none;
   font-size: inherit;
 }
+

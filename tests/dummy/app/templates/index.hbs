@@ -30,7 +30,7 @@
       {{accordion.panel tabTitle=model.storyline.title panelContent=model.storyline.conent}}
       {{accordion.panel tabTitle=model.production.title panelContent=model.production.conent}}
 
-      {{#accordion.panel as |panel|}}
+      {{#accordion.panel isExpanded=true as |panel|}}
         {{panel.toggleHeader title=model.similarTitles.title}}
         {{#panel.body tagName="ul"}}
           <li>Gears of War 4</li>
