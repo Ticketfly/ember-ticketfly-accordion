@@ -138,7 +138,7 @@ export default Component.extend({
    * @private
    */
   _switchOpenPanel() {
-    if (!get(this, 'hasPanels')) {
+    if (!get(this, 'hasPanels')) {  // TODO: Do we need this check?
       return;
     }
 
