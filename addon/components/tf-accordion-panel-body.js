@@ -1,8 +1,8 @@
 import Component from 'ember-component';
 import layout from '../templates/components/tf-accordion-panel-body';
 import get from 'ember-metal/get';
-import { not } from 'ember-computed';
-import { once } from 'ember-runloop';
+import { default as computed, not } from 'ember-computed';
+import { scheduleOnce } from 'ember-runloop';
 
 /**
  * @module tf-accordion
@@ -19,7 +19,7 @@ export default Component.extend({
 
   attributeBindings: [
     'tabID:aria-labelledby', 
-    'isHidden:aria-hidden'
+    'aria-hidden'
   ],
 
   classNames: ['tf-accordion-panel-body'],
@@ -30,6 +30,15 @@ export default Component.extend({
 
   ariaRole: 'tabpanel',  
   isHidden: not('isPanelExpanded'),
+
+  /**
+   * @see {@link https://github.com/BrianSipple/why-am-i-doing-this/blob/master/ember/aria-attribute-binding-in-components.md}
+   */
+  'aria-hidden': computed('isHidden', {
+    get() {
+      return get(this, 'isHidden') ? 'true' : 'false';
+    }
+  }).readOnly(),
 
   /**
    * The `tf-accordion-panel` component.
@@ -45,13 +54,13 @@ export default Component.extend({
   init() {
     this._super(...arguments);
 
-    once(this, this._registerWithPanel);
+    scheduleOnce('actions', this, this._registerWithPanel);
   },
 
   willDestroyElement() {
     this._super(...arguments);
 
-    once(this, this._unRegisterWithPanel);
+    scheduleOnce('actions', this, this._unRegisterWithPanel);
   },
 
   /* ---------- PRIVATE METHODS ---------- */

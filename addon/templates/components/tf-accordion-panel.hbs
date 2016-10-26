@@ -3,14 +3,15 @@
   {{yield (hash
     toggleHeader=(
       component 'tf-accordion-panel-toggle'
+      class=headerClassName
       panel=this
       id=tabID
       isPanelExpanded=isExpanded
-      on-click=(action 'togglePanel')
     )
 
     body=(
       component 'tf-accordion-panel-body'
+      class=bodyClassName
       panel=this
       tabID=tabID
       isPanelExpanded=isExpanded
@@ -20,15 +21,16 @@
 {{else}}
 
   {{!-- Render defaults --}}
-  {{tf-accordion-panel-toggle 
+  {{tf-accordion-panel-toggle
+    class=headerClassName 
     panel=this
     id=tabID 
     title=tabTitle
     isPanelExpanded=isExpanded
-    on-click=(action 'togglePanel')
   }}
   
   {{tf-accordion-panel-body
+    class=bodyClassName
     panel=this 
     tabID=tabID 
     content=panelContent

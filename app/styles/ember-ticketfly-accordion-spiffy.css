@@ -1,6 +1,13 @@
-.tf-accordion .tf-accordion-panel {
+.tf-accordion .tf-accordion-panel .tf-accordion-panel-toggle,
+.tf-accordion .tf-accordion-panel .tf-accordion-panel-body {
   padding: 0.8em 1.175em;
+} 
+
+.tf-accordion .tf-accordion-panel .tf-accordion-panel-toggle {
+  border-bottom: 0.125rem solid;
 }
 
-.tf-accordion .tf-accordion-panel-toggle {
-} 
+.tf-accordion .tf-accordion-panel .tf-accordion-panel-toggle:focus {
+  
+}
+

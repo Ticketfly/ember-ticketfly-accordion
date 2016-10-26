@@ -2,9 +2,10 @@ import Component from 'ember-component';
 import layout from '../templates/components/tf-accordion-panel';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
+import computed from 'ember-computed';
+import { isEmpty } from 'ember-utils';
 import { guidFor } from 'ember-metal/utils';
-import { once } from 'ember-runloop';
-
+import { scheduleOnce } from 'ember-runloop';
 
 /**
  * @module tf-accordion
@@ -23,10 +24,14 @@ export default Component.extend({
   hook: 'tf-accordion-panel',
   classNames: ['tf-accordion-panel'],
 
+  /* ---------- API ---------- */
+
   tabID: '',
   tabTitle: '',
   panelContent: '',
-  isExpanded: false,
+  headerClassName: '',
+  bodyClassName: '',
+  handleSelection: null,
   
   /**
    * The `tf-accordion` component.
@@ -55,28 +60,45 @@ export default Component.extend({
    */
   panelBody: null,
 
+  isExpanded: false,
+  // isExpanded: computed('expandedPanelIds.[]', {
+  //   get() {
+  //     const expandedPanelIds = get(this, 'expandedPanelIds') || [];
+
+  //     return expandedPanelIds.includes(this.elementId);
+  //   }
+  // }),
+
   /* ---------- LIFECYCLE ---------- */
 
   init() {
     this._super(...arguments);
 
-    this.tabID = this._initTabID(); 
-    once(this, this._registerWithAccordion);
+    this._initTabID(); 
+    scheduleOnce('actions', this, this._registerWithAccordion);
+    scheduleOnce('actions', this, this._initEventListeners);
+  },
+
+  didInsertElement() {
+    this._super(...arguments);
+    
+    scheduleOnce('actions', this, this._addListeners, 'add');
   },
 
   willDestroyElement() {
     this._super(...arguments);
-
-    once(this, this._unRegisterWithAccordion);
+    
+    scheduleOnce('actions', this, this._unRegisterWithAccordion);    
+    scheduleOnce('actions', this, this._removeListeners, 'remove');    
   },
 
   /* ---------- ACTIONS ---------- */
 
-  actions: {
-    togglePanel() {
+  // actions: {
+  //   togglePanel() {
 
-    }
-  },
+  //   }
+  // },
 
   /* ---------- PUBLIC METHODS ---------- */
 
@@ -125,7 +147,7 @@ export default Component.extend({
   /* ---------- PRIVATE METHODS ---------- */
 
   _initTabID() {
-    return `tf-accordion-panel-toggle--${guidFor(this)}`;
+    this.tabID = `tf-accordion-panel-toggle--${guidFor(this)}`;
   },
 
   _registerWithAccordion() {
@@ -134,5 +156,33 @@ export default Component.extend({
 
   _unRegisterWithAccordion() {
     get(this, 'accordion').unRegisterPanel(this);
-  }
+  },
+
+  _initEventListeners() {
+    this.handleSelection = function _handlePanelSelection(event) {
+      event.preventDefault();
+      
+      get(this, 'onSelect')(this);
+    }.bind(this);
+  },
+
+  _addListeners() {
+    const headerButton = get(this, 'toggleHeader.element');
+
+    if (!isEmpty(headerButton)) {      
+      headerButton.addEventListener('click', this.handleSelection, false);  
+      headerButton.addEventListener('touchEnd', this.handleSelection, false);
+    }
+  },
+
+  _removeListeners() {
+    const headerButton = get(this, 'toggleHeader.element');
+
+    if (!isEmpty(headerButton)) {      
+      headerButton.removeEventListener('click', this.handleSelection, false);  
+      headerButton.removeEventListener('touchEnd', this.handleSelection, false);
+    }
+
+    this.handleSelection = null;
+  },
 });

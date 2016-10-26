@@ -13,52 +13,82 @@
 
     <h2>Example Usage</h2>
 
-    <h4>Tabbed Details View</h4>
+    <section>
+      <h4>Tabbed Details View</h4>
 
-    {{#tf-accordion as |accordion|}}
-      
-      {{accordion.panel tabTitle=model.overview.title panelContent=model.overview.conent}}
+      {{#tf-accordion class="p-index__product-accordion c-accordion" as |accordion|}}
+        
+        {{accordion.panel 
+          class="c-accordion__panel"
+          headerClassName="c-accordion__panel-header" 
+          bodyClassName="c-accordion__panel-body" 
+          tabTitle=model.overview.title 
+          panelContent=model.overview.content
+        }}
 
-      {{#accordion.panel as |panel|}}
-        {{panel.toggleHeader title=model.media.title}}
-        {{#panel.body}}
-          <h3>Trailers</h3>
-          <h3>Screenshots</h3>
-        {{/panel.body}}
-      {{/accordion.panel}}
+        {{#accordion.panel class="c-accordion__panel" as |panel|}}
+          {{panel.toggleHeader class="c-accordion__panel-header" title=model.media.title}}
+          {{#panel.body class="c-accordion__panel-body"}}
+            <h3>Trailers</h3>
+            <h3>Screenshots</h3>
+          {{/panel.body}}
+        {{/accordion.panel}}
 
-      {{accordion.panel tabTitle=model.storyline.title panelContent=model.storyline.conent}}
-      {{accordion.panel tabTitle=model.production.title panelContent=model.production.conent}}
+        {{accordion.panel 
+          class="c-accordion__panel"
+          headerClassName="c-accordion__panel-header" 
+          bodyClassName="c-accordion__panel-body"  
+          tabTitle=model.storyline.title 
+          panelContent=model.storyline.content
+        }}
+        
+        {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
+          {{panel.toggleHeader class="c-accordion__panel-header" title=model.similarTitles.title}}
+          {{#panel.body class="c-accordion__panel-body" tagName="ul"}}
+            <li>Gears of War 4</li>
+            <li>Assassin's Creed: Syndicate</li>
+          {{/panel.body}}
+        {{/accordion.panel}}
 
-      {{#accordion.panel isExpanded=true as |panel|}}
-        {{panel.toggleHeader title=model.similarTitles.title}}
-        {{#panel.body tagName="ul"}}
-          <li>Gears of War 4</li>
-          <li>Assassin's Creed: Syndicate</li>
-        {{/panel.body}}
-      {{/accordion.panel}}
+        {{accordion.panel 
+          class="c-accordion__panel" 
+          headerClassName="c-accordion__panel-header" 
+          bodyClassName="c-accordion__panel-body" 
+          tabTitle=model.production.title 
+          panelContent=model.production.content
+        }}
 
-    {{/tf-accordion}}
+      {{/tf-accordion}}
+    </section>
 
-    <h4>Navigaton Menu</h4>
-    <nav>
-      <ul>
-        <li>About</li>
 
-        {{#tf-accordion tagName="li" as |accordion|}}
-          {{#accordion.panel as |panel|}}
-            {{panel.toggleHeader title="Media"}}
+    <section>
+      <h4>Navigaton Menu</h4>
+      <nav>
+        <ul>
+          <li>About</li>
 
-            {{#panel.body tagName="ul"}}
-              <li>Videos</li>
-              <li>Music</li>
-              <li>Photos</li>
-            {{/panel.body}}
-          {{/accordion.panel}}
-        {{/tf-accordion}}
+          {{#tf-accordion 
+            class="p-index__nav-menu-accordion" 
+            tagName="li" 
+            multiExpand=true 
+            as |accordion|
+          }}
+            {{#accordion.panel as |panel|}}
+              {{panel.toggleHeader title="Media"}}
 
-      </ul>
-    </nav>
+              {{#panel.body tagName="ul"}}
+                <li>Videos</li>
+                <li>Music</li>
+                <li>Photos</li>
+              {{/panel.body}}
+            {{/accordion.panel}}
+          {{/tf-accordion}}
+
+        </ul>
+      </nav>
+    </section>
+
   </section>
 
 </section>

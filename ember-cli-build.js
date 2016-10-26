@@ -2,6 +2,7 @@
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 var cssNext = require('postcss-cssnext');
 var cssImport = require('postcss-import');
+var cssColorFunction = require('postcss-color-function');
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
@@ -10,28 +11,10 @@ module.exports = function(defaults) {
       compile: {
         enabled: true,
         plugins: [
-          { module: cssNext },
-          { module: cssImport }
+          { module: cssImport },
+          { module: cssNext }
         ]
-        // plugins: [
-        //   {
-        //     module: cssNext,
-        //     import: true
-        //   }
-        // ]
       }
-      // compile: {
-      //   enabled: true,
-      //   plugins: [
-      //     { module: cssNext }
-      //   ]
-      // },
-      // filter: {
-      //   enabled: true,
-      //   plugins: [
-      //     { module: cssNext }
-      //   ]
-      // }
     }
   });
 

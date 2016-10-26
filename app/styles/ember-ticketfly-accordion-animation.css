@@ -22,16 +22,21 @@
   width: 100%;
   border: none;
   font-size: inherit;
-  cursor: pointer;
 }
 
 .tf-accordion .tf-accordion-panel .tf-accordion-panel-body {
-  
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); /* ease-in-cubic */
 }
 
 
+.tf-accordion.body-scroll-enabled .tf-accordion-panel .tf-accordion-panel-body[aria-hidden="false"] {
+  opacity: 0;  
+}
 
-/* TODO: Should this be "core"? How can we make animation more configurable? */
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-body:not([aria-hidden="false"]) {
-  display: none;
+
+.tf-accordion.body-scroll-enabled .tf-accordion-panel .tf-accordion-panel-body:not([aria-hidden="false"]) {  
+  opacity: 1;
+  transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1); /* ease-in-cubic */
 }
