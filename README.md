@@ -34,6 +34,17 @@ ENV['ember-ticketfly-accordion'] = {
 };
 ```
 
+## Features
+
+### Fully-ARIA Compliant 
+
+### Semantic HTML 
+
+### No Dependencies 
+Animation is handled internally. ***TODO: Outline configurability***.
+
+## Configuration 
+
 ### Selecting CSS Styles 
 
 `ember-ticketfly-accordion` includes a very small set of base 
@@ -62,8 +73,6 @@ ENV['ember-ticketfly-accordion'] = {
   }
 };
 ``` 
-
-
 
 
 ## Collaborating
