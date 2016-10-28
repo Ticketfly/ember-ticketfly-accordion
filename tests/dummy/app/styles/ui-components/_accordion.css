@@ -15,12 +15,11 @@
   font-weight: bold;
   color: var(--color__panel-header);
   background-color: var(--background-color__panel-header);
-
 }
 
 .c-accordion .c-accordion__panel-header:focus {
   background-color: color(
-    var(--background-color__panel-header) 
+    var(--background-color__panel-header)
     blackness(+15%)
   );
 }

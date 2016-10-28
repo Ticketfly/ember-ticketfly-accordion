@@ -16,9 +16,13 @@ import { once } from 'ember-runloop';
 export default Component.extend({
   layout,
   tagName: 'button',
-  hook: 'tf-accordion-panel-toggle',  
-  
-  attributeBindings: ['aria-expanded'],
+  hook: 'tf-accordion-panel-toggle',
+
+  attributeBindings: [
+    'aria-expanded',
+    'aria-selected'
+  ],
+
   classNames: ['tf-accordion-panel-toggle'],
 
   ariaRole: 'tab',
@@ -60,7 +64,7 @@ export default Component.extend({
   },
 
   /* ---------- PRIVATE METHODS ---------- */
-  
+
   _registerWithPanel() {
     get(this, 'panel').registerToggleHeader(this);
   },

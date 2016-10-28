@@ -15,7 +15,7 @@ import { scheduleOnce } from 'ember-runloop';
  * @class TFAccordionPanelComponent
  * @namespace TFAccordion
  * @extends Ember.Component
- * 
+ *
  * This component wraps a
  *  `tf-accordion-panel-toggle` and `tf-accordion-panel-body` component
  */
@@ -32,7 +32,7 @@ export default Component.extend({
   headerClassName: '',
   bodyClassName: '',
   handleSelection: null,
-  
+
   /**
    * The `tf-accordion` component.
    *
@@ -61,35 +61,28 @@ export default Component.extend({
   panelBody: null,
 
   isExpanded: false,
-  // isExpanded: computed('expandedPanelIds.[]', {
-  //   get() {
-  //     const expandedPanelIds = get(this, 'expandedPanelIds') || [];
-
-  //     return expandedPanelIds.includes(this.elementId);
-  //   }
-  // }),
 
   /* ---------- LIFECYCLE ---------- */
 
   init() {
     this._super(...arguments);
 
-    this._initTabID(); 
+    this._initTabID();
     scheduleOnce('actions', this, this._registerWithAccordion);
     scheduleOnce('actions', this, this._initEventListeners);
   },
 
   didInsertElement() {
     this._super(...arguments);
-    
+
     scheduleOnce('actions', this, this._addListeners, 'add');
   },
 
   willDestroyElement() {
     this._super(...arguments);
-    
-    scheduleOnce('actions', this, this._unRegisterWithAccordion);    
-    scheduleOnce('actions', this, this._removeListeners, 'remove');    
+
+    scheduleOnce('actions', this, this._unRegisterWithAccordion);
+    scheduleOnce('actions', this, this._removeListeners, 'remove');
   },
 
   /* ---------- ACTIONS ---------- */
@@ -104,7 +97,7 @@ export default Component.extend({
 
   /**
    * Registers this panel's toggle header
-   * 
+   *
    * @method registerToggleHeader
    * @param {TFAccordion.TFAccordionPanelToggle Component} toggleHeader
    * @public
@@ -115,7 +108,7 @@ export default Component.extend({
 
   /**
    * Un-registers this panel's toggle header
-   * 
+   *
    * @method unRegisterToggleHeader
    * @public
    */
@@ -125,7 +118,7 @@ export default Component.extend({
 
   /**
    * registers this panel's body
-   * 
+   *
    * @method registerPanelBody
    * @param {TFAccordion.TFAccordionPanelBody Component} panelBody
    * @public
@@ -136,7 +129,7 @@ export default Component.extend({
 
   /**
    * Un-registers this panel's body
-   * 
+   *
    * @method unRegisterPanelBody
    * @public
    */
@@ -161,7 +154,7 @@ export default Component.extend({
   _initEventListeners() {
     this.handleSelection = function _handlePanelSelection(event) {
       event.preventDefault();
-      
+
       get(this, 'onSelect')(this);
     }.bind(this);
   },
@@ -169,8 +162,8 @@ export default Component.extend({
   _addListeners() {
     const headerButton = get(this, 'toggleHeader.element');
 
-    if (!isEmpty(headerButton)) {      
-      headerButton.addEventListener('click', this.handleSelection, false);  
+    if (!isEmpty(headerButton)) {
+      headerButton.addEventListener('click', this.handleSelection, false);
       headerButton.addEventListener('touchEnd', this.handleSelection, false);
     }
   },
@@ -178,8 +171,8 @@ export default Component.extend({
   _removeListeners() {
     const headerButton = get(this, 'toggleHeader.element');
 
-    if (!isEmpty(headerButton)) {      
-      headerButton.removeEventListener('click', this.handleSelection, false);  
+    if (!isEmpty(headerButton)) {
+      headerButton.removeEventListener('click', this.handleSelection, false);
       headerButton.removeEventListener('touchEnd', this.handleSelection, false);
     }
 
