@@ -1,7 +1,7 @@
 import Component from 'ember-component';
 import layout from '../templates/components/tf-accordion-panel-toggle';
 import get from 'ember-metal/get';
-import computed from 'ember-computed';
+import { default as computed, readOnly } from 'ember-computed';
 import { once } from 'ember-runloop';
 
 /**
@@ -20,7 +20,8 @@ export default Component.extend({
 
   attributeBindings: [
     'aria-expanded',
-    'aria-selected'
+    'aria-selected',
+    'aria-controls'
   ],
 
   classNames: ['tf-accordion-panel-toggle'],
@@ -29,6 +30,7 @@ export default Component.extend({
   isPanelExpanded: false,
 
   id: '',
+  panelBodyID: '',
   title: '',
 
   /**
@@ -48,6 +50,8 @@ export default Component.extend({
       return get(this, 'isPanelExpanded') ? 'true' : 'false';
     }
   }),
+
+  'aria-controls': readOnly('panelBodyID'),
 
   /* ---------- LIFECYCLE ---------- */
 

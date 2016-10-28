@@ -6,6 +6,7 @@
       class=headerClassName
       panel=this
       id=tabID
+      panelBodyID=panelBodyID
       isPanelExpanded=isExpanded
     )
 
@@ -14,6 +15,7 @@
       class=bodyClassName
       panel=this
       tabID=tabID
+      id=panelBodyID
       isPanelExpanded=isExpanded
     )
   )}}
@@ -22,17 +24,19 @@
 
   {{!-- Render defaults --}}
   {{tf-accordion-panel-toggle
-    class=headerClassName 
+    class=headerClassName
     panel=this
-    id=tabID 
+    id=tabID
+    panelBodyID=panelBodyID
     title=tabTitle
     isPanelExpanded=isExpanded
   }}
-  
+
   {{tf-accordion-panel-body
     class=bodyClassName
-    panel=this 
-    tabID=tabID 
+    panel=this
+    id=panelBodyID
+    tabID=tabID
     content=panelContent
     isPanelExpanded=isExpanded
   }}

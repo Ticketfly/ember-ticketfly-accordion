@@ -27,6 +27,7 @@ export default Component.extend({
   /* ---------- API ---------- */
 
   tabID: '',
+  panelBodyID: '',
   tabTitle: '',
   panelContent: '',
   headerClassName: '',
@@ -68,6 +69,8 @@ export default Component.extend({
     this._super(...arguments);
 
     this._initTabID();
+    this._initPanelBodyID();
+
     scheduleOnce('actions', this, this._registerWithAccordion);
     scheduleOnce('actions', this, this._initEventListeners);
   },
@@ -141,6 +144,10 @@ export default Component.extend({
 
   _initTabID() {
     this.tabID = `tf-accordion-panel-toggle--${guidFor(this)}`;
+  },
+
+  _initPanelBodyID() {
+    this.panelBodyID = `tf-accordion-panel-body--${guidFor(this)}`;
   },
 
   _registerWithAccordion() {
