@@ -1,5 +1,5 @@
 import Component from 'ember-component';
-import layout from '../templates/components/tf-accordion-panel-toggle';
+import layout from '../templates/components/tf-accordion-panel-tab';
 import get from 'ember-metal/get';
 import { default as computed, readOnly } from 'ember-computed';
 import { once } from 'ember-runloop';
@@ -16,7 +16,6 @@ import { once } from 'ember-runloop';
 export default Component.extend({
   layout,
   tagName: 'button',
-  hook: 'tf-accordion-panel-toggle',
 
   attributeBindings: [
     'aria-expanded',
@@ -24,7 +23,7 @@ export default Component.extend({
     'aria-controls'
   ],
 
-  classNames: ['tf-accordion-panel-toggle'],
+  classNames: ['tf-accordion-panel-tab'],
 
   ariaRole: 'tab',
   isPanelExpanded: false,
@@ -70,10 +69,10 @@ export default Component.extend({
   /* ---------- PRIVATE METHODS ---------- */
 
   _registerWithPanel() {
-    get(this, 'panel').registerToggleHeader(this);
+    get(this, 'panel').registerTab(this);
   },
 
   _unRegisterWithPanel() {
-    get(this, 'panel').unRegisterToggleHeader(this);
+    get(this, 'panel').unRegisterTab(this);
   }
 });

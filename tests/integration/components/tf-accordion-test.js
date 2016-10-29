@@ -5,7 +5,40 @@ moduleForComponent('tf-accordion', 'Integration | Component | tf accordion', {
   integration: true
 });
 
-test('it renders', function(assert) {
+const CLASS_NAMES = {
+  ACCORDION: 'test-accordion',
+  ACCORDION_PANEL: 'test-accordion__panel',
+  ACCORDION_PANEL_TAB: 'test-accordion__panel-tab',
+  ACCORDION_PANEL_BODY: 'test-accordion__panel-body'
+};
+
+const compositeTemplate = hbs`
+  {{#tf-accordion class=CLASS_NAMES.ACCORDION as |accordion|}}
+    {{#each panels as |inlinePanel|}}
+
+      {{accordion.panel
+        class=CLASS_NAMES.ACCORDION_PANEL
+        tabClassName=CLASS_NAMES.ACCORDION_TAB
+        bodyClassName=CLASS_NAMES.ACCORDION_BODY
+        tabTitle=inlinePanel.tabTitle
+        bodyContent=inlinePanel.bodyContent
+      }}
+
+    {{/each}}
+
+    {{#accordion.panel class=CLASS_NAMES.ACCORDION_PANEL as |blockPanel|}}
+
+      {{panel.tab class=CLASS_NAMES.ACCORDION_TAB title=blockPanel.tabTitle}}
+      {{#panel.body class=CLASS_NAMES.ACCORDION_BODY}}
+        <h3>Trailers</h3>
+        <h3>Screenshots</h3>
+      {{/panel.body}}
+    {{/accordion.panel}}
+  {{/tf-accordion}}
+`;
+
+
+test('rendering child components with configurable class names', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 

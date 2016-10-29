@@ -1,9 +1,9 @@
 {{#if hasBlock}}
 
   {{yield (hash
-    toggleHeader=(
-      component 'tf-accordion-panel-toggle'
-      class=headerClassName
+    tab=(
+      component 'tf-accordion-panel-tab'
+      class=tabClassName
       panel=this
       id=tabID
       panelBodyID=panelBodyID
@@ -23,8 +23,8 @@
 {{else}}
 
   {{!-- Render defaults --}}
-  {{tf-accordion-panel-toggle
-    class=headerClassName
+  {{tf-accordion-panel-tab
+    class=tabClassName
     panel=this
     id=tabID
     panelBodyID=panelBodyID
@@ -37,7 +37,7 @@
     panel=this
     id=panelBodyID
     tabID=tabID
-    content=panelContent
+    content=bodyContent
     isPanelExpanded=isExpanded
   }}
 

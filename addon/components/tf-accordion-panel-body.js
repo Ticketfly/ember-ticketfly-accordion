@@ -15,10 +15,9 @@ import { scheduleOnce } from 'ember-runloop';
  */
 export default Component.extend({
   layout,
-  hook: 'tf-accordion-panel-body',
 
   attributeBindings: [
-    'tabID:aria-labelledby', 
+    'tabID:aria-labelledby',
     'aria-hidden'
   ],
 
@@ -28,7 +27,7 @@ export default Component.extend({
   content: '',
   isPanelExpanded: false,
 
-  ariaRole: 'tabpanel',  
+  ariaRole: 'tabpanel',
   isHidden: not('isPanelExpanded'),
 
   /**
@@ -64,7 +63,7 @@ export default Component.extend({
   },
 
   /* ---------- PRIVATE METHODS ---------- */
-  
+
   _registerWithPanel() {
     get(this, 'panel').registerPanelBody(this);
   },

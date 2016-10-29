@@ -2,7 +2,6 @@ import Component from 'ember-component';
 import layout from '../templates/components/tf-accordion-panel';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
-import computed from 'ember-computed';
 import { isEmpty } from 'ember-utils';
 import { guidFor } from 'ember-metal/utils';
 import { scheduleOnce } from 'ember-runloop';
@@ -17,11 +16,10 @@ import { scheduleOnce } from 'ember-runloop';
  * @extends Ember.Component
  *
  * This component wraps a
- *  `tf-accordion-panel-toggle` and `tf-accordion-panel-body` component
+ *  `tf-accordion-panel-tab` and `tf-accordion-panel-body` component
  */
 export default Component.extend({
   layout,
-  hook: 'tf-accordion-panel',
   classNames: ['tf-accordion-panel'],
 
   /* ---------- API ---------- */
@@ -29,8 +27,8 @@ export default Component.extend({
   tabID: '',
   panelBodyID: '',
   tabTitle: '',
-  panelContent: '',
-  headerClassName: '',
+  bodyContent: '',
+  tabClassName: '',
   bodyClassName: '',
   handleSelection: null,
 
@@ -44,13 +42,13 @@ export default Component.extend({
   accordion: null,
 
   /**
-   * The `tf-accordion-panel-toggle` component.
+   * The `tf-accordion-panel-tab` component.
    *
-   * @property toggleHeader
-   * @type TFAccordion.TFAccordionPanelToggleComponent
+   * @property tab
+   * @type TFAccordion.TFAccordionPaneltabComponent
    * @default null
    */
-  toggleHeader: null,
+  tab: null,
 
   /**
    * The `tf-accordion-panel-body` component.
@@ -91,7 +89,7 @@ export default Component.extend({
   /* ---------- ACTIONS ---------- */
 
   // actions: {
-  //   togglePanel() {
+  //   tabPanel() {
 
   //   }
   // },
@@ -99,24 +97,24 @@ export default Component.extend({
   /* ---------- PUBLIC METHODS ---------- */
 
   /**
-   * Registers this panel's toggle header
+   * Registers this panel's tab header
    *
-   * @method registerToggleHeader
-   * @param {TFAccordion.TFAccordionPanelToggle Component} toggleHeader
+   * @method registerTab
+   * @param {TFAccordion.TFAccordionPaneltab Component} tab
    * @public
    */
-  registerToggleHeader(toggleHeader) {
-    set(this, 'toggleHeader', toggleHeader);
+  registerTab(tab) {
+    set(this, 'tab', tab);
   },
 
   /**
-   * Un-registers this panel's toggle header
+   * Un-registers this panel's tab header
    *
-   * @method unRegisterToggleHeader
+   * @method unRegisterTab
    * @public
    */
-  unRegisterToggleHeader() {
-    set(this, 'toggleHeader', null);
+  unRegisterTab() {
+    set(this, 'tab', null);
   },
 
   /**
@@ -143,7 +141,7 @@ export default Component.extend({
   /* ---------- PRIVATE METHODS ---------- */
 
   _initTabID() {
-    this.tabID = `tf-accordion-panel-toggle--${guidFor(this)}`;
+    this.tabID = `tf-accordion-panel-tab--${guidFor(this)}`;
   },
 
   _initPanelBodyID() {
@@ -167,7 +165,7 @@ export default Component.extend({
   },
 
   _addListeners() {
-    const headerButton = get(this, 'toggleHeader.element');
+    const headerButton = get(this, 'tab.element');
 
     if (!isEmpty(headerButton)) {
       headerButton.addEventListener('click', this.handleSelection, false);
@@ -176,7 +174,7 @@ export default Component.extend({
   },
 
   _removeListeners() {
-    const headerButton = get(this, 'toggleHeader.element');
+    const headerButton = get(this, 'tab.element');
 
     if (!isEmpty(headerButton)) {
       headerButton.removeEventListener('click', this.handleSelection, false);
