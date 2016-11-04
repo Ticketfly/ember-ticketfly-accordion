@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:each",
     "test:coverage": "cross-env COVERAGE=true ember test",
-    "test:ci:coverage": "ember try:one $EMBER_TRY_SCENARIO && npm run test:coverage"
+    "test:ci:coverage": "npm test && npm run test:coverage"
   },
   "repository": "https://github.com/Ticketfly/ember-ticketfly-accordion",
   "engines": {
