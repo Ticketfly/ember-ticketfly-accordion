@@ -10,8 +10,12 @@ const AccordionComponentStub = {
   unRegisterPanel: K
 };
 
+const CLASS_NAMES = {
+  TAB: 'test-accordion-panel__tab',
+  BODY: 'test-accordion-panel__body'
+};
 
-let expected, actual, message, component;
+let expected, actual, component;
 
 moduleForComponent('tf-accordion-panel', 'Unit | Component | tf accordion panel root', {
   // Specify the other units that are required for this test
@@ -40,4 +44,32 @@ test('registering with its parent accordion', function(assert) {
 
   assert.equal(accordionComponentStub.registerPanel.callCount, 1);
   assert.equal(accordionComponentStub.unRegisterPanel.callCount, 1);
+});
+
+test('generating ids for its child tab and body', function (assert) {
+  const accordionComponentStub = this.stub(AccordionComponentStub);
+  const opts = {
+    accordion: accordionComponentStub,
+    tabClassName: CLASS_NAMES.TAB,
+    bodyClassName: CLASS_NAMES.BODY
+  };
+
+  run(() => {
+    component = this.subject(opts);
+  });
+
+  this.render();
+
+  const tabElem = component.element.querySelector(`.${CLASS_NAMES.TAB}`);
+  const bodyElem = component.element.querySelector(`.${CLASS_NAMES.BODY}`);
+
+  expected = component.get('tabID');
+  actual = tabElem.getAttribute('id');
+
+  assert.equal(actual, expected, 'panel tab uses id passed from parent component');
+
+  expected = component.get('panelBodyID');
+  actual = bodyElem.getAttribute('id');
+
+  assert.equal(actual, expected, 'panel body uses id passed from parent component');
 });

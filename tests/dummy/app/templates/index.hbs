@@ -20,14 +20,14 @@
 
         {{accordion.panel
           class="c-accordion__panel"
-          tabClassName="c-accordion__panel-header"
+          tabClassName="c-accordion__panel-tab"
           bodyClassName="c-accordion__panel-body"
           tabTitle=model.overview.title
           bodyContent=model.overview.content
         }}
 
         {{#accordion.panel class="c-accordion__panel" as |panel|}}
-          {{panel.tab class="c-accordion__panel-header" title=model.media.title}}
+          {{panel.tab class="c-accordion__panel-tab" title=model.media.title}}
           {{#panel.body class="c-accordion__panel-body"}}
             <h3>Trailers</h3>
             <h3>Screenshots</h3>
@@ -36,14 +36,14 @@
 
         {{accordion.panel
           class="c-accordion__panel"
-          tabClassName="c-accordion__panel-header"
+          tabClassName="c-accordion__panel-tab"
           bodyClassName="c-accordion__panel-body"
           tabTitle=model.storyline.title
           bodyContent=model.storyline.content
         }}
 
         {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
-          {{panel.tab class="c-accordion__panel-header" title=model.similarTitles.title}}
+          {{panel.tab class="c-accordion__panel-tab" title=model.similarTitles.title}}
           {{#panel.body class="c-accordion__panel-body" tagName="ul"}}
             <li>Gears of War 4</li>
             <li>Assassin's Creed: Syndicate</li>
@@ -52,7 +52,7 @@
 
         {{accordion.panel
           class="c-accordion__panel"
-          tabClassName="c-accordion__panel-header"
+          tabClassName="c-accordion__panel-tab"
           bodyClassName="c-accordion__panel-body"
           tabTitle=model.production.title
           bodyContent=model.production.content

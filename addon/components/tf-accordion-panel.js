@@ -23,7 +23,6 @@ export default Component.extend({
   classNames: ['tf-accordion-panel'],
 
   /* ---------- API ---------- */
-
   tabID: '',
   panelBodyID: '',
   tabTitle: '',
@@ -69,30 +68,23 @@ export default Component.extend({
     this._initTabID();
     this._initPanelBodyID();
 
-    scheduleOnce('actions', this, this._registerWithAccordion);
-    scheduleOnce('actions', this, this._initEventListeners);
+    this._registerWithAccordion();
+    this._initEventListeners();
   },
 
   didInsertElement() {
     this._super(...arguments);
 
-    scheduleOnce('actions', this, this._addListeners, 'add');
+    scheduleOnce('actions', this, this._addListeners);
   },
 
   willDestroyElement() {
     this._super(...arguments);
 
-    scheduleOnce('actions', this, this._unRegisterWithAccordion);
-    scheduleOnce('actions', this, this._removeListeners, 'remove');
+    this._unRegisterWithAccordion();
+    this._removeListeners();
   },
 
-  /* ---------- ACTIONS ---------- */
-
-  // actions: {
-  //   tabPanel() {
-
-  //   }
-  // },
 
   /* ---------- PUBLIC METHODS ---------- */
 

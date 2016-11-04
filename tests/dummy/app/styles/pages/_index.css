@@ -5,8 +5,8 @@
   height: 44rem;
 }
 
-.p-index .p-index__product-accordion .c-accordion__panel-header:focus {
-  /*background-color: color(var(--background-color__panel-header) blackness(+5%));*/
+.p-index .p-index__product-accordion .c-accordion__panel-tab:focus {
+  /*background-color: color(var(--background-color__panel-tab) blackness(+5%));*/
 }
 
 .p-index .p-index__nav-menu-accordion {

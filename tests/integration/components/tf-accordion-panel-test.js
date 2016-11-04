@@ -75,3 +75,27 @@ test('yielding an interface for child components during block usages', function 
   assert.notOk(domNode.querySelector(`.${CLASS_NAMES.DEFAULT_TAB}`), message);
   assert.notOk(domNode.querySelector(`.${CLASS_NAMES.DEFAULT_BODY}`), message);
 });
+
+test('passing itself into an on `onSelect` hook when becoming selected', function (assert) {
+  assert.expect(1);
+
+  const accordionComponentStub = this.stub(AccordionComponentStub);
+
+  this.set('CLASS_NAMES', CLASS_NAMES);
+  this.set('accordion', accordionComponentStub);
+
+  this.set('onPanelSelection', (panel => {
+    assert.deepEqual(panel.accordion, accordionComponentStub);
+  }));
+
+  this.render(hbs`
+    {{#tf-accordion-panel accordion=accordion onSelect=onPanelSelection as |panel|}}
+      {{panel.tab class=CLASS_NAMES.CUSTOM_TAB}}
+      {{panel.body class=CLASS_NAMES.CUSTOM_BODY}}
+    {{/tf-accordion-panel}}
+  `);
+
+  const domNode = getDOMNode(this);
+
+  domNode.querySelector(`.${CLASS_NAMES.CUSTOM_TAB}`).click();
+});

@@ -4,7 +4,7 @@ import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import { default as computed, notEmpty } from 'ember-computed';
 import { A } from 'ember-array/utils';
-// import { scheduleOnce } from 'ember-runloop';
+import { scheduleOnce } from 'ember-runloop';
 import { log } from 'ember-debug';
 
 // TODO: Enable this for retrieving animation settings
@@ -22,7 +22,7 @@ import { log } from 'ember-debug';
 export default Component.extend({
   layout,
   classNames: ['tf-accordion'],
-  attributeBindings: ['aria-multiselectable', 'foo'],
+  attributeBindings: ['aria-multiselectable'],
   ariaRole: 'tablist',
   'aria-multiselectable': 'true', // @see {@link https://github.com/BrianSipple/why-am-i-doing-this/blob/master/ember/aria-attribute-binding-in-components.md}
 
@@ -85,7 +85,9 @@ export default Component.extend({
   willDestroyElement() {
     this._super(...arguments);
 
-    set(this, 'panels', null);
+    scheduleOnce('actions', this, function () {
+      set(this, 'panels', null);
+    });
   },
 
   /* ---------- ACTIONS ---------- */

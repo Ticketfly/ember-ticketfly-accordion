@@ -2,24 +2,24 @@
  * Variables for the .c-accordion component
  */
 :root {
-  --background-color__panel-header: var(--theme-color__primary-1--500);
-  --color__panel-header: var(--theme-color__nearWhite);
+  --background-color__panel-tab: var(--theme-color__primary-1--500);
+  --color__panel-tab: var(--theme-color__nearWhite);
 }
 
 .c-accordion {
 
 }
 
-.c-accordion .c-accordion__panel-header {
+.c-accordion .c-accordion__panel-tab {
   font-size: 1em;
   font-weight: bold;
-  color: var(--color__panel-header);
-  background-color: var(--background-color__panel-header);
+  color: var(--color__panel-tab);
+  background-color: var(--background-color__panel-tab);
 }
 
-.c-accordion .c-accordion__panel-header:focus {
+.c-accordion .c-accordion__panel-tab:focus {
   background-color: color(
-    var(--background-color__panel-header)
+    var(--background-color__panel-tab)
     blackness(+15%)
   );
 }
