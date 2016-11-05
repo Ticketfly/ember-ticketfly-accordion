@@ -20,7 +20,8 @@ import { scheduleOnce } from 'ember-runloop';
  */
 export default Component.extend({
   layout,
-  classNames: ['tf-accordion-panel'],
+  classNames: ['tfa-panel'],
+  classNameBindings: ['isExpanded:tfa-panel--expanded:tfa-panel--hidden'],
 
   /* ---------- API ---------- */
   tabID: '',

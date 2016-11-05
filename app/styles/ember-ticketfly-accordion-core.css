@@ -1,37 +1,37 @@
 /**
- * TODO: Greater separation between 
+ * TODO: Greater separation between
  * styles that should be "core" and those
- * that should be optional -- or just lend a 
+ * that should be optional -- or just lend a
  * different variety to things.
  */
 
-.tf-accordion {
+.tfa-accordion {
   width: 100%;
   overflow: hidden;
   position: relative;
 }
 
-.tf-accordion .tf-accordion-panel {
+.tfa-accordion .tfa-panel {
   /*position: absolute;*/
   /*top: 0;*/
   width: 100%;
 }
 
 
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-tab {
+.tfa-accordion .tfa-panel .tfa-panel-tab {
   width: 100%;
   border: none;
   font-size: inherit;
   cursor: pointer;
 }
 
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-body {
-  
+.tfa-accordion .tfa-panel .tfa-panel-body {
+
 }
 
 
 
 /* TODO: Should this be "core"? How can we make animation more configurable? */
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-body:not([aria-hidden="false"]) {
+.tfa-accordion .tfa-panel .tfa-panel-body:not([aria-hidden="false"]) {
   display: none;
 }

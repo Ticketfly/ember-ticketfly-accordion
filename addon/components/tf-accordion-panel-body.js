@@ -21,7 +21,8 @@ export default Component.extend({
     'aria-hidden'
   ],
 
-  classNames: ['tf-accordion-panel-body'],
+  classNames: ['tfa-panel-body'],
+  classNameBindings: ['isPanelExpanded:tfa-panel-body--expanded:tfa-panel-body--hidden'],
 
   tabID: '',
   content: '',

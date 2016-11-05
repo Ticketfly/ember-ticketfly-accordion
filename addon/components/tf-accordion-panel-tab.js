@@ -23,7 +23,8 @@ export default Component.extend({
     'aria-controls'
   ],
 
-  classNames: ['tf-accordion-panel-tab'],
+  classNames: ['tfa-panel-tab'],
+  classNameBindings: ['isPanelExpanded:tfa-panel-tab--expanded:tfa-panel-tab--hidden'],
 
   ariaRole: 'tab',
   isPanelExpanded: false,

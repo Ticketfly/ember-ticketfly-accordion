@@ -21,7 +21,7 @@ import { log } from 'ember-debug';
  */
 export default Component.extend({
   layout,
-  classNames: ['tf-accordion'],
+  classNames: ['tfa-accordion'],
   attributeBindings: ['aria-multiselectable'],
   ariaRole: 'tablist',
   'aria-multiselectable': 'true', // @see {@link https://github.com/BrianSipple/why-am-i-doing-this/blob/master/ember/aria-attribute-binding-in-components.md}

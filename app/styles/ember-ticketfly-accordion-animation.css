@@ -1,42 +1,42 @@
 /**
- * TODO: Greater separation between 
+ * TODO: Greater separation between
  * styles that should be "core" and those
- * that should be optional -- or just lend a 
+ * that should be optional -- or just lend a
  * different variety to things.
  */
 
-.tf-accordion {
+.tfa-accordion {
   width: 100%;
   overflow: hidden;
   position: relative;
 }
 
-.tf-accordion .tf-accordion-panel {
+.tfa-accordion .tfa-panel {
   /*position: absolute;*/
   /*top: 0;*/
   width: 100%;
 }
 
 
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-tab {
+.tfa-accordion .tfa-panel .tfa-panel-tab {
   width: 100%;
   border: none;
   font-size: inherit;
 }
 
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-body {
+.tfa-accordion .tfa-panel .tfa-panel-body {
   transition-property: opacity;
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); /* ease-in-cubic */
 }
 
 
-.tf-accordion.body-scroll-enabled .tf-accordion-panel .tf-accordion-panel-body[aria-hidden="false"] {
-  opacity: 0;  
+.tfa-accordion.body-scroll-enabled .tfa-panel .tfa-panel-body[aria-hidden="false"] {
+  opacity: 0;
 }
 
 
-.tf-accordion.body-scroll-enabled .tf-accordion-panel .tf-accordion-panel-body:not([aria-hidden="false"]) {  
+.tfa-accordion.body-scroll-enabled .tfa-panel .tfa-panel-body:not([aria-hidden="false"]) {
   opacity: 1;
   transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1); /* ease-in-cubic */
 }

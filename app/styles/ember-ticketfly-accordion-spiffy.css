@@ -1,13 +1,13 @@
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-tab,
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-body {
+.tfa-accordion .tfa-panel .tfa-panel-tab,
+.tfa-accordion .tfa-panel .tfa-panel-body {
   padding: 0.8em 1.175em;
 }
 
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-tab {
+.tfa-accordion .tfa-panel .tfa-panel-tab {
   border-bottom: 0.125rem solid;
 }
 
-.tf-accordion .tf-accordion-panel .tf-accordion-panel-tab:focus {
+.tfa-accordion .tfa-panel .tfa-panel-tab:focus {
 
 }
 
