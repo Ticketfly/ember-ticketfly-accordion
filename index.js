@@ -53,7 +53,7 @@ module.exports = {
         return key === 'core' || stylesToImport[key];
       })
       .map(function (key) {
-        return STYLESHEETS[key]; // ES6... ��
+        return STYLESHEETS[key]; // ES6 arrow functions... 🔜
       });
 
     filesToImport.forEach(function (fileName) {
