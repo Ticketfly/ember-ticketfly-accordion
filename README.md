@@ -3,7 +3,6 @@
 _An ARIA-compliant, dependency-free accordion system comprised of composable Ember components._
 
 [![Latest NPM release][npm-badge]][npm-badge-url]
-[![TravisCI Build Status][travis-badge]][travis-badge-url]
 [![CircleCI Build Status][circle-badge]][circle-badge-url]
 [![Test Coverage][coveralls-badge]][coveralls-badge-url]
 [![Code Climate][codeclimate-badge]][codeclimate-badge-url]
@@ -96,8 +95,6 @@ For more information on using ember-cli, visit [http://ember-cli.com/](http://em
 [npm-badge-url]: https://www.npmjs.com/package/ember-ticketfly-accordion
 [circle-badge]: https://circleci.com/gh/Ticketfly/ember-ticketfly-accordion/tree/master.svg?style=svg&circle-token={{CIRCLE_TOKEN}}
 [circle-badge-url]: https://circleci.com/gh/Ticketfly/ember-ticketfly-accordion/tree/master
-[coveralls-badge]: https://coveralls.io/repos/github/Ticketfly/ember-ticketfly-accordion/badge.svg?branch=master
-[coveralls-badge-url]: https://coveralls.io/github/Ticketfly/ember-ticketfly-accordion?branch=master
 [codeclimate-badge]: https://img.shields.io/codeclimate/github/Ticketfly/ember-ticketfly-accordion.svg
 [codeclimate-badge-url]: https://codeclimate.com/github/Ticketfly/ember-ticketfly-accordion
 [ember-observer-badge]: http://emberobserver.com/badges/ember-ticketfly-accordion.svg
