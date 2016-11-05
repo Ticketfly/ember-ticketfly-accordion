@@ -1,3 +1,14 @@
 .p-index {
-  background-color: var(--theme-color__primary-1--100);
+}
+
+.p-index .p-index__accordion-section:not(:last-child) {
+  margin-bottom: 4rem;
+}
+
+.p-index .p-index__product-accordion .c-accordion__panel-header:focus {
+  /*background-color: color(var(--background-color__panel-header) blackness(+5%));*/
+}
+
+.p-index .p-index__nav-menu-accordion {
+  /* TODO: Set a height */
 }

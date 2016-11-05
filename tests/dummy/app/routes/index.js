@@ -1,20 +1,30 @@
 import Route from 'ember-route';
 
-const IPSUM_1 = 'Ye brig wherry chandler spanker grog measured fer yer chains furl Plate Fleet warp. Schooner belaying pin pinnace execution dock cog topsail Chain Shot maroon Yellow Jack jury mast. Swab sheet hogshead jury mast gaff tackle brigantine main sheet Pirate Round gangway.';
-const IPSUM_2 = 'Heave to ahoy Jolly Roger maroon scuttle grog Shiver me timbers stern quarter jack. Lanyard hulk cackle fruit loot execution dock shrouds piracy avast scuttle crimp. Mizzen belay clipper bilge Pieces of Eight coffer Sink me nipper grog black jack.';
-const IPSUM_3 = 'Cackle fruit American Main six pounders Jack Tar grapple gun maroon hardtack black spot loot. Lad yard jib spyglass interloper holystone parrel fore driver league. Fore barque measured fer yer chains schooner port gangplank wherry scuttle crimp scallywag.';
+const IRON_MAN_OVERVIEW = {
+  synopsis: { title: 'Synopsis', content: 'A billionaire industrialist and genius inventor, Tony Stark (Robert Downey Jr.), is conducting weapons tests overseas, but terrorists kidnap him to force him to build a devastating weapon. Instead, he builds an armored suit and upends his captors. Returning to America, Stark refines the suit and uses it to combat crime and terrorism.' },
 
-const GAME_BREAKDOWN = {
-  overview: { title: 'Overview', content: IPSUM_1 },
-  media: { title: 'Media', content: '' },  // TODO: Use block form
-  storyline: { title: 'Storyline', content: IPSUM_2 },
-  production: { title: 'Production Details', content: IPSUM_3 },
-  similarTitles: { title: 'Similar Titles', content: '' }  // TODO: Use block form
+  // Use block form for these:
+  stats: { title: 'Stats', content: { releaseDate: 'May 2, 2008 (USA)', director: 'Jon Favreau', runTime: '2h 6m', boxOffice: '585.2 million USD', budget: '140 million USD', producers: ['Kevin Feige', 'Avi Arad'] } },
+  cast: { title: 'Cast', content: ['Robert Downey Jr. (Tony Stark)', 'Terrence Howard (Rhodey)', 'Jeff Bridges (Obadiah Stane)', 'Gwyneth Paltrow (Pepper Potts)'] },
+  similarTitles: { title: 'Similar Titles', content: ['Iron Man 2', 'Captain America: The First Avenger', 'Thor'] }
 };
+
+const GUARDIANS_OVERVIEW = {
+  synopsis: { title: 'Synopsis', content: `Brash space adventurer Peter Quill (Chris Pratt) finds himself the quarry of relentless bounty hunters after he steals an orb coveted by Ronan, a powerful villain. To evade Ronan, Quill is forced into an uneasy truce with four disparate misfits: gun-toting Rocket Raccoon, treelike-humanoid Groot, enigmatic Gamora, and vengeance-driven Drax the Destroyer. But when he discovers the orb's true power and the cosmic threat it poses, Quill must rally his ragtag group to save the universe.` },
+
+  // Use block form for these:
+  stats: { title: 'Stats', content: { releaseDate: 'August 1, 2014 (USA)', director: 'James Gunn', runTime: '2h 2m', boxOffice: '773.3 million USD', budget: '232.3 million USD', producers: ['James Gunn', 'Nicole Perlman'] } },
+  cast: { title: 'Cast', content: ['Chris Pratt (Peter Quill)', 'Zoe Saldana (Gamora)', 'Dave Bautista (Drax)', 'Vin Diesel (Groot)'] },
+  similarTitles: { title: 'Similar Titles', content: ['Ant Man', 'Captain America: The Winter Soldier', 'Star Wars: The Force Awakens'] }
+};
+
 
 
 export default Route.extend({
   model() {
-    return GAME_BREAKDOWN;
+    return {
+      ironMan: IRON_MAN_OVERVIEW,
+      guardians: GUARDIANS_OVERVIEW
+    }
   }
 });

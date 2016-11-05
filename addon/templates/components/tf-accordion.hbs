@@ -1,1 +1,7 @@
-{{yield}}
+{{yield (hash
+  panel=(
+    component 'tf-accordion-panel' 
+    accordion=this
+    onSelect=(action 'onPanelSelection')
+  )
+)}}

@@ -47,7 +47,7 @@ imports and just target the following class names:
 
 - `tf-accordion`
 - `tf-accordion-panel`
-- `tf-accordion-panel-toggle`
+- `tf-accordion-panel-tab`
 - `tf-accordion-panel-body`
 
 That being said, you can enable a few additional stylesheet imports

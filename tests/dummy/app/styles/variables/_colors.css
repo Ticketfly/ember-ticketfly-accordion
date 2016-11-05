@@ -12,7 +12,11 @@
   --theme-color__accent-1--900: hsla(181, 37%, 51%, 1.00);
 
   --theme-color__nearWhite: hsla(0, 0%, 92%, 1.00);
+  
+  --theme-color__offWhite: color(
+    var(--theme-color__nearWhite)
+    lightness(- 5%)
+  );
 
   --color__box-shadow: hsla(0, 0%, 0%, 0.43);
-
 }

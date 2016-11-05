@@ -10,28 +10,10 @@ module.exports = function(defaults) {
       compile: {
         enabled: true,
         plugins: [
-          { module: cssNext },
-          { module: cssImport }
+          { module: cssImport },
+          { module: cssNext }
         ]
-        // plugins: [
-        //   {
-        //     module: cssNext,
-        //     import: true
-        //   }
-        // ]
       }
-      // compile: {
-      //   enabled: true,
-      //   plugins: [
-      //     { module: cssNext }
-      //   ]
-      // },
-      // filter: {
-      //   enabled: true,
-      //   plugins: [
-      //     { module: cssNext }
-      //   ]
-      // }
     }
   });
 

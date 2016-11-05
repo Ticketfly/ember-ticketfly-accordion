@@ -1,21 +1,44 @@
 {{#if hasBlock}}
 
   {{yield (hash
-    toggleHeader=(
-      component 'tf-accordion-panel-toggle'
-      id=toggleId
+    tab=(
+      component 'tf-accordion-panel-tab'
+      class=tabClassName
+      panel=this
+      id=tabID
+      panelBodyID=panelBodyID
+      isPanelExpanded=isExpanded
     )
 
     body=(
       component 'tf-accordion-panel-body'
-      toggleId=toggleId
+      class=bodyClassName
+      panel=this
+      tabID=tabID
+      id=panelBodyID
+      isPanelExpanded=isExpanded
     )
   )}}
 
 {{else}}
 
   {{!-- Render defaults --}}
-  {{tf-accordion-panel-toggle id=toggleId title=toggleTitle}}
-  {{tf-accordion-panel-body toggleId=toggleId content=panelContent}}
+  {{tf-accordion-panel-tab
+    class=tabClassName
+    panel=this
+    id=tabID
+    panelBodyID=panelBodyID
+    title=tabTitle
+    isPanelExpanded=isExpanded
+  }}
+
+  {{tf-accordion-panel-body
+    class=bodyClassName
+    panel=this
+    id=panelBodyID
+    tabID=tabID
+    content=bodyContent
+    isPanelExpanded=isExpanded
+  }}
 
 {{/if}}
