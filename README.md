@@ -4,7 +4,7 @@ _An ARIA-compliant, dependency-free accordion system comprised of composable Emb
 
 [![Latest NPM release][npm-badge]][npm-badge-url]
 [![CircleCI Build Status][circle-badge]][circle-badge-url]
-[![Test Coverage][coveralls-badge]][coveralls-badge-url]
+[![Test Coverage][coverage-badge]][coverage-badge-url]
 [![Code Climate][codeclimate-badge]][codeclimate-badge-url]
 [![Ember Observer Score][ember-observer-badge]][ember-observer-badge-url]
 [![License][license-badge]][license-badge-url]
@@ -97,6 +97,8 @@ For more information on using ember-cli, visit [http://ember-cli.com/](http://em
 [circle-badge-url]: https://circleci.com/gh/Ticketfly/ember-ticketfly-accordion/tree/master
 [codeclimate-badge]: https://img.shields.io/codeclimate/github/Ticketfly/ember-ticketfly-accordion.svg
 [codeclimate-badge-url]: https://codeclimate.com/github/Ticketfly/ember-ticketfly-accordion
+[coverage-badge]: https://codeclimate.com/repos/580452d5c451cf0072003bc5/badges/fe9856d5b427c83eec3c/coverage.svg
+[coverage-badge-url]: https://codeclimate.com/repos/580452d5c451cf0072003bc5/coverage
 [ember-observer-badge]: http://emberobserver.com/badges/ember-ticketfly-accordion.svg
 [ember-observer-badge-url]: http://emberobserver.com/addons/ember-ticketfly-accordion
 [license-badge]: https://img.shields.io/npm/l/ember-ticketfly-accordion.svg
