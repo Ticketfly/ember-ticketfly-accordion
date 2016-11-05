@@ -2,7 +2,6 @@
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 var cssNext = require('postcss-cssnext');
 var cssImport = require('postcss-import');
-var cssColorFunction = require('postcss-color-function');
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {

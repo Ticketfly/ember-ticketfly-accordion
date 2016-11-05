@@ -31,35 +31,8 @@ const compositeTemplate = hbs`
       }}
 
     {{/each}}
-
   {{/tf-accordion}}
 `;
-// const compositeTemplate = hbs`
-//   {{#tf-accordion class=CLASS_NAMES.ACCORDION as |accordion|}}
-//     {{#each INLINE_PANELS as |inlinePanel|}}
-
-//       {{accordion.panel
-//         class=CLASS_NAMES.ACCORDION_PANEL
-//         tabClassName=CLASS_NAMES.ACCORDION_PANEL_TAB
-//         bodyClassName=CLASS_NAMES.ACCORDION_PANEL_BODY
-//         tabTitle=inlinePanel.tabTitle
-//         bodyContent=inlinePanel.bodyContent
-//       }}
-
-//     {{/each}}
-
-//     {{#accordion.panel class=CLASS_NAMES.ACCORDION_PANEL as |blockPanel|}}
-
-//       {{blockPanel.tab class=CLASS_NAMES.ACCORDION_PANEL_TAB title=BLOCK_PANEL.tabTitle}}
-
-//       {{#blockPanel.body class=CLASS_NAMES.ACCORDION_PANEL_BODY}}
-//         <h3>Trailers</h3>
-//         <h3>Screenshots</h3>
-//       {{/blockPanel.body}}
-
-//     {{/accordion.panel}}
-//   {{/tf-accordion}}
-// `;
 
 let expected, actual, message;
 
@@ -80,7 +53,6 @@ test('yielding an interface to render child panels', function (assert) {
   message = 'accordion renders three child panel components';
   expected = 2;
   actual = accordionElem.querySelectorAll(`.${CLASS_NAMES.ACCORDION_PANEL}`).length;
-
 
   assert.equal(actual, expected, message);
 });

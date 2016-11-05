@@ -82,9 +82,7 @@ module.exports = {
     }
   },
 
-  treeForVendor: function(node) {
-    // return this._isAddon() ? node : path.join(this.project.nodeModulesPath, this.name, 'app', 'styles');
-    // return path.join(this.project.nodeModulesPath, this.name, 'app', 'styles');
+  treeForVendor: function(/* node */) {
     return this._isOurDummyApp(this._target) ?
       path.join(process.cwd(), 'app', 'styles')
       :
