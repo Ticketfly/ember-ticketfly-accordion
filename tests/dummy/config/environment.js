@@ -23,10 +23,19 @@ module.exports = function(environment) {
     },
 
     'ember-ticketfly-accordion': {
-      importedStyles: {
-        spiffy: true,
-        animations: true
+      extraStyles: {
+        spiffy: true
+      },
+      useAddonAnimations: true,
+      addonAnimationSettings: {
+        panelClose: {
+          easing: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)' // ease-in-out-cubic
+        },
+        panelOpen: {
+          easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)' // ease-out-cubic
+        }
       }
+
     }
   };
 

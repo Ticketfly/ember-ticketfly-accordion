@@ -36,7 +36,9 @@ ENV['ember-ticketfly-accordion'] = {
 };
 ```
 
-### Selecting CSS Styles 
+### Configuration Options 
+
+#### Selecting CSS Styles 
 
 `ember-ticketfly-accordion` includes a very small set of base 
 styles to ensure that its elements lay out correctly in the manner 
@@ -58,13 +60,19 @@ from your ENV configuration hash:
 
 ```js
 ENV['ember-ticketfly-accordion'] = {
-  importedStyles: {
-    spiffy: true,
-    animations: true
+  extraStyles: {
+    spiffy: true
   }
 };
 ``` 
 
+#### Enabling Default Animation 
+
+```js
+ENV['ember-ticketfly-accordion'] = {
+  useAnimations: true
+};
+``` 
 
 ## Usage 
 

@@ -16,7 +16,7 @@
     <section class="p-index__accordion-section">
       <h4>Standard Accordion With Focus Cycling</h4>
 
-      {{#tf-accordion class="p-index__standard-accordion c-accordion" as |accordion|}}
+      {{#tf-accordion class="p-index__accordion c-accordion" as |accordion|}}
 
         {{accordion.panel
           class="c-accordion__panel"
@@ -64,10 +64,57 @@
       <h4>Multi-Expand Accordion Without Focus Cycling</h4>
 
       {{#tf-accordion
-        class="p-index__multi-expand-accrodion c-accordion"
+        class="p-index__accordion c-accordion"
         cycleFocus=false
         multiExpand=true as |accordion|
       }}
+
+        {{accordion.panel
+          class="c-accordion__panel"
+          tabClassName="c-accordion__panel-tab"
+          bodyClassName="c-accordion__panel-body"
+          tabTitle=model.ironMan.synopsis.title
+          bodyContent=model.ironMan.synopsis.content
+        }}
+
+        {{#accordion.panel class="c-accordion__panel" as |panel|}}
+          {{panel.tab class="c-accordion__panel-tab" title=model.guardians.stats.title}}
+          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
+            <li><span class="g-embolden">Release Date:</span> <span>{{model.guardians.stats.releaseDate}}</span></li>
+            <li><span class="g-embolden">Director:</span> <span>{{model.guardians.stats.content.director}}</span></li>
+            <li><span class="g-embolden">Runtime:</span> <span>{{model.guardians.stats.content.runtime}}</span></li>
+            <li><span class="g-embolden">Box Office:</span> <span>{{model.guardians.stats.content.boxOffice}}</span></li>
+            <li><span class="g-embolden">Budget:</span> <span>{{model.guardians.stats.content.budget}}</span></li>
+          {{/panel.body}}
+        {{/accordion.panel}}
+
+        {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
+          {{panel.tab class="c-accordion__panel-tab" title=model.guardians.cast.title}}
+          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
+            {{#each model.guardians.cast.content as |castMember|}}
+              <li>{{castMember}}</li>
+            {{/each}}
+          {{/panel.body}}
+        {{/accordion.panel}}
+
+        {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
+          {{panel.tab class="c-accordion__panel-tab" title=model.guardians.similarTitles.title}}
+          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
+            {{#each model.guardians.similarTitles.content as |similarTitle|}}
+              <li>{{similarTitle}}</li>
+            {{/each}}
+          {{/panel.body}}
+        {{/accordion.panel}}
+
+      {{/tf-accordion}}
+
+    </section>
+
+    <section class="p-index__accordion-section">
+
+      <h4>Animatable Accordion</h4>
+
+      {{#tf-accordion class="p-index__accordion c-accordion" animatable=true as |accordion|}}
 
         {{accordion.panel
           class="c-accordion__panel"

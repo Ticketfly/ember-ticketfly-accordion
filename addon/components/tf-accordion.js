@@ -2,13 +2,14 @@ import Component from 'ember-component';
 import layout from '../templates/components/tf-accordion';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
-import { default as computed, notEmpty } from 'ember-computed';
+import computed, { notEmpty, bool } from 'ember-computed';
 import { A } from 'ember-array/utils';
 import { scheduleOnce } from 'ember-runloop';
 import { log } from 'ember-debug';
+import { animatePanelOpen, animatePanelClose } from 'ember-ticketfly-accordion/utils/create-accordion-animations';
 
-// TODO: Enable this for retrieving animation settings
-// import TFAccordionConfig from 'ember-ticketfly-accordion/configuration';
+// TODO: Enable this for retrieving animation settings?
+import AddonConfig from 'ember-ticketfly-accordion/configuration';
 
 /**
  * @module tf-accordion
@@ -22,6 +23,7 @@ import { log } from 'ember-debug';
 export default Component.extend({
   layout,
   classNames: ['tfa-accordion'],
+  classNameBindings: ['isAnimatable:is-animatable'],
   attributeBindings: ['aria-multiselectable'],
   ariaRole: 'tablist',
   'aria-multiselectable': 'true', // @see {@link https://github.com/BrianSipple/why-am-i-doing-this/blob/master/ember/aria-attribute-binding-in-components.md}
@@ -54,6 +56,12 @@ export default Component.extend({
    * last panel will remain focused.
    */
   cycleFocus: true,
+
+  /**
+   * Whether or not animation is enabled for expanding/collapsing a panel
+   */
+  animatable: false,
+  isAnimatable: bool('animatable'),
 
   panels: computed(function() {
     return A();
@@ -126,22 +134,53 @@ export default Component.extend({
     }
   },
 
+  /**
+   * If we're not in multi-expand mode, and a different panel was
+   * selected than the one currently open, we need to close it
+   */
+  _handleMultiExpandOnPanelSelect(indexOfSelected, panels, isAnimatable) {
+    const currentlyFocusedIndex = get(this, 'focusedIndex');
+    const multiExpand = get(this, 'multiExpand');
+
+    if (
+      !multiExpand &&
+      (
+        currentlyFocusedIndex >= 0 &&
+        indexOfSelected !== currentlyFocusedIndex
+      )
+    ) {
+      const currentlyExpandedPanel = panels.objectAt(currentlyFocusedIndex);
+
+      set(currentlyExpandedPanel, 'isExpanded', false);
+
+      if (isAnimatable) {
+        // scheduleOnce('afterRender', this, animatePanelClose, get(currentlyExpandedPanel, 'panelBody.element'));
+        scheduleOnce('afterRender', this, animatePanelClose, get(currentlyExpandedPanel, 'panelBody'));
+      }
+    }
+  },
+
   /* ---------- ACTIONS ---------- */
 
   actions: {
     onPanelSelection(panel) {
-      const indexOfSelected = get(this, 'panels').indexOf(panel);
-      const valueForExpanded = !get(panel, 'isExpanded');
-      const multiExpand = get(this, 'multiExpand');
+      debugger;
+      const panels = get(this, 'panels');
+      const indexOfSelected = panels.indexOf(panel);
+      const isExpandedNow = !get(panel, 'isExpanded');
+      const isAnimatable = get(this, 'isAnimatable');
 
-      // close the other panels if we're not in `multiExpand` mode
-      if (!multiExpand) {
-        get(this, 'panels').setEach('isExpanded', false);
-      }
+      this._handleMultiExpandOnPanelSelect(indexOfSelected, panels, isAnimatable);
 
-      set(panel, 'isExpanded', valueForExpanded);
-
+      set(panel, 'isExpanded', isExpandedNow);
       scheduleOnce('afterRender', this, 'setFocusOnPanel', panel, indexOfSelected);
+
+      if (isAnimatable) {
+        const animationFunc = isExpandedNow ? animatePanelOpen : animatePanelClose;
+
+        // scheduleOnce('afterRender', this, animationFunc, get(panel, 'panelBody.element'), indexOfSelected);
+        scheduleOnce('afterRender', this, animationFunc, get(panel, 'panelBody'), indexOfSelected);
+      }
     }
   },
 
@@ -171,15 +210,6 @@ export default Component.extend({
   },
 
   setFocusOnPanel(panel, index) {
-    // const valueForExpanded = !get(panel, 'isExpanded');
-    // const multiExpand = get(this, 'multiExpand');
-
-    // // close the other panels if we're not in `multiExpand` mode
-    // if (!multiExpand) {
-    //   get(this, 'panels').setEach('isExpanded', false);
-    // }
-
-    // set(panel, 'isExpanded', valueForExpanded);
     set(this, 'focusedIndex', index);
     get(this, 'panels').setEach('isFocused', false);
     set(panel, 'isFocused', true);
