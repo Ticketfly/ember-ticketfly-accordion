@@ -51,8 +51,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.locationType = 'hash';
-    ENV.baseUrl = '/ember-ticketfly-accordion/';
-
+    ENV.rootURL = '/ember-ticketfly-accordion/';
   }
 
   return ENV;
