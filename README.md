@@ -90,8 +90,16 @@ to IE 10](https://github.com/web-animations/web-animations-js/blob/master/docs/s
 thanks to the [W3C's `web-animations-next` polyfill](https://github.com/web-animations/web-animations-next)
 (enabled in Ember by [the `ember-web-animations-next-polyfill` addon](https://github.com/web-animations/web-animations-next)).
 
-Activation &mdash; and, furthermore, configuration &mdash; can be controlled in
-`config/environment.js` as follows **(available settings are shown with their current defaults)**:
+To disable animation, simply set `animatable` to `false` on the root accordion component.
+
+To customize animation, there are two approaches:
+
+1. Overriding the addon's default implementation by passing your own functions to
+the `animatePanelOpen` and `animatePanelClosed` properties on the root accordion component (One
+or both can be overridden).
+
+2. Configuring aspects of the addon's default implementation by setting `addonAnimationSettings` properties
+in `config/environment.js` like so **(available settings are shown with their current defaults)**:
 
 ```js
 ENV['ember-ticketfly-accordion'] = {

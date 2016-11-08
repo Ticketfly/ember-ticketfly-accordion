@@ -6,10 +6,7 @@ import computed, { notEmpty, bool } from 'ember-computed';
 import { A } from 'ember-array/utils';
 import { scheduleOnce } from 'ember-runloop';
 import { log } from 'ember-debug';
-import { animatePanelOpen, animatePanelClose } from 'ember-ticketfly-accordion/utils/create-accordion-animations';
-
-// TODO: Enable this for retrieving animation settings?
-import AddonConfig from 'ember-ticketfly-accordion/configuration';
+import { animatePanelOpen, animatePanelClosed } from 'ember-ticketfly-accordion/utils/accordion-panel-animation';
 
 /**
  * @module tf-accordion
@@ -28,7 +25,10 @@ export default Component.extend({
   ariaRole: 'tablist',
   'aria-multiselectable': 'true', // @see {@link https://github.com/BrianSipple/why-am-i-doing-this/blob/master/ember/aria-attribute-binding-in-components.md}
 
-  handleKeydown: null,
+  handleKeydown: null, // TOOD: Rename to 'on-keydown'
+
+  animatePanelClosed: null,
+  animatePanelOpen: null,
 
   KEYCODE_LEFT: 37,
   KEYCODE_UP: 38,
@@ -60,7 +60,7 @@ export default Component.extend({
   /**
    * Whether or not animation is enabled for expanding/collapsing a panel
    */
-  animatable: false,
+  animatable: true,
   isAnimatable: bool('animatable'),
 
   panels: computed(function() {
@@ -70,9 +70,6 @@ export default Component.extend({
   /* ---------- COMPUTEDS ---------- */
 
   hasPanels: notEmpty('panels'),
-
-  // panelHeights: mapBy('panels', 'element.offsetHeight'),
-  // totalContentHeight: sum('panelHeights'),
 
   headerHeight: computed('panels.[]', {
     get() {
@@ -110,6 +107,12 @@ export default Component.extend({
 
   /* ---------- LIFECYCLE ---------- */
 
+  init() {
+    this._super(...arguments);
+
+    this._setAnimationFunctionsOnInit();
+  },
+
   willDestroyElement() {
     this._super(...arguments);
 
@@ -138,7 +141,7 @@ export default Component.extend({
    * If we're not in multi-expand mode, and a different panel was
    * selected than the one currently open, we need to close it
    */
-  _handleMultiExpandOnPanelSelect(indexOfSelected, panels, isAnimatable) {
+  _handleMultiExpandOnPanelSelect(indexOfSelected, panels, useAnimation) {
     const currentlyFocusedIndex = get(this, 'focusedIndex');
     const multiExpand = get(this, 'multiExpand');
 
@@ -153,9 +156,8 @@ export default Component.extend({
 
       set(currentlyExpandedPanel, 'isExpanded', false);
 
-      if (isAnimatable) {
-        // scheduleOnce('afterRender', this, animatePanelClose, get(currentlyExpandedPanel, 'panelBody.element'));
-        scheduleOnce('afterRender', this, animatePanelClose, get(currentlyExpandedPanel, 'panelBody'));
+      if (useAnimation) {
+        scheduleOnce('afterRender', this, 'animatePanelClosed', get(currentlyExpandedPanel, 'panelBody'));
       }
     }
   },
@@ -164,7 +166,6 @@ export default Component.extend({
 
   actions: {
     onPanelSelection(panel) {
-      debugger;
       const panels = get(this, 'panels');
       const indexOfSelected = panels.indexOf(panel);
       const isExpandedNow = !get(panel, 'isExpanded');
@@ -176,9 +177,8 @@ export default Component.extend({
       scheduleOnce('afterRender', this, 'setFocusOnPanel', panel, indexOfSelected);
 
       if (isAnimatable) {
-        const animationFunc = isExpandedNow ? animatePanelOpen : animatePanelClose;
+        const animationFunc = isExpandedNow ? 'animatePanelOpen' : 'animatePanelClosed';
 
-        // scheduleOnce('afterRender', this, animationFunc, get(panel, 'panelBody.element'), indexOfSelected);
         scheduleOnce('afterRender', this, animationFunc, get(panel, 'panelBody'), indexOfSelected);
       }
     }
@@ -269,5 +269,14 @@ export default Component.extend({
       panel.element.style.transform = `translateY(${yTranslation}px)`;
       get(panel, 'panelBody').element.style.height = `${availableHeight}px`;
     });
+  },
+
+  /**
+   * If no animation function is provided for opening/closing panel body elements,
+   * we default to our utility
+   */
+  _setAnimationFunctionsOnInit() {
+    this.animatePanelOpen = (typeof this.animatePanelOpen === 'function') ? this.animatePanelOpen : animatePanelOpen;
+    this.animatePanelClosed = (typeof this.animatePanelClosed === 'function') ? this.animatePanelClosed : animatePanelClosed;
   }
 });

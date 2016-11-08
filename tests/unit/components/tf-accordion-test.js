@@ -1,11 +1,17 @@
 import { moduleForComponent, test } from 'ember-qunit';
+import initAddonConfig from 'dummy/tests/helpers/init-addon-config';
 
-let expected, actual, message;
+let expected;
+let actual;
+let message;
 
-moduleForComponent('tf-accordion', 'Unit | Component | tf accordion', {
+moduleForComponent('tf-accordion', 'Unit | Component | tf accordion root', {
   // Specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar'],
-  unit: true
+  unit: true,
+  beforeEach() {
+    initAddonConfig();
+  }
 });
 
 test('WAI-ARIA-compliant attributes', function(assert) {

@@ -1,4 +1,5 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { moduleForComponent /* , test */ } from 'ember-qunit';
+import test from 'ember-sinon-qunit/test-support/test';
 import hbs from 'htmlbars-inline-precompile';
 import getDOMNode from 'dummy/tests/helpers/get-dom-node';
 import EmberObject from 'ember-object';
@@ -27,7 +28,9 @@ const CLASS_NAMES = {
 const compositeTemplate = hbs`
   {{#tf-accordion
     class=CLASS_NAMES.ACCORDION
-    cycleFocus=componentProto.cycleFocus
+    animatable=componentProto.animatable
+    animatePanelOpen=componentProto.animatePanelOpen
+    animatePanelClosed=componentProto.animatePanelClosed
     multiExpand=componentProto.multiExpand as |accordion|
   }}
     {{#each INLINE_PANELS as |inlinePanel|}}
@@ -158,4 +161,33 @@ test('allowing multiple panel bodies to be expanded when `multiExpand` is true',
 
   assert.equal('false', firstPanelBodyElem.getAttribute('aria-hidden'));
   assert.equal('false', secondPanelBodyElem.getAttribute('aria-hidden'));
+});
+
+test('using animations', function (assert) {
+  componentProto = {
+    multiExpand: true,
+    animatable: true,
+    animatePanelOpen: this.spy(),
+    animatePanelClosed: this.spy()
+  };
+
+  this.set('CLASS_NAMES', CLASS_NAMES);
+  this.set('INLINE_PANELS', INLINE_PANELS);
+  this.set('BLOCK_PANEL', BLOCK_PANEL);
+  this.set('componentProto', componentProto);
+
+  this.render(compositeTemplate);
+
+  const panelTabElems = getDOMNode(this).querySelectorAll(`.${CLASS_NAMES.ACCORDION_PANEL_TAB}`);
+  const firstPanelTabElem = panelTabElems[0];
+
+  firstPanelTabElem.click();
+
+  assert.equal(componentProto.animatePanelOpen.callCount, 1);
+  assert.equal(componentProto.animatePanelClosed.callCount, 0);
+
+  firstPanelTabElem.click();
+
+  assert.equal(componentProto.animatePanelOpen.callCount, 1);
+  assert.equal(componentProto.animatePanelClosed.callCount, 1);
 });

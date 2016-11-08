@@ -1,9 +1,8 @@
-import { scheduleOnce } from 'ember-runloop';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import Configuration from 'ember-ticketfly-accordion/configuration';
 
-const { addonAnimationSettings = {} } = Configuration;
+const addonAnimationSettings = Configuration.addonAnimationSettings || {};
 
 const closeSettings = addonAnimationSettings.panelClose || {};
 const openSettings = addonAnimationSettings.panelOpen || {};
@@ -26,12 +25,15 @@ const CLOSE_TIMING = {
   fill: 'forwards'
 };
 
-function makeStartingOpenEffect(elem, type = 'open') {
+function makeStartingOpenEffect(elem) {
+  const position = 'absolute';
+
   return new KeyframeEffect(
     elem,
     [
-      // fun trick that will allow us to measure the element's final height before animating it there
-      { visibility: 'hidden', position: 'absolute' }
+      // fun trick that will allow us to measure the element's final height before animating it there from `display: none`
+      { position, visibility: 'visible' },
+      { position, visibility: 'hidden' }
     ],
     { duration: 0 }
   );
@@ -44,18 +46,18 @@ function makeSlideDownEffect(panelBodyElem) {
     panelBodyElem,
     [
       { visibility: 'visible', height: '0px', paddingTop: '0px', paddingBottom: '0px', overflow: 'hidden', opacity: 0 },
-      { height: `${height}`, paddingTop: `${paddingTop}`, paddingBottom: `${paddingBottom}`, opacity: 1 }
+      { visibility: 'visible', height: `${height}`, paddingTop: `${paddingTop}`, paddingBottom: `${paddingBottom}`, overflow: 'hidden', opacity: 1 }
     ],
     OPEN_TIMING
   );
 }
 
-function makeClosingEffect(panelBodyElem, { height, paddingTop, paddingBottom } = startingDimensions) {
+function makeClosingEffect(panelBodyElem, { height, paddingTop, paddingBottom }) {
   return new KeyframeEffect(
     panelBodyElem,
     [
       { height, paddingTop, paddingBottom, overflow: 'hidden', visibility: 'visible', opacity: 1 },
-      { height: '0px', paddingTop: '0px', paddingBottom: '0px', visibility: 'hidden', opacity: 0 }
+      { height: '0px', paddingTop: '0px', paddingBottom: '0px', overflow: 'hidden', visibility: 'hidden', opacity: 0 }
     ],
     CLOSE_TIMING
   );
@@ -63,6 +65,7 @@ function makeClosingEffect(panelBodyElem, { height, paddingTop, paddingBottom } 
 
 function animatePanelOpen(panelBodyComponent) {
   const panelBodyElem = get(panelBodyComponent, 'element');
+
   const startingEffect = makeStartingOpenEffect(panelBodyElem);
   const animation = new Animation(startingEffect, document.timeline);
 
@@ -71,9 +74,9 @@ function animatePanelOpen(panelBodyComponent) {
 
     new Animation(slideDownEffect, document.timeline).play();
 
-    scheduleOnce('afterRender', this, function _removePanelBodyClosedState() {
+    if (!get(panelBodyComponent, 'isDestroyed')) {
       set(panelBodyComponent, 'hasAnimatedClosed', false);
-    });
+    }
   };
 
   animation.play();
@@ -81,7 +84,7 @@ function animatePanelOpen(panelBodyComponent) {
   return animation;
 }
 
-function animatePanelClose(panelBodyComponent) {
+function animatePanelClosed(panelBodyComponent) {
   const panelBodyElem = get(panelBodyComponent, 'element');
   const { height, paddingTop, paddingBottom } = getComputedStyle(panelBodyElem);
 
@@ -91,14 +94,15 @@ function animatePanelClose(panelBodyComponent) {
   animation.onfinish = function _panelCloseOnfinish() {
     panelBodyElem.animate(
       [
+        { height: '0px', paddingTop: '0px', paddingBottom: '0px', visibility: 'hidden' },
         { height, paddingTop, paddingBottom, visibility: 'visible' }
       ],
       { duration: 0.0001, fill: 'forwards' }
     );
 
-    scheduleOnce('afterRender', this, function _addPanelBodyClosedState() {
+    if (!get(panelBodyComponent, 'isDestroyed')) {
       set(panelBodyComponent, 'hasAnimatedClosed', true);
-    });
+    }
   };
 
   animation.play();
@@ -106,5 +110,5 @@ function animatePanelClose(panelBodyComponent) {
   return animation;
 }
 
-export { animatePanelOpen, animatePanelClose };
+export { animatePanelOpen, animatePanelClosed };
 

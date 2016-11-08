@@ -26,7 +26,6 @@ module.exports = function(environment) {
       extraStyles: {
         spiffy: true
       },
-      useAddonAnimations: true,
       addonAnimationSettings: {
         panelClose: {
           easing: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)' // ease-in-out-cubic

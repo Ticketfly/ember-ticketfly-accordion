@@ -20,7 +20,7 @@
   overflow: hidden;
 }
 
-.tfa-accordion:not(.is-animatable) .tfa-panel .tfa-panel-body:not([aria-hidden="false"]) {
+.tfa-accordion:not(.is-animatable) .tfa-panel .tfa-panel-body.is-hidden {
   display: none;
 }
 
@@ -28,7 +28,7 @@
  * For animatable panel bodies, we need to allow the closing animation
  * to take place before setting display to "none"
  */
-.tfa-accordion.is-animatable .tfa-panel .tfa-panel-body.has-animated-closed:not([aria-hidden="false"]) {
+.tfa-accordion.is-animatable .tfa-panel .tfa-panel-body.has-animated-closed.is-hidden {
   display: none;
 }
 
