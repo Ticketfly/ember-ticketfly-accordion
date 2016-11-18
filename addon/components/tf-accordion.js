@@ -154,10 +154,13 @@ export default Component.extend({
     ) {
       const currentlyExpandedPanel = panels.objectAt(currentlyFocusedIndex);
 
-      set(currentlyExpandedPanel, 'isExpanded', false);
-
       if (useAnimation) {
-        scheduleOnce('afterRender', this, 'animatePanelClosed', get(currentlyExpandedPanel, 'panelBody'));
+        scheduleOnce('afterRender', this, 'animatePanelClosed', currentlyExpandedPanel);
+
+      } else {
+        scheduleOnce('afterRender', this, function updatePanelExpansionState() {
+          set(currentlyExpandedPanel, 'isExpanded', false);
+        });
       }
     }
   },
@@ -168,18 +171,22 @@ export default Component.extend({
     onPanelSelection(panel) {
       const panels = get(this, 'panels');
       const indexOfSelected = panels.indexOf(panel);
-      const isExpandedNow = !get(panel, 'isExpanded');
+      const shouldExpand = !get(panel, 'isExpanded');
       const isAnimatable = get(this, 'isAnimatable');
 
       this._handleMultiExpandOnPanelSelect(indexOfSelected, panels, isAnimatable);
 
-      set(panel, 'isExpanded', isExpandedNow);
       scheduleOnce('afterRender', this, 'setFocusOnPanel', panel, indexOfSelected);
 
       if (isAnimatable) {
-        const animationFunc = isExpandedNow ? 'animatePanelOpen' : 'animatePanelClosed';
+        const animationFunc = shouldExpand ? 'animatePanelOpen' : 'animatePanelClosed';
 
-        scheduleOnce('afterRender', this, animationFunc, get(panel, 'panelBody'), indexOfSelected);
+        scheduleOnce('afterRender', this, animationFunc, panel);
+
+      } else {
+        scheduleOnce('afterRender', this, function updatePanelExpansionState() {
+          set(panel, 'isExpanded', shouldExpand);
+        });
       }
     }
   },

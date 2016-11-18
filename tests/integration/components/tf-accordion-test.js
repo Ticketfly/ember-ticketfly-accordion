@@ -4,8 +4,6 @@ import hbs from 'htmlbars-inline-precompile';
 import getDOMNode from 'dummy/tests/helpers/get-dom-node';
 import EmberObject from 'ember-object';
 
-const { assign } = Object;
-
 const ComponentProto = EmberObject.extend({
   multiExpand: false,
   cycleFocus: true
@@ -71,7 +69,7 @@ test('yielding an interface to render child panels', function (assert) {
 
   const accordionElem = getDOMNode(this);
 
-  message = 'accordion renders three child panel components';
+  message = 'accordion renders child panel components';
   expected = 2;
   actual = accordionElem.querySelectorAll(`.${CLASS_NAMES.ACCORDION_PANEL}`).length;
 
@@ -119,22 +117,34 @@ test('closing the other open panel when `multiExpand` is false', function (asser
   const secondPanelTabElem = panelTabElems[1];
   const secondPanelBodyElem = panelBodyElems[1];
 
-  assert.equal('true', firstPanelBodyElem.getAttribute('aria-hidden'));
-  assert.equal('true', secondPanelBodyElem.getAttribute('aria-hidden'));
+  assert.equal('true', firstPanelBodyElem.getAttribute('aria-hidden'), `'aria-hidden' attribute is set to 'true'`);
+  assert.equal(true, firstPanelBodyElem.hidden, `'hidden' property is set to \`true\``);
+
+  assert.equal('true', secondPanelBodyElem.getAttribute('aria-hidden'), `'aria-hidden' attribute is set to 'true'`);
+  assert.equal(true, secondPanelBodyElem.hidden, `'hidden' property is set to \`true\``);
 
   secondPanelTabElem.click();
 
-  assert.equal('true', firstPanelBodyElem.getAttribute('aria-hidden'));
-  assert.equal('false', secondPanelBodyElem.getAttribute('aria-hidden'));
+  assert.equal('true', firstPanelBodyElem.getAttribute('aria-hidden'), `'aria-hidden' attribute is set to 'true'`);
+  assert.equal(true, firstPanelBodyElem.hidden, `'hidden' property is set to \`true\``);
+
+  assert.equal('false', secondPanelBodyElem.getAttribute('aria-hidden'), `'aria-hidden' attribute is set to 'false'`);
+  assert.equal(false, secondPanelBodyElem.hidden, `'hidden' property is set to \`false\``);
 
   firstPanelTabElem.click();
 
-  assert.equal('false', firstPanelBodyElem.getAttribute('aria-hidden'));
-  assert.equal('true', secondPanelBodyElem.getAttribute('aria-hidden'));
+  assert.equal('false', firstPanelBodyElem.getAttribute('aria-hidden'), `'aria-hidden' attribute is set to 'false'`);
+  assert.equal(false, firstPanelBodyElem.hidden, `'hidden' property is set to \`false\``);
+
+  assert.equal('true', secondPanelBodyElem.getAttribute('aria-hidden'), `'aria-hidden' attribute is set to 'true'`);
+  assert.equal(true, secondPanelBodyElem.hidden, `'hidden' property is set to \`true\``);
+
 });
 
 test('allowing multiple panel bodies to be expanded when `multiExpand` is true', function (assert) {
-  const componentProto = assign({}, ComponentProto, { multiExpand: true });
+  const componentProto = ComponentProto.create({
+    multiExpand: true
+  });
 
   this.set('componentProto', componentProto);
 
@@ -163,17 +173,13 @@ test('allowing multiple panel bodies to be expanded when `multiExpand` is true',
   assert.equal('false', secondPanelBodyElem.getAttribute('aria-hidden'));
 });
 
-test('using animations', function (assert) {
-  componentProto = {
+test('calling its opening animation function', function (assert) {
+  const componentProto = ComponentProto.create({
     multiExpand: true,
     animatable: true,
     animatePanelOpen: this.spy(),
-    animatePanelClosed: this.spy()
-  };
+  });
 
-  this.set('CLASS_NAMES', CLASS_NAMES);
-  this.set('INLINE_PANELS', INLINE_PANELS);
-  this.set('BLOCK_PANEL', BLOCK_PANEL);
   this.set('componentProto', componentProto);
 
   this.render(compositeTemplate);
@@ -183,11 +189,37 @@ test('using animations', function (assert) {
 
   firstPanelTabElem.click();
 
-  assert.equal(componentProto.animatePanelOpen.callCount, 1);
-  assert.equal(componentProto.animatePanelClosed.callCount, 0);
+  message = 'opening animation should be called one time.';
+  expected = 1;
+  actual = componentProto.animatePanelOpen.callCount;
+
+  assert.equal(actual, expected, message);
+});
+
+test('calling its closing animation function', function (assert) {
+  const componentProto = ComponentProto.create({
+    multiExpand: true,
+    animatable: true,
+    animatePanelClosed: this.spy()
+  });
+
+  const panels = this.get('INLINE_PANELS');
+
+  panels[0].isExpanded = true;
+
+  this.set('INLINE_PANELS', panels);
+  this.set('componentProto', componentProto);
+
+  this.render(compositeTemplate);
+
+  const panelTabElems = getDOMNode(this).querySelectorAll(`.${CLASS_NAMES.ACCORDION_PANEL_TAB}`);
+  const firstPanelTabElem = panelTabElems[0];
 
   firstPanelTabElem.click();
 
-  assert.equal(componentProto.animatePanelOpen.callCount, 1);
-  assert.equal(componentProto.animatePanelClosed.callCount, 1);
+  message = 'closing animation should be called one time.';
+  expected = 1;
+  actual = componentProto.animatePanelClosed.callCount;
+
+  assert.equal(actual, expected, message);
 });

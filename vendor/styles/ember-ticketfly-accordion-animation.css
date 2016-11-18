@@ -12,16 +12,4 @@
   }
 }*/
 
-.tfa-accordion.is-animatable .tfa-panel .tfa-panel-body {
-  animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);  /* ease-in-cubic */
-  animation-duration: 3s;
-  animation-name: ShowPanel;
-}
 
-
-.tfa-accordion.is-animatable .tfa-panel .tfa-panel-body:not([aria-hidden="false"]) {
-  animation-fill-mode: forwards;
-  animation-name: ShowPanel;
-  animation-direction: reverse;
-  animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1); /* ease-out-cubic */
-}

@@ -23,7 +23,7 @@ module.exports = function(environment) {
     },
 
     'ember-ticketfly-accordion': {
-      extraStyles: {
+      importedStyles: {
         spiffy: true
       },
       addonAnimationSettings: {

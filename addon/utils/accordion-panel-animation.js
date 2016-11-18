@@ -8,7 +8,7 @@ const closeSettings = addonAnimationSettings.panelClose || {};
 const openSettings = addonAnimationSettings.panelOpen || {};
 
 const DURATION__CLOSE_PANEL = closeSettings.duration || 390;
-const DURATION__OPEN_PANEL = openSettings.duration || 390;
+const DURATION__OPEN_PANEL = openSettings.duration || 300;
 
 const EASING__CLOSE_PANEL = closeSettings.easing || 'cubic-bezier(0.645, 0.045, 0.355, 1.000)'; // ease-in-out-cubic
 const EASING__OPEN_PANEL = openSettings.easing || 'cubic-bezier(0.215, 0.610, 0.355, 1)'; // ease-out-cubic
@@ -32,7 +32,7 @@ function makeStartingOpenEffect(elem) {
     elem,
     [
       // fun trick that will allow us to measure the element's final height before animating it there from `display: none`
-      { position, visibility: 'visible' },
+      { position, visibility: 'inherit' },
       { position, visibility: 'hidden' }
     ],
     { duration: 0 }
@@ -63,7 +63,8 @@ function makeClosingEffect(panelBodyElem, { height, paddingTop, paddingBottom })
   );
 }
 
-function animatePanelOpen(panelBodyComponent) {
+function animatePanelOpen(panelComponent) {
+  const panelBodyComponent = get(panelComponent, 'panelBody');
   const panelBodyElem = get(panelBodyComponent, 'element');
 
   const startingEffect = makeStartingOpenEffect(panelBodyElem);
@@ -73,18 +74,16 @@ function animatePanelOpen(panelBodyComponent) {
     const slideDownEffect = makeSlideDownEffect(panelBodyElem);
 
     new Animation(slideDownEffect, document.timeline).play();
-
-    if (!get(panelBodyComponent, 'isDestroyed')) {
-      set(panelBodyComponent, 'hasAnimatedClosed', false);
-    }
   };
 
+  set(panelBodyComponent, 'isPanelExpanded', true);
   animation.play();
 
   return animation;
 }
 
-function animatePanelClosed(panelBodyComponent) {
+function animatePanelClosed(panelComponent) {
+  const panelBodyComponent = get(panelComponent, 'panelBody');
   const panelBodyElem = get(panelBodyComponent, 'element');
   const { height, paddingTop, paddingBottom } = getComputedStyle(panelBodyElem);
 
@@ -101,7 +100,7 @@ function animatePanelClosed(panelBodyComponent) {
     );
 
     if (!get(panelBodyComponent, 'isDestroyed')) {
-      set(panelBodyComponent, 'hasAnimatedClosed', true);
+      set(panelBodyComponent, 'isPanelExpanded', false);
     }
   };
 

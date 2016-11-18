@@ -3,11 +3,8 @@
 
 var STYLESHEETS = {
   core: 'ember-ticketfly-accordion-core',
+  spiffy: 'ember-ticketfly-accordion-spiffy',
   animation: 'ember-ticketfly-accordion-animation',
-};
-
-var EXTRA_STYLESHEETS = {
-  spiffy: 'ember-ticketfly-accordion-spiffy'
 };
 
 module.exports = {

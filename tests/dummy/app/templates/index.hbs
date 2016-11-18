@@ -16,7 +16,7 @@
     <section class="p-index__accordion-section">
       <h4>Standard Accordion With Focus Cycling</h4>
 
-      {{#tf-accordion class="p-index__accordion c-accordion" as |accordion|}}
+      {{#tf-accordion class="p-index__accordion c-accordion" animatable=false as |accordion|}}
 
         {{accordion.panel
           class="c-accordion__panel"
@@ -66,7 +66,8 @@
       {{#tf-accordion
         class="p-index__accordion c-accordion"
         cycleFocus=false
-        multiExpand=true as |accordion|
+        multiExpand=true
+        animatable=false as |accordion|
       }}
 
         {{accordion.panel

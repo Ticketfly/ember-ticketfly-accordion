@@ -18,20 +18,16 @@ export default Component.extend({
 
   attributeBindings: [
     'tabID:aria-labelledby',
-    'aria-hidden'
+    'aria-hidden',
+    'isHidden:hidden'
   ],
 
   classNames: ['tfa-panel-body'],
-  classNameBindings: [
-    'isHidden',
-    'hasAnimatedClosed:has-animated-closed'
-  ],
 
   tabID: '',
   content: '',
   isPanelExpanded: false,
   isAnimatable: false,
-  hasAnimatedClosed: false,
 
   ariaRole: 'tabpanel',
   isHidden: not('isPanelExpanded'),
@@ -58,12 +54,6 @@ export default Component.extend({
 
   init() {
     this._super(...arguments);
-
-    // For animated panels, on init, we should set the "has-animated-closed"
-    // class if the panel is closed
-    if (this.isAnimatable && !this.isPanelExpanded) {
-      this.hasAnimatedClosed = true;
-    }
 
     scheduleOnce('actions', this, this._registerWithPanel);
   },

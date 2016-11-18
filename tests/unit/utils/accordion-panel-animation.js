@@ -1,27 +1,37 @@
-import { animatePanelClosed, animatePanelOpen } from 'dummy/utils/accordion-panel-animation';
-import { module, test } from 'qunit';
-import run from 'ember-runloop';
-import registerTestComponent from 'dummy/tests/helpers/registerTestComponent';
+// import { animatePanelClosed, animatePanelOpen } from 'dummy/utils/accordion-panel-animation';
+// import { module, test } from 'qunit';
+// import run from 'ember-runloop';
+// import registerTestComponent from 'dummy/tests/helpers/register-test-component';
 
-const DIMENSION_PANEL_BODY_HEIGHT = 100;
+// const DIMENSION_PANEL_BODY_HEIGHT = 100;
 
-const PanelBodyProto = {
-  element: null
-};
+// function makePanelBodyElem(tagName = 'div', dimensions = {}) {
+//   const elem = document.createElement(tagName);
 
-function makePanelBodyElem(tagName = 'div', dimensions = {}) {
-  const elem = document.createElement(tagName);
+//   elem.style.height = dimensions.height || DIMENSION_PANEL_BODY_HEIGHT;
 
-  elem.style.height = dimensions.height;
+//   return elem;
+// }
 
-  return elem;
-}
+// let expected, actual, dummyPanelBody;
 
+// module('Unit | Utility | accordion panel animation');
 
-let expected, actual, dummyPanelBody;
+// test(`animating a component's element`, function(assert) {
+//   const dimensions = { height: DIMENSION_PANEL_BODY_HEIGHT };
+//   const dummyElement = makePanelBodyElem('div', dimensions);
+//   debugger;
 
-module('Unit | Utility | accordion panel animation');
+//   dummyPanelBody = registerTestComponent(this, {
+//     element: dummyElement
+//   });
 
-test(`animating a component's element`, function(assert) {
-  dummyPanelBody = registerTestComponent(this, dummyPanelBodyProto);
-});
+//   run(() => {
+//     animatePanelOpen(dummyPanelBody);
+//   });
+
+//   debugger;
+//   expected = dimensions.height;
+//   actual = dummyElement.offsetHeight;
+//   assert.equal(actual, expected);
+// });
