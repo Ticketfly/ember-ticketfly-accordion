@@ -1,6 +1,20 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import getDOMNode from 'dummy/tests/helpers/get-dom-node';
+import EmberObject from 'ember-object';
+
+const { assign } = Object;
+
+const ComponentProto = EmberObject.extend({
+  multiExpand: false,
+  cycleFocus: true
+});
+
+const PanelProto = EmberObject.extend({
+  tabTitle: 'Panel Section Tab',
+  bodyContent: 'Red hair crookshanks bludger Marauder’s Map Prongs sunshine daisies butter mellow Ludo Bagman. Beaters gobbledegook',
+  isExpanded: false
+});
 
 const CLASS_NAMES = {
   ACCORDION: 'test-accordion',
@@ -9,17 +23,13 @@ const CLASS_NAMES = {
   ACCORDION_PANEL_BODY: 'test-accordion__panel-body'
 };
 
-// panel data to feed to our inline `accordion.panel` component
-// within our "each" block
-const INLINE_PANELS = [
-  { tabTitle: 'Section 1', bodyContent: 'Red hair crookshanks bludger Marauder’s Map Prongs sunshine daisies butter mellow Ludo Bagman. Beaters gobbledegook' },
-  { tabTitle: 'Section 2', bodyContent: 'Niffler dead easy second bedroom. Padma and Parvati Sorting Hat Minister of Magic blue turban remember my last.' }
-];
-
-const BLOCK_PANEL = { tabTitle: 'Section 3' };
 
 const compositeTemplate = hbs`
-  {{#tf-accordion class=CLASS_NAMES.ACCORDION multiExpand=isMultiExpand as |accordion|}}
+  {{#tf-accordion
+    class=CLASS_NAMES.ACCORDION
+    cycleFocus=componentProto.cycleFocus
+    multiExpand=componentProto.multiExpand as |accordion|
+  }}
     {{#each INLINE_PANELS as |inlinePanel|}}
 
       {{accordion.panel
@@ -28,24 +38,32 @@ const compositeTemplate = hbs`
         bodyClassName=CLASS_NAMES.ACCORDION_PANEL_BODY
         tabTitle=inlinePanel.tabTitle
         bodyContent=inlinePanel.bodyContent
+        isExpanded=inlinePanel.isExpanded
       }}
 
     {{/each}}
   {{/tf-accordion}}
 `;
 
-let expected, actual, message;
+let expected;
+let actual;
+let message;
 
 moduleForComponent('tf-accordion', 'Integration | Component | tf accordion root', {
-  integration: true
+  integration: true,
+
+  beforeEach() {
+    this.set('componentProto', ComponentProto.create());
+    this.set('INLINE_PANELS', [
+      PanelProto.create(),
+      PanelProto.create()
+    ]);
+    this.set('CLASS_NAMES', CLASS_NAMES);
+    // this.set('BLOCK_PANEL', BLOCK_PANEL);
+  }
 });
 
-
 test('yielding an interface to render child panels', function (assert) {
-  this.set('CLASS_NAMES', CLASS_NAMES);
-  this.set('INLINE_PANELS', INLINE_PANELS);
-  this.set('BLOCK_PANEL', BLOCK_PANEL);
-
   this.render(compositeTemplate);
 
   const accordionElem = getDOMNode(this);
@@ -58,26 +76,18 @@ test('yielding an interface to render child panels', function (assert) {
 });
 
 test('panels are closed by default', function (assert) {
-  this.set('CLASS_NAMES', CLASS_NAMES);
-  this.set('INLINE_PANELS', INLINE_PANELS);
-  this.set('BLOCK_PANEL', BLOCK_PANEL);
-
   this.render(compositeTemplate);
 
   const panelBodyElems = getDOMNode(this).querySelectorAll(`.${CLASS_NAMES.ACCORDION_PANEL_BODY}`);
 
   message = 'all panel-body elements should have `aria-hidden` set to `true`';
   expected = -1;
-  actual = [...panelBodyElems].findIndex(elem => elem.getAttribute('aria-hidden') !== 'true');
+  actual = Array.from(panelBodyElems).findIndex(elem => elem.getAttribute('aria-hidden') !== 'true');
 
   assert.equal(actual, expected, message);
 });
 
 test('individual panel body toggling on tab clicked', function (assert) {
-  this.set('CLASS_NAMES', CLASS_NAMES);
-  this.set('INLINE_PANELS', INLINE_PANELS);
-  this.set('BLOCK_PANEL', BLOCK_PANEL);
-
   this.render(compositeTemplate);
 
   const firstPanelTabElem = getDOMNode(this).querySelector(`.${CLASS_NAMES.ACCORDION_PANEL_TAB}`);
@@ -94,12 +104,7 @@ test('individual panel body toggling on tab clicked', function (assert) {
   assert.equal('true', firstPanelBodyElem.getAttribute('aria-hidden'));
 });
 
-
-test('closing the other open panel when multiexpand is false', function (assert) {
-  this.set('CLASS_NAMES', CLASS_NAMES);
-  this.set('INLINE_PANELS', INLINE_PANELS);
-  this.set('BLOCK_PANEL', BLOCK_PANEL);
-
+test('closing the other open panel when `multiExpand` is false', function (assert) {
   this.render(compositeTemplate);
 
   const panelTabElems = getDOMNode(this).querySelectorAll(`.${CLASS_NAMES.ACCORDION_PANEL_TAB}`);
@@ -125,11 +130,10 @@ test('closing the other open panel when multiexpand is false', function (assert)
   assert.equal('true', secondPanelBodyElem.getAttribute('aria-hidden'));
 });
 
-test('allowing multiple panel bodies to be expanded when `multiexpand` is true', function (assert) {
-  this.set('CLASS_NAMES', CLASS_NAMES);
-  this.set('INLINE_PANELS', INLINE_PANELS);
-  this.set('BLOCK_PANEL', BLOCK_PANEL);
-  this.set('isMultiExpand', true);
+test('allowing multiple panel bodies to be expanded when `multiExpand` is true', function (assert) {
+  const componentProto = assign({}, ComponentProto, { multiExpand: true });
+
+  this.set('componentProto', componentProto);
 
   this.render(compositeTemplate);
 
