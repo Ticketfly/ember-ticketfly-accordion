@@ -70,7 +70,7 @@ export default Component.extend({
     get() {
       return get(this, 'panels.firstObject.tab').element.offsetHeight;
     }
-  }),
+  }).readOnly(),
 
   /**
    * Calculates the available height that we'll have when
@@ -86,13 +86,19 @@ export default Component.extend({
 
       return accordionHeight - get(this, 'panels.length') * headerHeight;
     }
-  }),
+  }).readOnly(),
 
   indexOfExpanded: computed('panels.[]', {
     get() {
       return get(this, 'panels').findIndex(panel => get(panel, 'isExpanded'));
     }
-  }),
+  }).readOnly(),
+
+  numPanelsExpanded: computed('panels.[]', {
+    get() {
+      return get(this, 'panels').filter(panel => get(panel, 'isExpanded')).length;
+    }
+  }).readOnly(),
 
   /* ---------- LIFECYCLE ---------- */
 

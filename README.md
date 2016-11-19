@@ -11,16 +11,19 @@ _An ARIA-compliant, dependency-free accordion system comprised of composable Emb
 [![Dependencies][dependencies-badge]][dependencies-badge-url]
 [![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
 
+
 ## Installing
 
 ```sh
 ember install ember-ticketfly-accordion
 ```
 
+
 ## Compatibility
 
 This addon makes use of [contextual components](http://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_contextual-components), and is therefore
 intended to support versions of Ember >= `2.3.0`.
+
 
 ## Configuration
 
@@ -63,6 +66,19 @@ ENV['ember-ticketfly-accordion'] = {
 ``` 
 
 
+## Usage 
+
+### Enabling MultiExpand Mode
+
+By default, `ember-ticketfly-accordion` follows the standard accordion 
+interface pattern: that is, it allows for one panel to be expanded while 
+keeping the other panels closed. 
+
+But it's also flexible!
+
+If you'd like to expand multiple panels simultaneously, simply set
+`multiExpand` to `true` on the root `tf-accordion` component. From there,
+each panel in an accordion will toggle open and closed independently of the others.  
 
 
 ## Collaborating
