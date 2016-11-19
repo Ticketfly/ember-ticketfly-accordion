@@ -1,7 +1,5 @@
-/* global module, require, process */
+/* global module, process */
 'use strict';
-
-var path = require('path');
 
 var STYLESHEETS = {
   core: 'ember-ticketfly-accordion-core',
@@ -57,7 +55,7 @@ module.exports = {
       });
 
     filesToImport.forEach(function (fileName) {
-      target.import('vendor/' + fileName + '.css');
+      target.import('vendor/styles/' + fileName + '.css');
     });
   },
 
@@ -80,12 +78,5 @@ module.exports = {
     if (this._shouldImportStyles(target)) {
       this._importStyles(target);
     }
-  },
-
-  treeForVendor: function(/* node */) {
-    return this._isOurDummyApp(this._target) ?
-      path.join(process.cwd(), 'app', 'styles')
-      :
-      path.join(this.project.nodeModulesPath, this.name, 'app', 'styles');
   }
 };
