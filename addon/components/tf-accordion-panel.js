@@ -21,7 +21,6 @@ import { scheduleOnce } from 'ember-runloop';
 export default Component.extend({
   layout,
   classNames: ['tfa-panel'],
-  classNameBindings: ['isExpanded:tfa-panel--expanded:tfa-panel--hidden'],
 
   /* ---------- API ---------- */
   tabID: '',
@@ -60,6 +59,7 @@ export default Component.extend({
   panelBody: null,
 
   isExpanded: false,
+  isInMotion: false,
 
   /* ---------- LIFECYCLE ---------- */
 

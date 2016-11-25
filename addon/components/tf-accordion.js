@@ -20,15 +20,11 @@ import { animatePanelOpen, animatePanelClosed } from 'ember-ticketfly-accordion/
 export default Component.extend({
   layout,
   classNames: ['tfa-accordion'],
-  classNameBindings: ['isAnimatable:is-animatable'],
   attributeBindings: ['aria-multiselectable'],
   ariaRole: 'tablist',
   'aria-multiselectable': 'true', // @see {@link https://github.com/BrianSipple/why-am-i-doing-this/blob/master/ember/aria-attribute-binding-in-components.md}
 
   handleKeydown: null, // TOOD: Rename to 'on-keydown'
-
-  animatePanelClosed: null,
-  animatePanelOpen: null,
 
   KEYCODE_LEFT: 37,
   KEYCODE_UP: 38,
@@ -61,7 +57,32 @@ export default Component.extend({
    * Whether or not animation is enabled for expanding/collapsing a panel
    */
   animatable: true,
-  isAnimatable: bool('animatable'),
+
+  /**
+   * function to execute when animating the panel closed
+   */
+  animatePanelClosed: null,
+
+  /**
+   * function to execute when animating the panel closed
+   */
+  animatePanelOpen: null,
+
+
+  /**
+   * If the default opening animation is used, this callback
+   * will be called when it completes -- passing in the component
+   * object of the panel that was animated.
+   */
+  onPanelAnimatedOpen: null,
+
+  /**
+   * If the default closing animation is used, this callback
+   * will be executed when it completes -- passing in the component
+   * object of the panel that was animated.
+   */
+  onPanelAnimatedClosed: null,
+
 
   panels: computed(function() {
     return A();
@@ -69,6 +90,7 @@ export default Component.extend({
 
   /* ---------- COMPUTEDS ---------- */
 
+  isAnimatable: bool('animatable'),
   hasPanels: notEmpty('panels'),
 
   headerHeight: computed('panels.[]', {
@@ -178,10 +200,12 @@ export default Component.extend({
 
       scheduleOnce('afterRender', this, 'setFocusOnPanel', panel, indexOfSelected);
 
-      if (isAnimatable) {
+      if (isAnimatable && !get(panel, 'isInMotion')) {
         const animationFunc = shouldExpand ? 'animatePanelOpen' : 'animatePanelClosed';
+        const animationCompleteCallback = shouldExpand ? 'onPanelAnimatedOpen' : 'onPanelAnimatedClosed';
 
-        scheduleOnce('afterRender', this, animationFunc, panel);
+        set(panel, 'isInMotion', true);
+        scheduleOnce('afterRender', this, animationFunc, panel, this[animationCompleteCallback]);
 
       } else {
         scheduleOnce('afterRender', this, function updatePanelExpansionState() {
@@ -278,6 +302,14 @@ export default Component.extend({
     });
   },
 
+  _onPanelAnimatedOpen(panelComponent) {
+    set(panelComponent, 'isInMotion', false);
+  },
+
+  _onPanelAnimatedClosed(panelComponent) {
+    set(panelComponent, 'isInMotion', false);
+  },
+
   /**
    * If no animation function is provided for opening/closing panel body elements,
    * we default to our utility
@@ -285,5 +317,8 @@ export default Component.extend({
   _setAnimationFunctionsOnInit() {
     this.animatePanelOpen = (typeof this.animatePanelOpen === 'function') ? this.animatePanelOpen : animatePanelOpen;
     this.animatePanelClosed = (typeof this.animatePanelClosed === 'function') ? this.animatePanelClosed : animatePanelClosed;
+
+    this.onPanelAnimatedOpen = (typeof this.onPanelAnimatedOpen === 'function') ? this.onPanelAnimatedOpen : this._onPanelAnimatedOpen;
+    this.onPanelAnimatedClosed = (typeof this.onPanelAnimatedClosed === 'function') ? this.onPanelAnimatedClosed : this._onPanelAnimatedClosed;
   }
 });

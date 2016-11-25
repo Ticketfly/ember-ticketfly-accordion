@@ -29,6 +29,8 @@ const compositeTemplate = hbs`
     animatable=componentProto.animatable
     animatePanelOpen=componentProto.animatePanelOpen
     animatePanelClosed=componentProto.animatePanelClosed
+    onPanelAnimatedOpen=componentProto.onPanelAnimatedOpen
+    onPanelAnimatedClosed=componentProto.onPanelAnimatedClosed
     multiExpand=componentProto.multiExpand as |accordion|
   }}
     {{#each INLINE_PANELS as |inlinePanel|}}
@@ -197,10 +199,13 @@ test('calling its opening animation function', function (assert) {
 });
 
 test('calling its closing animation function', function (assert) {
+  const onPanelAnimatedClosed = function () {};
+
   const componentProto = ComponentProto.create({
     multiExpand: true,
     animatable: true,
-    animatePanelClosed: this.spy()
+    animatePanelClosed: this.spy(),
+    onPanelAnimatedClosed
   });
 
   const panels = this.get('INLINE_PANELS');
@@ -220,6 +225,12 @@ test('calling its closing animation function', function (assert) {
   message = 'closing animation should be called one time.';
   expected = 1;
   actual = componentProto.animatePanelClosed.callCount;
+
+  assert.equal(actual, expected, message);
+
+  message = 'closing animation should be called with a component object and a callback function';
+  expected = true;
+  actual = componentProto.animatePanelClosed.args[0][1] === onPanelAnimatedClosed;
 
   assert.equal(actual, expected, message);
 });
