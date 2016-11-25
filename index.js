@@ -4,7 +4,7 @@
 var STYLESHEETS = {
   core: 'ember-ticketfly-accordion-core',
   spiffy: 'ember-ticketfly-accordion-spiffy',
-  animations: 'ember-ticketfly-accordion-animation',
+  animation: 'ember-ticketfly-accordion-animation',
 };
 
 module.exports = {

@@ -14,8 +14,9 @@
       component 'tf-accordion-panel-body'
       class=bodyClassName
       panel=this
-      tabID=tabID
+      isAnimatable=accordion.isAnimatable
       id=panelBodyID
+      tabID=tabID
       isPanelExpanded=isExpanded
     )
   )}}
@@ -28,17 +29,18 @@
     panel=this
     id=tabID
     panelBodyID=panelBodyID
-    title=tabTitle
     isPanelExpanded=isExpanded
+    title=tabTitle
   }}
 
   {{tf-accordion-panel-body
     class=bodyClassName
     panel=this
+    isAnimatable=accordion.isAnimatable
     id=panelBodyID
     tabID=tabID
-    content=bodyContent
     isPanelExpanded=isExpanded
+    content=bodyContent
   }}
 
 {{/if}}

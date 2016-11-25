@@ -2,6 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Generate Blueprint",
+      "program": "${workspaceRoot}/node_modules/.bin/ember",
+      "cwd": "${workspaceRoot}",
+      "args": [
+        "g",
+        "ember-web-animations-next-polyfill"
+      ]
+    },
+    {
       "name": "Launch Dummy App",
       "type": "node",
       "request": "launch",

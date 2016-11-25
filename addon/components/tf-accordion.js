@@ -2,13 +2,11 @@ import Component from 'ember-component';
 import layout from '../templates/components/tf-accordion';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
-import { default as computed, notEmpty } from 'ember-computed';
+import computed, { notEmpty, bool } from 'ember-computed';
 import { A } from 'ember-array/utils';
 import { scheduleOnce } from 'ember-runloop';
 import { log } from 'ember-debug';
-
-// TODO: Enable this for retrieving animation settings
-// import TFAccordionConfig from 'ember-ticketfly-accordion/configuration';
+import { animatePanelOpen, animatePanelClosed } from 'ember-ticketfly-accordion/utils/accordion-panel-animation';
 
 /**
  * @module tf-accordion
@@ -22,11 +20,15 @@ import { log } from 'ember-debug';
 export default Component.extend({
   layout,
   classNames: ['tfa-accordion'],
+  classNameBindings: ['isAnimatable:is-animatable'],
   attributeBindings: ['aria-multiselectable'],
   ariaRole: 'tablist',
   'aria-multiselectable': 'true', // @see {@link https://github.com/BrianSipple/why-am-i-doing-this/blob/master/ember/aria-attribute-binding-in-components.md}
 
-  handleKeydown: null,
+  handleKeydown: null, // TOOD: Rename to 'on-keydown'
+
+  animatePanelClosed: null,
+  animatePanelOpen: null,
 
   KEYCODE_LEFT: 37,
   KEYCODE_UP: 38,
@@ -55,6 +57,12 @@ export default Component.extend({
    */
   cycleFocus: true,
 
+  /**
+   * Whether or not animation is enabled for expanding/collapsing a panel
+   */
+  animatable: true,
+  isAnimatable: bool('animatable'),
+
   panels: computed(function() {
     return A();
   }),
@@ -62,9 +70,6 @@ export default Component.extend({
   /* ---------- COMPUTEDS ---------- */
 
   hasPanels: notEmpty('panels'),
-
-  // panelHeights: mapBy('panels', 'element.offsetHeight'),
-  // totalContentHeight: sum('panelHeights'),
 
   headerHeight: computed('panels.[]', {
     get() {
@@ -102,6 +107,12 @@ export default Component.extend({
 
   /* ---------- LIFECYCLE ---------- */
 
+  init() {
+    this._super(...arguments);
+
+    this._setAnimationFunctionsOnInit();
+  },
+
   willDestroyElement() {
     this._super(...arguments);
 
@@ -126,22 +137,57 @@ export default Component.extend({
     }
   },
 
+  /**
+   * If we're not in multi-expand mode, and a different panel was
+   * selected than the one currently open, we need to close it
+   */
+  _handleMultiExpandOnPanelSelect(indexOfSelected, panels, useAnimation) {
+    const currentlyFocusedIndex = get(this, 'focusedIndex');
+    const multiExpand = get(this, 'multiExpand');
+
+    if (
+      !multiExpand &&
+      (
+        currentlyFocusedIndex >= 0 &&
+        indexOfSelected !== currentlyFocusedIndex
+      )
+    ) {
+      const currentlyExpandedPanel = panels.objectAt(currentlyFocusedIndex);
+
+      if (useAnimation) {
+        scheduleOnce('afterRender', this, 'animatePanelClosed', currentlyExpandedPanel);
+
+      } else {
+        scheduleOnce('afterRender', this, function updatePanelExpansionState() {
+          set(currentlyExpandedPanel, 'isExpanded', false);
+        });
+      }
+    }
+  },
+
   /* ---------- ACTIONS ---------- */
 
   actions: {
     onPanelSelection(panel) {
-      const indexOfSelected = get(this, 'panels').indexOf(panel);
-      const valueForExpanded = !get(panel, 'isExpanded');
-      const multiExpand = get(this, 'multiExpand');
+      const panels = get(this, 'panels');
+      const indexOfSelected = panels.indexOf(panel);
+      const shouldExpand = !get(panel, 'isExpanded');
+      const isAnimatable = get(this, 'isAnimatable');
 
-      // close the other panels if we're not in `multiExpand` mode
-      if (!multiExpand) {
-        get(this, 'panels').setEach('isExpanded', false);
-      }
-
-      set(panel, 'isExpanded', valueForExpanded);
+      this._handleMultiExpandOnPanelSelect(indexOfSelected, panels, isAnimatable);
 
       scheduleOnce('afterRender', this, 'setFocusOnPanel', panel, indexOfSelected);
+
+      if (isAnimatable) {
+        const animationFunc = shouldExpand ? 'animatePanelOpen' : 'animatePanelClosed';
+
+        scheduleOnce('afterRender', this, animationFunc, panel);
+
+      } else {
+        scheduleOnce('afterRender', this, function updatePanelExpansionState() {
+          set(panel, 'isExpanded', shouldExpand);
+        });
+      }
     }
   },
 
@@ -171,15 +217,6 @@ export default Component.extend({
   },
 
   setFocusOnPanel(panel, index) {
-    // const valueForExpanded = !get(panel, 'isExpanded');
-    // const multiExpand = get(this, 'multiExpand');
-
-    // // close the other panels if we're not in `multiExpand` mode
-    // if (!multiExpand) {
-    //   get(this, 'panels').setEach('isExpanded', false);
-    // }
-
-    // set(panel, 'isExpanded', valueForExpanded);
     set(this, 'focusedIndex', index);
     get(this, 'panels').setEach('isFocused', false);
     set(panel, 'isFocused', true);
@@ -239,5 +276,14 @@ export default Component.extend({
       panel.element.style.transform = `translateY(${yTranslation}px)`;
       get(panel, 'panelBody').element.style.height = `${availableHeight}px`;
     });
+  },
+
+  /**
+   * If no animation function is provided for opening/closing panel body elements,
+   * we default to our utility
+   */
+  _setAnimationFunctionsOnInit() {
+    this.animatePanelOpen = (typeof this.animatePanelOpen === 'function') ? this.animatePanelOpen : animatePanelOpen;
+    this.animatePanelClosed = (typeof this.animatePanelClosed === 'function') ? this.animatePanelClosed : animatePanelClosed;
   }
 });

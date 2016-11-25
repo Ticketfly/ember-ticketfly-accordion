@@ -1,6 +1,8 @@
 # ember-ticketfly-accordion
 
-_An ARIA-compliant, dependency-free accordion system comprised of composable Ember components._
+_An [ARIA-compliant](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion), easy-to-use
+accordion system built from composable Ember components -- with
+optional built-in animation through the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)._
 
 [![Latest NPM release][npm-badge]][npm-badge-url]
 [![CircleCI Build Status][circle-badge]][circle-badge-url]
@@ -18,6 +20,12 @@ _An ARIA-compliant, dependency-free accordion system comprised of composable Emb
 ember install ember-ticketfly-accordion
 ```
 
+## Features
+
+- Full WAI-ARIA Compliance for Accessibility Winning
+- Optional, built-in, dependency-free and buttery-smooth animation through the Web Animations API.
+- Semantic HTML
+  + Tabs are comprised of `<button>` elements instead of anchor tags or divs.    
 
 ## Compatibility
 
@@ -28,7 +36,8 @@ intended to support versions of Ember >= `2.3.0`.
 ## Configuration
 
 To provide `ember-ticketfly-accordion` with configuration options, define
-them in the following hash on the "ENV" object exported from your `config/environment.js` file:
+them in a hash on the `'ember-ticketfly-accordion'` property of the object
+exported from your `config/environment.js` file:
 
 ```js
 ENV['ember-ticketfly-accordion'] = {
@@ -36,43 +45,85 @@ ENV['ember-ticketfly-accordion'] = {
 };
 ```
 
-### Selecting CSS Styles 
+### Supported Options
 
-`ember-ticketfly-accordion` includes a very small set of base 
-styles to ensure that its elements lay out correctly in the manner 
-of an accordion (that is, as a set of verically stacked panels).
+#### Selecting CSS Styles
 
-These can be found in `app/styles/ember-ticketfly-accordion-core.css`.
+`ember-ticketfly-accordion` includes a very small set of base
+styles to ensure that its elements lay out correctly in the manner
+of an accordion (that is, as a set of vertically stacked panels, with tabs
+comprised of HTML `<buttons>`).
 
-But we can do better! If you'd like to control your own styling of 
-`ember-ticketfly-accordion`'s elements, feel free to refrain from further
-imports and just target the following class names:
+These can be seen in `app/styles/ember-ticketfly-accordion-core.css`.
 
-- `tf-accordion`
-- `tf-accordion-panel`
-- `tf-accordion-panel-tab`
-- `tf-accordion-panel-body`
+But we can do better! If you'd like to control more styling of
+`ember-ticketfly-accordion`'s elements, you can rely on being able to target
+the following class names:
+
+- `tfa-accordion`
+- `tfa-panel`
+- `tfa-panel-tab`
+- `tfa-panel-body`
 
 That being said, you can enable a few additional stylesheet imports
 from your ENV configuration hash:
 
 ```js
 ENV['ember-ticketfly-accordion'] = {
-  importedStyles: {
-    spiffy: true,
-    animations: true
+  extraStyles: {
+    spiffy: true
   }
 };
-``` 
+```
 
+Extra imports are opt-in by default, though currently, [`spiffy`](./app/styles/ember-ticketfly-accordion-spiffy.css) is
+the only additional option (It might be better off staying that way 😀.)
 
-## Usage 
+📋 A future update to the project will include interactive documentation to showcase
+different uses and different ideas for styling.
+
+#### Toggling Animation
+
+Animation is enabled by default, and includes a super-lightweight implementation of
+panel opening and closing built with the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) &mdash; with [support back
+to IE 10](https://github.com/web-animations/web-animations-js/blob/master/docs/support.md#browser-support) thanks to the
+thanks to the [W3C's `web-animations-next` polyfill](https://github.com/web-animations/web-animations-next)
+(enabled in Ember by [the `ember-web-animations-next-polyfill` addon](https://github.com/web-animations/web-animations-next)).
+
+To disable animation, simply set `animatable` to `false` on the root accordion component.
+
+To customize animation, there are two approaches:
+
+1. Overriding the addon's default implementation by passing your own functions to
+the `animatePanelOpen` and `animatePanelClosed` properties on the root accordion component (One
+or both can be overridden).
+
+2. Configuring aspects of the addon's default implementation by setting `addonAnimationSettings` properties
+in `config/environment.js` like so **(available settings are shown with their current defaults)**:
+
+```js
+ENV['ember-ticketfly-accordion'] = {
+  useAddonAnimations: true,
+  addonAnimationSettings: {
+    panelClose: {
+      duration: 390
+      easing: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)' // ease-in-out-cubic
+    },
+    panelOpen: {
+      duration: 390
+      easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)' // ease-out-cubic
+    }
+  }
+};
+```
+
+## Usage
 
 ### Enabling MultiExpand Mode
 
-By default, `ember-ticketfly-accordion` follows the standard accordion 
-interface pattern: that is, it allows for one panel to be expanded while 
-keeping the other panels closed. 
+By default, `ember-ticketfly-accordion` follows the standard accordion
+interface pattern: that is, it allows for one panel to be expanded while
+keeping the other panels closed.
 
 But it's also flexible!
 

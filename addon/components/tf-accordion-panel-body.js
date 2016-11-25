@@ -18,15 +18,16 @@ export default Component.extend({
 
   attributeBindings: [
     'tabID:aria-labelledby',
-    'aria-hidden'
+    'aria-hidden',
+    'isHidden:hidden'
   ],
 
   classNames: ['tfa-panel-body'],
-  classNameBindings: ['isPanelExpanded:tfa-panel-body--expanded:tfa-panel-body--hidden'],
 
   tabID: '',
   content: '',
   isPanelExpanded: false,
+  isAnimatable: false,
 
   ariaRole: 'tabpanel',
   isHidden: not('isPanelExpanded'),
