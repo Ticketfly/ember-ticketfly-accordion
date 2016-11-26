@@ -1,6 +1,9 @@
+import Ember from 'ember';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import Configuration from 'ember-ticketfly-accordion/configuration';
+
+const { K: noop } = Ember;
 
 const addonAnimationSettings = Configuration.addonAnimationSettings || {};
 
@@ -63,26 +66,31 @@ function makeClosingEffect(panelBodyElem, { height, paddingTop, paddingBottom })
   );
 }
 
-function animatePanelOpen(panelComponent) {
+function animatePanelOpen(panelComponent, onComplete = noop) {
   const panelBodyComponent = get(panelComponent, 'panelBody');
   const panelBodyElem = get(panelBodyComponent, 'element');
 
   const startingEffect = makeStartingOpenEffect(panelBodyElem);
-  const animation = new Animation(startingEffect, document.timeline);
+  const startingAnimation = new Animation(startingEffect, document.timeline);
 
-  animation.onfinish = function _initialPanelOpenOnfinish() {
+  startingAnimation.onfinish = function _initialPanelOpenOnfinish() {
     const slideDownEffect = makeSlideDownEffect(panelBodyElem);
+    const slideDownAnimation = new Animation(slideDownEffect, document.timeline);
 
-    new Animation(slideDownEffect, document.timeline).play();
+    slideDownAnimation.onfinish = function _finalPanelOpenOnfinish() {
+      onComplete(panelComponent);
+    };
+
+    slideDownAnimation.play();
   };
 
   set(panelBodyComponent, 'isPanelExpanded', true);
-  animation.play();
+  startingAnimation.play();
 
-  return animation;
+  return startingAnimation;
 }
 
-function animatePanelClosed(panelComponent) {
+function animatePanelClosed(panelComponent, onComplete = noop) {
   const panelBodyComponent = get(panelComponent, 'panelBody');
   const panelBodyElem = get(panelBodyComponent, 'element');
   const { height, paddingTop, paddingBottom } = getComputedStyle(panelBodyElem);
@@ -91,6 +99,10 @@ function animatePanelClosed(panelComponent) {
   const animation = new Animation(effect, document.timeline);
 
   animation.onfinish = function _panelCloseOnfinish() {
+
+    // Before removing the panel body element from the accessibility tree and hiding
+    // setting it to `display: none`, we need to restore its measurements so that they
+    // can be read properly on the next "show"
     panelBodyElem.animate(
       [
         { height: '0px', paddingTop: '0px', paddingBottom: '0px', visibility: 'hidden' },
@@ -101,6 +113,7 @@ function animatePanelClosed(panelComponent) {
 
     if (!get(panelBodyComponent, 'isDestroyed')) {
       set(panelBodyComponent, 'isPanelExpanded', false);
+      onComplete(panelComponent);
     }
   };
 
