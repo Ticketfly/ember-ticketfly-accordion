@@ -4,6 +4,7 @@
     tab=(
       component 'tf-accordion-panel-tab'
       class=tabClassName
+      accordion=accordion
       panel=this
       id=tabID
       panelBodyID=panelBodyID
@@ -13,8 +14,8 @@
     body=(
       component 'tf-accordion-panel-body'
       class=bodyClassName
+      accordion=accordion
       panel=this
-      isAnimatable=accordion.isAnimatable
       id=panelBodyID
       tabID=tabID
       isPanelExpanded=isExpanded
@@ -26,6 +27,7 @@
   {{!-- Render defaults --}}
   {{tf-accordion-panel-tab
     class=tabClassName
+    accordion=accordion
     panel=this
     id=tabID
     panelBodyID=panelBodyID
@@ -35,8 +37,8 @@
 
   {{tf-accordion-panel-body
     class=bodyClassName
+    accordion=accordion
     panel=this
-    isAnimatable=accordion.isAnimatable
     id=panelBodyID
     tabID=tabID
     isPanelExpanded=isExpanded
