@@ -124,62 +124,6 @@ export default Component.extend({
     }
   },
 
-  /**
-   * If we're not in multi-expand mode, and a different panel was
-   * selected than the one currently open, we need to close it
-   */
-  _handleMultiExpandOnPanelSelect(indexOfSelected, panels, useAnimation) {
-    const currentlyFocusedIndex = get(this, 'focusedIndex');
-    const multiExpand = get(this, 'multiExpand');
-
-    if (
-      !multiExpand &&
-      (
-        currentlyFocusedIndex >= 0 &&
-        indexOfSelected !== currentlyFocusedIndex
-      )
-    ) {
-      const currentlyExpandedPanel = panels.objectAt(currentlyFocusedIndex);
-
-      if (useAnimation) {
-        scheduleOnce('afterRender', this, 'animatePanelClosed', currentlyExpandedPanel);
-
-      } else {
-        scheduleOnce('afterRender', this, function updatePanelExpansionState() {
-          set(currentlyExpandedPanel, 'isExpanded', false);
-        });
-      }
-    }
-  },
-
-  /* ---------- ACTIONS ---------- */
-
-  actions: {
-    onPanelSelection(panel) {
-      const panels = get(this, 'panels');
-      const indexOfSelected = panels.indexOf(panel);
-      const shouldExpand = !get(panel, 'isExpanded');
-      const isAnimatable = get(this, 'isAnimatable');
-
-      this._handleMultiExpandOnPanelSelect(indexOfSelected, panels, isAnimatable);
-
-      scheduleOnce('afterRender', this, 'setFocusOnPanel', panel, indexOfSelected);
-
-      if (isAnimatable && !get(panel, 'isInMotion')) {
-        const animationFunc = shouldExpand ? 'animatePanelOpen' : 'animatePanelClosed';
-        const animationCompleteCallback = shouldExpand ? 'onPanelAnimatedOpen' : 'onPanelAnimatedClosed';
-
-        set(panel, 'isInMotion', true);
-        scheduleOnce('afterRender', this, animationFunc, panel, this[animationCompleteCallback]);
-
-      } else {
-        scheduleOnce('afterRender', this, function updatePanelExpansionState() {
-          set(panel, 'isExpanded', shouldExpand);
-        });
-      }
-    }
-  },
-
   /* ---------- PUBLIC METHODS ---------- */
 
   incrementPanelFocus(increment) {
@@ -234,7 +178,35 @@ export default Component.extend({
     get(this, 'panels').removeObject(panel);
   },
 
-  /* ---------- PRIVATE METHODS ---------- */
+  /* ---------- ACTIONS ---------- */
+
+  actions: {
+    onPanelSelection(panel) {
+      const panels = get(this, 'panels');
+      const indexOfSelected = panels.indexOf(panel);
+      const shouldExpand = !get(panel, 'isExpanded');
+      const isAnimatable = get(this, 'isAnimatable');
+
+      this._handleMultiExpandOnPanelSelect(indexOfSelected, panels, isAnimatable);
+
+      scheduleOnce('afterRender', this, 'setFocusOnPanel', panel, indexOfSelected);
+
+      if (isAnimatable && !get(panel, 'isInMotion')) {
+        const animationFunc = shouldExpand ? 'animatePanelOpen' : 'animatePanelClosed';
+        const animationCompleteCallback = shouldExpand ? 'onPanelAnimatedOpen' : 'onPanelAnimatedClosed';
+
+        set(panel, 'isInMotion', true);
+        scheduleOnce('afterRender', this, animationFunc, panel, this[animationCompleteCallback]);
+
+      } else {
+        scheduleOnce('afterRender', this, function updatePanelExpansionState() {
+          set(panel, 'isExpanded', shouldExpand);
+        });
+      }
+    }
+  },
+
+  /* ---------- PRIVATE HELPER METHODS ---------- */
 
   _onPanelAnimatedOpen(panelComponent) {
     set(panelComponent, 'isInMotion', false);
@@ -242,6 +214,34 @@ export default Component.extend({
 
   _onPanelAnimatedClosed(panelComponent) {
     set(panelComponent, 'isInMotion', false);
+  },
+
+  /**
+   * If we're not in multi-expand mode, and a different panel was
+   * selected than the one currently open, we need to close it
+   */
+  _handleMultiExpandOnPanelSelect(indexOfSelected, panels, useAnimation) {
+    const currentlyFocusedIndex = get(this, 'focusedIndex');
+    const multiExpand = get(this, 'multiExpand');
+
+    if (
+      !multiExpand &&
+      (
+        currentlyFocusedIndex >= 0 &&
+        indexOfSelected !== currentlyFocusedIndex
+      )
+    ) {
+      const currentlyExpandedPanel = panels.objectAt(currentlyFocusedIndex);
+
+      if (useAnimation) {
+        scheduleOnce('afterRender', this, 'animatePanelClosed', currentlyExpandedPanel);
+
+      } else {
+        scheduleOnce('afterRender', this, function updatePanelExpansionState() {
+          set(currentlyExpandedPanel, 'isExpanded', false);
+        });
+      }
+    }
   },
 
   /**
