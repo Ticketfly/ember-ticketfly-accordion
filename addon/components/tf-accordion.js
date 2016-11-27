@@ -5,7 +5,6 @@ import set from 'ember-metal/set';
 import computed, { notEmpty, bool } from 'ember-computed';
 import { A } from 'ember-array/utils';
 import { scheduleOnce } from 'ember-runloop';
-import { log } from 'ember-debug';
 import { animatePanelOpen, animatePanelClosed } from 'ember-ticketfly-accordion/utils/accordion-panel-animation';
 
 /**
@@ -92,40 +91,6 @@ export default Component.extend({
 
   isAnimatable: bool('animatable'),
   hasPanels: notEmpty('panels'),
-
-  headerHeight: computed('panels.[]', {
-    get() {
-      return get(this, 'panels.firstObject.tab').element.offsetHeight;
-    }
-  }).readOnly(),
-
-  /**
-   * Calculates the available height that we'll have when
-   * animating expanded panel bodies.
-   *
-   * We simply subtract the height of all of our headers from the
-   * overall height of the accordion.
-   */
-  availableHeight: computed('headerHeight', 'totalContentHeight', 'useDynamicSize', {
-    get() {
-      const accordionHeight = this.element.offsetHeight;
-      const headerHeight = get(this, 'headerHeight');
-
-      return accordionHeight - get(this, 'panels.length') * headerHeight;
-    }
-  }).readOnly(),
-
-  indexOfExpanded: computed('panels.[]', {
-    get() {
-      return get(this, 'panels').findIndex(panel => get(panel, 'isExpanded'));
-    }
-  }).readOnly(),
-
-  numPanelsExpanded: computed('panels.[]', {
-    get() {
-      return get(this, 'panels').filter(panel => get(panel, 'isExpanded')).length;
-    }
-  }).readOnly(),
 
   /* ---------- LIFECYCLE ---------- */
 
@@ -269,38 +234,7 @@ export default Component.extend({
     get(this, 'panels').removeObject(panel);
   },
 
-
   /* ---------- PRIVATE METHODS ---------- */
-
-  /**
-   *
-   * @method _switchOpenPanel
-   * @private
-   */
-  _switchOpenPanel() {
-    if (!get(this, 'hasPanels')) {  // TODO: Do we need this check?
-      return;
-    }
-
-    const panels = get(this, 'panels');
-    const headerHeight = get(this, 'headerHeight');
-    const availableHeight = get(this, 'availableHeight');
-    const indexOfExpanded = get(this, 'indexOfExpanded');
-    // const totalContentHeight = get(this, 'totalContentHeight');
-
-    panels.forEach((panel, idx) => {
-      // We need to bump the panels below our expanded panel down (i.e: "out of the way")
-      // so we can show the panel that is expanded
-      const extraYOffset = (indexOfExpanded > -1 && idx > indexOfExpanded) ? availableHeight : 0;
-      const yTranslation = extraYOffset + (headerHeight * idx);
-
-      log(`idx ${idx}: using extraYOffset of ${extraYOffset}`);
-      log(`idx ${idx}: setting translateY of ${yTranslation}px`);
-
-      panel.element.style.transform = `translateY(${yTranslation}px)`;
-      get(panel, 'panelBody').element.style.height = `${availableHeight}px`;
-    });
-  },
 
   _onPanelAnimatedOpen(panelComponent) {
     set(panelComponent, 'isInMotion', false);
