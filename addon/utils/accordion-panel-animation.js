@@ -78,7 +78,9 @@ function animatePanelOpen(panelComponent, onComplete = noop) {
     const slideDownAnimation = new Animation(slideDownEffect, document.timeline);
 
     slideDownAnimation.onfinish = function _finalPanelOpenOnfinish() {
-      onComplete(panelComponent);
+      if (!get(panelBodyComponent, 'isDestroyed')) {
+        onComplete(panelComponent);
+      }
     };
 
     slideDownAnimation.play();
