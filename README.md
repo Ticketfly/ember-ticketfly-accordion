@@ -145,7 +145,8 @@ child panels. These are exposed callbacks that can be set with
 [Ember actions](https://guides.emberjs.com/v2.9.0/templates/actions/).  
 
 **Please note that all actions are expected to be closure actions**, and so you must use
-the `action` helper (i.e. `onPanelTabFocusIn=(action "panelTabFocusOut")`).
+the `action` helper (i.e. `onPanelTabFocusIn=(action "panelTabFocusOut")`), or another template 
+helper that facilitates curried functions (for example, [Ember Concurrency's `perform` helper](http://ember-concurrency.com/#/docs/writing-tasks).
  
 #### Focus Event callbacks
 
