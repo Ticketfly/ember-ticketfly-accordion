@@ -1,3 +1,4 @@
+/* global module */
 module.exports = {
   "framework": "qunit",
   "test_page": "tests/index.html?hidepassed",
