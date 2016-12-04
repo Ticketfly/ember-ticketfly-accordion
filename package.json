@@ -55,7 +55,7 @@
     "postcss-color-function": "^2.0.1",
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^9.0.0",
-    "ticketfly-css": "0.4.1"
+    "ticketfly-css": "0.4.4"
   },
   "keywords": [
     "ember-addon",

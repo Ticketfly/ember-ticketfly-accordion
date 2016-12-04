@@ -4,12 +4,31 @@
   --background-color__panel-body: hsla(0, 0%, 100%, 1.00);
 }
 
+.c-accordion .c-accordion__panel-tab,
+.c-accordion .c-accordion__panel-body {
+  position: relative;
+}
+
+.c-accordion .c-accordion__panel-tab::before,
+.c-accordion .c-accordion__panel-tab::after,
+.c-accordion .c-accordion__panel-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c-accordion .c-accordion__panel-tab::after {
+  z-index: 1;
+}
+
 .c-accordion .c-accordion__panel-tab {
   display: flex;
 
   /* Firefox only: prevents wrapping in buttons (http://stackoverflow.com/questions/30979265/css-flexbox-wraps-content-in-firefox-not-chrome) */
   display: -moz-box;
-
   align-items: center;
   flex-wrap: nowrap;
   padding: 0.75rem 1.12rem;
@@ -28,8 +47,10 @@
 }
 
 .c-accordion .c-accordion__panel-tab:focus {
-  /*outline: auto var(--theme-color__supporting-1--dark) .3em;*/
   outline: none;
+}
+
+.c-accordion .c-accordion__panel-tab:focus::after {
   border: 0.19rem solid var(--theme-color__supporting-1--dark);
 }
 
