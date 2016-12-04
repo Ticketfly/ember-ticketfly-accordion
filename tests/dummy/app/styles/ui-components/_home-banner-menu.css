@@ -1,0 +1,8 @@
+.c-home-banner-menu .c-home-banner-menu__item-icon {
+  /* Allow enough space to give the title 1em of top margin */
+  height: calc(100% - 2em);
+}
+
+.c-home-banner-menu .c-home-banner-menu__item-title {
+  margin-top: 1em;
+}

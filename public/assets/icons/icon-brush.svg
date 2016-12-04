@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 35.72" aria-labelledby="title description">
+  <title id="title">Brush Icon</title>
+  <desc id="description">A Paintbrush</desc>
+  <g id="icon_brush" data-name="icon brush" stroke="none">
+    <path id="brush__handle" d="M33.09,5.49C34.59,3.33,36.52.59,35.87.07S33,2,31.19,4,16.32,21,13.48,24.53l1.72,1.38,1.73,1.38C19.73,23.74,31.59,7.64,33.09,5.49Z"/>
+    <path id="brush__head" d="M0,31.07s3.75,1.17,5.91-.1,2.29-4.47,5.1-5.5A3.51,3.51,0,0,1,14.9,27a5.76,5.76,0,0,1,.24,5.36c-.75,1.59-2.83,3.13-6.9,3.33C.28,36.1,0,31.07,0,31.07Z"/>
+  </g>
+</svg>

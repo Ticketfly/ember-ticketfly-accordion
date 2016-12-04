@@ -1,0 +1,9 @@
+.c-sample-block .c-sample-block__snippet-container {
+  max-width: 60%;
+  flex: 1 0 0;
+}
+
+.c-sample-block__accordion-container {
+  flex: 0 0 40%;
+  max-width: 40%;
+}

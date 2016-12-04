@@ -1,0 +1,23 @@
+{{inline-svg 'logos/ember-logo-title-only' class="c-home-banner__logo u-absolute u-mh-auto"}}
+
+<div class="c-home-banner__accordion-container u-absolute u-width-80">
+  {{#tf-accordion class="c-accordion c-accordion--fancy c-home-banner__accordion" as |accordion|}}
+    {{#accordion.panel
+      class="c-accordion__panel"
+      expandedClassName="c-accordion__panel--expanded" as |panel|
+    }}
+      {{#panel.tab
+        class="c-accordion__panel-tab"
+        panelExpandedClass="c-accordion__panel-tab--expanded"
+      }}
+        {{svg-icon class="c-accordion__panel-tab-icon u-mr-md" fileName="icon-plus" stroke="currentColor"}}
+        <span>Ticketfly Accordion</span>
+      {{/panel.tab}}
+
+      {{#panel.body class="c-accordion__panel-body o-content-box"}}
+        An ARIA-compliant, dependency-free, animatable accordion system comprised of composable Ember components.
+      {{/panel.body}}
+
+    {{/accordion.panel}}
+  {{/tf-accordion}}
+</div>

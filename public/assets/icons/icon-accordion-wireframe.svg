@@ -1,0 +1,18 @@
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.01 35.91" aria-labelledby="title description">
+  <title id="title">Accordion Wireframe Icon</title>
+  <desc id="description">An accordion wireframe</desc>
+  <g id="icon_accordion" data-name="icon accordion" fill="none" stroke-linejoin="round">
+    <path id="accordion__base" d="M26.63,2.18A1.51,1.51,0,0,0,25.15.34H1.86A1.51,1.51,0,0,0,.37,2.18C1.11,5.52,2.55,12.74,2.55,18S1.11,30.4.38,33.74a1.51,1.51,0,0,0,1.48,1.84H25.15a1.51,1.51,0,0,0,1.48-1.84C25.9,30.4,24.46,23.2,24.46,18S25.9,5.52,26.63,2.18Z"/>
+    <g id="accordion__top-fold">
+      <path d="M.79,4.12C1.14,5.91,13.5,5.81,13.5,5.81s12.37.09,12.72-1.69"/>
+      <path d="M1.56,8.17C1.89,10,13.5,9.87,13.5,9.87S25.12,10,25.44,8.17"/>
+      <path d="M2.16,12.23C2.47,14,13.5,13.92,13.5,13.92s11,.09,11.34-1.69"/>
+    </g>
+    <g id="accordion__bottom-fold">
+      <path d="M.79,31.81C1.14,30,13.5,30.12,13.5,30.12S25.87,30,26.22,31.81"/>
+      <path d="M1.56,27.76C1.89,26,13.5,26.07,13.5,26.07S25.11,26,25.44,27.76"/>
+      <path d="M2.16,23.71C2.47,21.93,13.5,22,13.5,22s11-.09,11.34,1.69"/>
+    </g>
+    <line id="accordion__centerline" x1="2.55" y1="17.95" x2="24.46" y2="17.95"/>
+  </g>
+</svg>

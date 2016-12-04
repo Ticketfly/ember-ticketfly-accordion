@@ -1,0 +1,24 @@
+.c-navbar {
+  box-shadow:
+    0 .15rem .25rem color(
+      var(--theme-color__primary)
+      a(37%)
+    ),
+    0 .25rem .2rem color(
+      var(--theme-color__primary)
+      a(19%)
+    );
+}
+
+.c-navbar .c-navbar__logo {
+  font-size: var(--font-size__navbar-logo);
+}
+
+.c-navbar .c-navbar__nav-item {
+  color: var(--color__gray--500);
+}
+
+.c-navbar .c-navbar__nav-item:hover,
+.c-navbar .c-navbar__nav-item:focus {
+  color: var(--theme-color__supporting-2--light);
+}

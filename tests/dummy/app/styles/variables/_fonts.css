@@ -1,0 +1,26 @@
+@import "../_fonts/_gibson.css";
+@import "../_fonts/_akkurat-pro.css";
+
+:root {
+  /*
+  * Target the system fonts first (http://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/)
+  * then provide similar fallbacks
+  */
+  --font-family-stack__system:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    Avenir,
+    Geneva,
+    Tahoma,
+    san-serif;
+
+--font-family__primary: Akkurat-Pro, var(--font-family-stack__system);
+--font-family__headings: Gibson, Akkurat-Pro, var(--font-family-stack__system);
+}

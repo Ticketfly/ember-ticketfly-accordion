@@ -16,7 +16,7 @@
   -webkit-appearance: none;
 
   /**
-   * Browsers ovrride `text-align` to "center" for buttons
+   * Some browsers ovrride `text-align` to "center" for buttons
    */
   text-align: inherit;
   text-align: unset;

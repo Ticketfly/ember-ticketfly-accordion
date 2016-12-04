@@ -1,29 +1,38 @@
-/**
- * Variables for the .c-accordion component
- */
 :root {
-  --background-color__panel-tab: var(--theme-color__primary-1--500);
-  --color__panel-tab: var(--theme-color__nearWhite);
-}
-
-.c-accordion {
-
+  --color__panel-tab: hsla(0, 0%, 92%, 1.00);
+  --background-color__panel-tab: var(--theme-color__primary);
+  --background-color__panel-body: hsla(0, 0%, 100%, 1.00);
 }
 
 .c-accordion .c-accordion__panel-tab {
-  font-size: 1em;
+  display: flex;
+
+  /* Firefox only: prevents wrapping in buttons (http://stackoverflow.com/questions/30979265/css-flexbox-wraps-content-in-firefox-not-chrome) */
+  display: -moz-box;
+
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 0.75rem 1.12rem;
   font-weight: bold;
   color: var(--color__panel-tab);
   background-color: var(--background-color__panel-tab);
 }
 
-.c-accordion .c-accordion__panel-tab:focus {
-  background-color: color(
-    var(--background-color__panel-tab)
-    blackness(+15%)
-  );
+.c-accordion .c-accordion__panel-body {
+  background-color: var(--background-color__panel-body);
 }
 
+.c-accordion .c-accordion__panel-tab,
 .c-accordion .c-accordion__panel-body {
-  background-color: var(--theme-color__nearWhite);
+  padding: 0.75rem 1.12rem;
+}
+
+.c-accordion .c-accordion__panel-tab:focus {
+  /*outline: auto var(--theme-color__supporting-1--dark) .3em;*/
+  outline: none;
+  border: 0.19rem solid var(--theme-color__supporting-1--dark);
+}
+
+.c-accordion .c-accordion__panel-tab:focus::-moz-focus-inner {
+  border: 0;
 }

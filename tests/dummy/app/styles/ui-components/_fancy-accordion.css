@@ -1,0 +1,158 @@
+:root {
+  --duration__panel-tab-expansion: 0.3s;
+  --duration__panel-stripe-toggle: var(--duration__shift-element);
+  --delay__begin-stripe-animation: calc(
+    var(--duration__panel-tab-expansion) + 0.15s
+  );
+
+  /*--width-factor__expanded-panel-tab-stripe: 0.018;*/
+  --width-factor__expanded-panel-tab-stripe: 0.01;
+  --color__fancy-panel-tab--expanded: var(--theme-color__primary);
+  --background-color__fancy-panel-tab--expanded: hsla(285, 14%, 78%, 1.00);
+}
+
+
+.c-accordion--fancy .c-accordion__panel-tab {
+  z-index: 1;
+  transition: color var(--duration__panel-stripe-toggle) linear;
+}
+
+
+.c-accordion--fancy .c-accordion__panel-tab,
+.c-accordion--fancy .c-accordion__panel-body {
+  /* We're being explicit about this here because we'll be styling pseudoelements */
+  position: relative;
+}
+
+/**
+ * ------------------------------------------------------------------------
+ *  Adding an extra toggle animation effect in CSS with pseudoelements
+ * ------------------------------------------------------------------------
+ */
+
+.c-accordion--fancy .c-accordion__panel--expanded .c-accordion__panel-tab {
+  color: var(--color__fancy-panel-tab--expanded);
+  transition-delay: var(--delay__begin-stripe-animation);
+}
+
+.c-accordion--fancy .c-accordion__panel-tab::before,
+.c-accordion--fancy .c-accordion__panel-tab::after,
+.c-accordion--fancy .c-accordion__panel-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/**
+ * Pseudoelements for the stripe
+ */
+.c-accordion--fancy .c-accordion__panel-body::before {
+  z-index: -1;
+  background-color: var(--background-color__panel-tab);
+  transition-property: transform;
+  transition-duration: var(--duration__panel-stripe-toggle);
+  transition-timing-function: var(--easing__point-to-point);
+}
+
+.c-accordion--fancy .c-accordion__panel-tab:hover::before {
+  background-color: color(
+    var(--background-color__panel-tab)
+    tint(25%)
+  );
+}
+
+/**
+ * Pseudoelement that will remain visible across the whole tab
+ */
+.c-accordion--fancy .c-accordion__panel-tab::after {
+  z-index: -2;
+  background-color: var(--background-color__fancy-panel-tab--expanded);
+}
+
+
+/**
+ * Configure transform settings for...
+ *  1) Transforming the background from a full background
+ *  to a thin, left-adjusted stripe on expansion
+ *
+ *  2) Tweaking the the background color on hover and focus
+ */
+.c-accordion--fancy .c-accordion__panel-tab::before {
+  z-index: -1;
+  transform-origin: left center;
+  transition-property: transform, background-color;
+  transition-duration: var(--duration__panel-stripe-toggle), var(--duration__color-shift);
+  transition-timing-function: var(--easing__decelerating-entrance), linear;
+  transition-delay: var(--delay__begin-stripe-animation), 0;
+  background-color: var(--background-color__panel-tab);
+}
+
+
+/**
+ * ------------------------------------------------------------------------
+ *  EXPAND....
+ * ------------------------------------------------------------------------
+ */
+
+/**
+ * Animate the panel tab background from a full background
+ * to a thin, left-adjusted stripe on expansion.
+ */
+.c-accordion--fancy .c-accordion__panel--expanded .c-accordion__panel-tab::before {
+  transform: scale(var(--width-factor__expanded-panel-tab-stripe), 1.0);
+  transition-timing-function: var(--easing__point-to-point);
+}
+
+/**
+ * Rotate the icon from a plus to an x.
+ */
+
+.c-accordion--fancy .c-accordion__panel-tab-icon {
+  transition: transform var(--duration__shift-element) var(--easing__point-to-point);
+  transform: rotateZ(0deg);
+}
+
+.c-accordion--fancy .c-accordion__panel--expanded .c-accordion__panel-tab-icon {
+  transform: rotateZ(45deg);
+}
+
+/**
+ * After animating the tab's colored background to a colored stripe,
+ * we'll extend the stripe down through the height of the body
+ * with a follow-up animation
+ */
+.c-accordion--fancy .c-accordion__panel-body::before {
+  transform-origin: 0% 0%;
+  transform: scale(var(--width-factor__expanded-panel-tab-stripe), 0.0);
+  opacity: 0;
+}
+
+.c-accordion--fancy .c-accordion__panel--expanded .c-accordion__panel-body::before {
+  animation-name: SlidePanelBodyStripe;
+  animation-duration: var(--duration__panel-stripe-toggle);
+  animation-delay: calc(
+    var(--duration__panel-stripe-toggle) +
+    var(--delay__begin-stripe-animation)
+  );
+  animation-timing-function: var(--easing__point-to-point);
+  animation-fill-mode: forwards;
+}
+
+.c-accordion--fancy .c-accordion__panel-body--is-collapsing .c-accordion__panel-body::before {
+  animation-name: SlidePanelBodyStripe;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes SlidePanelBodyStripe {
+  0% {
+  }
+  100% {
+    opacity: 1;
+    transform: scale(var(--width-factor__expanded-panel-tab-stripe), 1.0);
+  }
+}

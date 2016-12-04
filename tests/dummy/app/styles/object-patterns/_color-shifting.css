@@ -1,0 +1,9 @@
+.o-color-shifting {
+  transition-duration: var(--duration__color-shift);
+  transition-timing-function: var(--easing__accelerating-exit);
+}
+
+.o-color-shifting:hover,
+.o-color-shifting:focus {
+  transition-timing-function: var(--easing__decelerating-entrance);
+}

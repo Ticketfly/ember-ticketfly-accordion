@@ -1,0 +1,21 @@
+.c-markup-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--color__markup-link);
+  transition-property: color;
+  font-weight: bolder;
+}
+
+.c-markup-link:hover {
+  text-decoration: underline;
+}
+
+.c-markup-link:hover,
+.c-markup-link:focus {
+  color: var(--color__markup-link--highlighted);
+}
+
+
+.c-markup-link:focus {
+  outline: currentColor thin dotted;
+}

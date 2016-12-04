@@ -1,0 +1,15 @@
+/**
+ * Container for blocks within the application's
+ * "article frame".
+ */
+.o-article-frame {
+  min-width: var(--min-width__article-frame);
+
+  max-width: calc(
+    var(--max-width__article-frame) +
+    var(--spacing-3) * 2
+  );
+
+  margin-left: auto;
+  margin-right: auto;
+}

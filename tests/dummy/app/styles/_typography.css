@@ -1,2 +1,8 @@
 @import "./typography/_fonts.css";
 @import "./typography/_headings.css";
+
+body {
+
+  /* TODO: Make this more robust */
+  line-height: 1.42;
+}

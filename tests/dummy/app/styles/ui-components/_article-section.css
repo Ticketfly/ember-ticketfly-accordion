@@ -1,0 +1,11 @@
+.c-article .c-article__section-divider {
+  height: 0.25rem;
+}
+
+.c-article .c-article__section:not(:last-child) {
+  margin-bottom: var(--spacing-xl);
+}
+
+.c-article-section .c-article-section__another-block {
+  margin-top: var(--spacing-lg);
+}

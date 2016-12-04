@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "Gibson";
+  font-weight: 100;
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_7_0.eot");
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_7_0.eot?#iefix") format("embedded-opentype"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_7_0.woff2") format("woff2"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_7_0.woff") format("woff"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_7_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gibson";
+  font-style: italic;
+  font-weight: 100;
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_0_0.eot");
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_0_0.eot?#iefix") format("embedded-opentype"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_0_0.woff2") format("woff2"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_0_0.woff") format("woff"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_0_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gibson";
+  font-weight: 400;
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_4_0.eot");
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_4_0.eot?#iefix") format("embedded-opentype"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_4_0.woff2") format("woff2"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_4_0.woff") format("woff"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_4_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gibson";
+  font-weight: 400;
+  font-style: italic;
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_6_0.eot");
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_6_0.eot?#iefix") format("embedded-opentype"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_6_0.woff2") format("woff2"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_6_0.woff") format("woff"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_6_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gibson";
+  font-weight: 700;
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_5_0.eot");
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_5_0.eot?#iefix") format("embedded-opentype"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_5_0.woff2") format("woff2"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_5_0.woff") format("woff"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_5_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gibson";
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_2_0.eot");
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_2_0.eot?#iefix") format("embedded-opentype"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_2_0.woff2") format("woff2"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_2_0.woff") format("woff"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_2_0.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: "Gibson";
+  font-weight: 900;
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_3_0.eot");
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_3_0.eot?#iefix") format("embedded-opentype"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_3_0.woff2") format("woff2"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_3_0.woff") format("woff"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_3_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gibson";
+  font-weight: 900;
+  font-style: italic;
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_1_0.eot");
+  src: url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_1_0.eot?#iefix") format("embedded-opentype"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_1_0.woff2") format("woff2"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_1_0.woff") format("woff"),
+       url("https://static.ticketfly.com/fonts/gibson/webfonts/2E3C08_1_0.ttf") format("truetype");
+}

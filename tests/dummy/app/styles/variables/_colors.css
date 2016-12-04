@@ -1,22 +1,82 @@
 :root {
-  --theme-color__primary-1--100: hsla(261, 53%, 76%, 1.00);
-  --theme-color__primary-1--300: hsla(261, 43%, 55%, 1.00);
-  --theme-color__primary-1--500: hsla(261, 43%, 45%, 1.00);
-  --theme-color__primary-1--700: hsla(261, 43%, 38%, 1.00);
-  --theme-color__primary-1--900: hsla(261, 43%, 27%, 1.00);
+  --theme-color__primary: hsla(261, 43%, 45%, 1.00);
 
-  --theme-color__accent-1--100: hsla(178, 89%, 86%, 1.00);
-  --theme-color__accent-1--300: hsla(180, 94%, 79%, 1.00);
-  --theme-color__accent-1--500: hsla(181, 81%, 70%, 1.00);
-  --theme-color__accent-1--700: hsla(181, 58%, 62%, 1.00);
-  --theme-color__accent-1--900: hsla(181, 37%, 51%, 1.00);
-
-  --theme-color__nearWhite: hsla(0, 0%, 92%, 1.00);
-  
-  --theme-color__offWhite: color(
-    var(--theme-color__nearWhite)
-    lightness(- 5%)
+  --theme-color__primary--lighter: color(
+    var(--theme-color__primary)
+    tint(50%)
   );
+  --theme-color__primary--light: color(
+    var(--theme-color__primary)
+    tint(20%)
+  );
+  --theme-color__primary--dark: color(
+    var(--theme-color__primary)
+    shade(20%)
+  );
+  --theme-color__primary--darker: color(
+    var(--theme-color__primary)
+    shade(80%)
+  );
+
+
+  --theme-color__supporting-1: hsla(158, 78%, 50%, 1.00);
+
+  --theme-color__supporting-1--lighter: color(
+    var(--theme-color__supporting-1)
+    tint(50%)
+  );
+  --theme-color__supporting-1--light: color(
+    var(--theme-color__supporting-1)
+    tint(20%)
+  );
+  --theme-color__supporting-1--dark: color(
+    var(--theme-color__supporting-1)
+    shade(20%)
+  );
+  --theme-color__supporting-1--darker: color(
+    var(--theme-color__supporting-1)
+    shade(50%)
+  );
+
+
+  --theme-color__supporting-2: hsla(10, 66%, 63%, 1.00);
+
+  --theme-color__supporting-2--lighter: color(
+    var(--theme-color__supporting-2)
+    tint(50%)
+  );
+  --theme-color__supporting-2--light: color(
+    var(--theme-color__supporting-2)
+    tint(20%)
+  );
+  --theme-color__supporting-2--dark: color(
+    var(--theme-color__supporting-2)
+    shade(20%)
+  );
+  --theme-color__supporting-2--darker: color(
+    var(--theme-color__supporting-2)
+    shade(50%)
+  );
+
+  /*--theme-color__page-background: hsla(31, 78%, 95%, 1.00);*/
+  --theme-color__page-background: hsla(47, 74%, 94%, 1.00);
+
+  --color__dark--100: hsla(249, 9%, 45%, 1.00);
+  --color__dark--300: hsla(217, 22%, 35%, 1.00);
+  --color__dark--500: hsla(217, 22%, 19%, 1.00);
+  --color__dark--700: hsla(217, 21%, 16%, 1.00);
+  --color__dark--900: hsla(220, 23%, 3%, 1.00);
+
+  --color__gray--100: hsla(228, 15%, 94%, 1.00);
+  --color__gray--300: hsla(231, 12%, 77%, 1.00);
+  --color__gray--500: hsla(231, 9%, 60%, 1.00);
+  --color__gray--700: hsla(230, 8%, 45%, 1.00);
+  --color__gray--900: hsla(231, 10%, 26%, 1.00);
+
+  --color__white: hsla(0, 0%, 100%, 1.00);
+  --color__black: hsla(0, 0%, 0%, 1.00);
+  --color__nearWhite: hsla(0, 0%, 92%, 1.00);
+  --color__nearBlack: hsla(0, 0%, 13%, 1.00);
 
   --color__box-shadow: hsla(0, 0%, 0%, 0.43);
 }

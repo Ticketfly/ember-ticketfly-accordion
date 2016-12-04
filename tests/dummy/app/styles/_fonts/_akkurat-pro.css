@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Akkurat-Pro";
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://static.ticketfly.com/fonts/akkurat/fonts/lineto-akkurat-pro-regular.eot");
+  src: url("https://static.ticketfly.com/fonts/akkurat/fonts/lineto-akkurat-pro-regular.eot?#iefix") format("embedded-opentype"),
+       url("https://static.ticketfly.com/fonts/akkurat/fonts/lineto-akkurat-pro-regular.woff") format("woff"),
+       url("https://static.ticketfly.com/fonts/akkurat/fonts/lineto-akkurat-pro-regular.ttf") format("truetype");
+}

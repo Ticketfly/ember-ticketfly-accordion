@@ -7,8 +7,10 @@ module.exports = {
   name: 'ember-ticketfly-accordion',
 
   isDevelopingAddon: function() {
-    // ⚠️ Only set this to `true` when you're testing local NPM linking.
-    return false;
+    // ⚠️ Only MANUALLY set this to `true` when testing local NPM linking.
+    // Otherwise, we only need it to be `true` when running things
+    // inside of our addon (https://github.com/ember-cli/ember-cli-eslint/issues/142)
+    return this._isOurProject(this.app);
   },
 
   _isDummyApp: function(app) {
@@ -39,11 +41,6 @@ module.exports = {
     return Array.isArray(keywords) && keywords.indexOf('ember-addon') !== -1;
   },
 
-  /**
-   * TODO: Add stylesheets with different concerns (for example,
-   * "ember-ticketfly-accordion-animation"), and make their inclusion
-   * configurable
-   */
   included: function(app, parentAddon) {
     this._super.included.apply(this, arguments);
 

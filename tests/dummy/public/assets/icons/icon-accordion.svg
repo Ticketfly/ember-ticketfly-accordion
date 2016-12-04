@@ -1,0 +1,22 @@
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.83 29.91" aria-labelledby="title description">
+  <title id="title">Accordion Icon</title>
+  <desc id="description">An Accordion Icon</desc>
+  <g id="accordion">
+    <path id="accordion__frame" d="M20.61,3.93a1.07,1.07,0,0,0-1.1-1.28H2.32a1.07,1.07,0,0,0-1.1,1.28A56.86,56.86,0,0,1,2.83,15,56.55,56.55,0,0,1,1.23,26a1.07,1.07,0,0,0,1.1,1.28H19.51A1.07,1.07,0,0,0,20.61,26,56.55,56.55,0,0,1,19,15,56.86,56.86,0,0,1,20.61,3.93Z" fill="none" stroke-linejoin="round" stroke-width="0.49"/>
+    <g id="accordion__fold-container">
+      <g id="folds_folds--downward" data-name="folds folds--downward" fill="none">
+        <path id="fold-line" d="M1.53,5.29c.26,1.25,9.38,1.18,9.38,1.18S20,6.53,20.3,5.29" stroke-linejoin="round" stroke-width="0.49"/>
+        <path id="fold-line-2" data-name="fold-line" d="M2.1,8.12c.24,1.25,8.81,1.18,8.81,1.18s8.57.06,8.81-1.18" stroke-linejoin="round" stroke-width="0.49"/>
+        <path id="fold-line-3" data-name="fold-line" d="M2.55,11c.23,1.25,8.37,1.18,8.37,1.18s8.14.06,8.37-1.18" stroke-linejoin="round" stroke-width="0.49"/>
+      </g>
+      <g id="folds_folds--upward" data-name="folds folds--upward" fill="none">
+        <path id="fold-line-4" data-name="fold-line" d="M1.53,24.64c.26-1.25,9.38-1.18,9.38-1.18s9.13-.06,9.38,1.18" stroke-linejoin="round" stroke-width="0.49"/>
+        <path id="fold-line-5" data-name="fold-line" d="M2.1,21.81c.24-1.25,8.81-1.18,8.81-1.18s8.57-.06,8.81,1.18" stroke-linejoin="round" stroke-width="0.49"/>
+        <path id="fold-line-6" data-name="fold-line" d="M2.55,19c.23-1.25,8.37-1.18,8.37-1.18s8.14-.06,8.37,1.18" stroke-linejoin="round" stroke-width="0.49"/>
+      </g>
+      <line id="fold-line_fold-line--center" data-name="fold-line fold-line--center" x1="2.83" y1="14.95" x2="19" y2="14.95" fill="none" stroke-linejoin="round" stroke-width="0.49"/>
+    </g>
+    <rect id="accordion__base_base_base--top" data-name="accordion__base base base--top" stroke="none" width="21.83" height="4.3" rx="1.44" ry="1.44"/>
+    <rect id="accordion__base_base_base--bottom" data-name="accordion__base base base--bottom" y="25.61" stroke="none" width="21.83" height="4.3" rx="1.44" ry="1.44"/>
+  </g>
+</svg>

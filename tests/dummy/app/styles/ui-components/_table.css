@@ -1,0 +1,13 @@
+.c-table {
+  border-spacing: 0;
+}
+
+.c-table .c-table__head-cell {
+  border-bottom: 1px solid var(--color__gray--300);
+}
+
+.c-table .c-table__cell {
+  white-space: nowrap;
+  padding: var(--spacing-inset-squish-md);
+  text-align: left;
+}
