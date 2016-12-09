@@ -182,6 +182,11 @@ the following class names:
 - `tfa-panel-tab`
 - `tfa-panel-body`
 
+The following modifier classes are also added to a panel 
+when it's expanded:
+
+- `tfa-panel--expanded` (added to the panel element when expanded)   
+- `tfa-panel-tab--expanded` (added to the panel's tab element when expanded)  
 
 ## Collaborating
 

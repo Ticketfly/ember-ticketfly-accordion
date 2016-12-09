@@ -19,6 +19,7 @@ import { guidFor } from 'ember-metal/utils';
 export default Component.extend({
   layout,
   classNames: ['tfa-panel'],
+  classNameBindings: ['isExpanded:tfa-panel--expanded'],
 
   /* ---------- API ---------- */
 

@@ -111,3 +111,19 @@ test(`selecting a panel's child tab component toggles its expansion state`, func
   assert.equal('true', panelTabElem.getAttribute('aria-expanded'));
   assert.equal('false', panelBodyElem.getAttribute('aria-hidden'));
 });
+
+test('classNameBindings', function (assert) {
+  this.set('panelComponentProto.isExpanded', false);
+  this.render(INLINE_TEMPLATE);
+
+  const domNode = getDOMNode(this);
+  const expandedClassNameBinding = 'tfa-panel--expanded';
+
+  message = `the panel element does not have the ${expandedClassNameBinding} class name added when it's not expanded`;
+  assert.equal(false, domNode.classList.contains(expandedClassNameBinding));
+
+  this.set('panelComponentProto.isExpanded', true);
+
+  message = `the panel element has the ${expandedClassNameBinding} class name added when it's expanded`;
+  assert.equal(true, domNode.classList.contains(expandedClassNameBinding));
+});
