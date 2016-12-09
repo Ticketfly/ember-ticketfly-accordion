@@ -1,18 +1,14 @@
 /* global module, process */
 'use strict';
 
-var STYLESHEETS = {
-  core: 'ember-ticketfly-accordion-core',
-  spiffy: 'ember-ticketfly-accordion-spiffy',
-  animation: 'ember-ticketfly-accordion-animation',
-};
+var STYLESHEET_NAME = 'ember-ticketfly-accordion';
 
 module.exports = {
   name: 'ember-ticketfly-accordion',
 
-  // 📋 TODO: Remember to remove
   isDevelopingAddon: function() {
-    return true;
+    // ⚠️ Only set this to `true` when you're testing local NPM linking.
+    return false;
   },
 
   _isDummyApp: function(app) {
@@ -43,22 +39,6 @@ module.exports = {
     return Array.isArray(keywords) && keywords.indexOf('ember-addon') !== -1;
   },
 
-  _importStyles(target) {
-    var stylesToImport = this._targetConfig.importedStyles || {};
-
-    var filesToImport = Object.keys(STYLESHEETS)
-      .filter(function(key) {
-        return key === 'core' || stylesToImport[key];
-      })
-      .map(function (key) {
-        return STYLESHEETS[key]; // ES6 arrow functions... 🔜
-      });
-
-    filesToImport.forEach(function (fileName) {
-      target.import('vendor/styles/' + fileName + '.css');
-    });
-  },
-
   /**
    * TODO: Add stylesheets with different concerns (for example,
    * "ember-ticketfly-accordion-animation"), and make their inclusion
@@ -76,7 +56,7 @@ module.exports = {
     this._targetConfig = this.project.config(this.app.env)['ember-ticketfly-accordion'] || {};
 
     if (this._shouldImportStyles(target)) {
-      this._importStyles(target);
+      target.import('vendor/styles/' + STYLESHEET_NAME + '.css');
     }
   }
 };

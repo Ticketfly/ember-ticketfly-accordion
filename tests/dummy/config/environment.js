@@ -23,9 +23,6 @@ module.exports = function(environment) {
     },
 
     'ember-ticketfly-accordion': {
-      importedStyles: {
-        spiffy: true
-      },
       addonAnimationSettings: {
         panelClose: {
           easing: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)' // ease-in-out-cubic
