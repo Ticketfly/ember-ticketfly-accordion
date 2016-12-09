@@ -48,47 +48,6 @@ ENV['ember-ticketfly-accordion'] = {
 
 ### Supported Options
 
-#### Selecting CSS Styles
-
-`ember-ticketfly-accordion` includes a very small set of base
-styles to ensure that its elements lay out correctly in the manner
-of an accordion (that is, as a set of vertically stacked panels, with tabs
-comprised of HTML `<buttons>`).
-
-These can be seen in `app/styles/ember-ticketfly-accordion-core.css`.
-
-But we can do better! If you'd like to control more styling of
-`ember-ticketfly-accordion`'s elements, you can rely on being able to target
-the following class names:
-
-- `tfa-accordion`
-- `tfa-panel`
-- `tfa-panel-tab`
-- `tfa-panel-body`
-
-That being said, you can enable a few additional stylesheet imports
-from your ENV configuration hash:
-
-```js
-ENV['ember-ticketfly-accordion'] = {
-  extraStyles: {
-    spiffy: true
-  }
-};
-```
-
-##### Disclaimers
-
-- Extra stylesheet imports are opt-in by default, though currently, [`spiffy`](./app/styles/ember-ticketfly-accordion-spiffy.css) is
-the only additional option.
-
-- Extra stylesheet imports, as a feature, is still a bit experimental. 
-I still haven't determined whether or not it would be useful, and whether 
-there's potential in fleshing it out in the future.  
-
-- A future update to the project will include interactive documentation.
-Showcasing different uses and different ideas for styling.
-
 #### Toggling Animation
 
 Animation is enabled by default, and includes a super-lightweight implementation of
@@ -204,6 +163,25 @@ export default Ember.Route.extend({
   }
 });
 ```
+
+### Practical Styling Advice
+
+`ember-ticketfly-accordion` includes a very small set of base
+styles to ensure that its elements lay out correctly in the manner
+of an accordion (that is, as a set of vertically stacked panels, with tabs
+comprised of HTML `<buttons>`).
+
+These can be seen in `app/styles/ember-ticketfly-accordion.css`.
+
+But we can do better! If you'd like to control more styling of
+`ember-ticketfly-accordion`'s elements, you can rely on being able to target
+the following class names:
+
+- `tfa-accordion`
+- `tfa-panel`
+- `tfa-panel-tab`
+- `tfa-panel-body`
+
 
 ## Collaborating
 
