@@ -1,3 +1,8 @@
+# 0.2.2 (December 10, 2016)
+
+- Fix `classNameBindings` to prevent `undefined` from being added. ([#25](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/25]))
+
+
 # 0.2.1 (December 9, 2016)
 
 - Bind the "tfa-panel--expanded" class to panel elements ([#22](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/22]))
