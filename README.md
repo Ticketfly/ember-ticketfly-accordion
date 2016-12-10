@@ -186,7 +186,55 @@ The following modifier classes are also added to a panel
 when it's expanded:
 
 - `tfa-panel--expanded` (added to the panel element when expanded)   
-- `tfa-panel-tab--expanded` (added to the panel's tab element when expanded)  
+- `tfa-panel-tab--expanded` (added to the panel's tab element when expanded)
+
+### Composable Components
+
+#### Panels
+
+When used in block form, each `tf-accordion-panel` component in an accordion 
+will yield back a `tab` and a `body` property. Under the hood, these refer to
+the `tf-accordion-panel-tab` and `tf-accordion-panel-body` components, respectively.
+**Using the references provided by the block context, however, ensures that component 
+instances can communicate with their containing panel.**
+
+Additionally, you can forgo block usage, and the panel will will try to render 
+a tab and a body -- provided you supply a few required attributes:
+
+  - `tabTitle`  
+  - `bodyContent`  
+
+#### Panel Tabs and Panel Bodies
+
+The panel tab component also supports block-scoping (all content will be,
+rendered within its `<button>` element) but a string value _can_ 
+be given to its `title` attribute as an inline a shorthand.
+
+The panel body component also supports block-scoping, but a string value _can_ 
+be given to its `content` attribute as an inline a shorthand.
+
+### Configurable Class Names  
+
+For even more [style control](#practices-styling-advice), if you'd like to target your own CSS selectors, 
+the following attributes are your hooks for doing just that:  
+
+##### `tf-accordion-panel`
++ `class`
++ `panelExpandedClass`
++ `tabClassName`
+  + passed to the panel's tab component when used with the inline shorthand form.
++ `panelExpandedTabClass`
+  + passed to the panel's tab component when used with the inline shorthand form.     
++ `bodyClassName`
+  + passed to the panel's body component when used with the inline shorthand form.  
+
+##### `tf-accordion-panel-tab`
++ `class`
++ `panelExpandedClass
+  
+##### `tf-accordion-panel-tab`
++ `class`
++ `panelExpandedClass
 
 ## Collaborating
 

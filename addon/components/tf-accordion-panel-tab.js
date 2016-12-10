@@ -24,7 +24,7 @@ export default Component.extend({
   ],
 
   classNames: ['tfa-panel-tab'],
-  classNameBindings: ['isPanelExpanded:tfa-panel-tab--expanded:tfa-panel-tab--hidden'],
+  classNameBindings: ['panelExpandedClassName'],
 
   /**
    * Bound to the `role` attribute of the `tf-accordion-panel-tab` component's element.
@@ -82,6 +82,15 @@ export default Component.extend({
    */
   panel: null,
 
+  /**
+   * A custom class to apply to the panel tab element when
+   * the containing panel is expanded.
+   *
+   * @property panelExpandedClass
+   * @type String
+   */
+  panelExpandedClass: '',
+
   /* ---------- COMPUTEDS ---------- */
 
   /**
@@ -97,6 +106,14 @@ export default Component.extend({
   'aria-expanded': computed('isPanelExpanded', {
     get() {
       return get(this, 'isPanelExpanded') ? 'true' : 'false';
+    }
+  }).readOnly(),
+
+  panelExpandedClassName: computed('isPanelExpanded', {
+    get() {
+      if (get(this, 'isPanelExpanded')) {
+        return `tfa-panel-tab--expanded ${get(this, 'panelExpandedClass')}`;
+      }
     }
   }).readOnly(),
 

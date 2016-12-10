@@ -2,6 +2,7 @@ import Component from 'ember-component';
 import layout from '../templates/components/tf-accordion-panel';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
+import computed from 'ember-computed';
 import { guidFor } from 'ember-metal/utils';
 
 /**
@@ -19,7 +20,7 @@ import { guidFor } from 'ember-metal/utils';
 export default Component.extend({
   layout,
   classNames: ['tfa-panel'],
-  classNameBindings: ['isExpanded:tfa-panel--expanded'],
+  classNameBindings: ['expandedClassNames'],
 
   /* ---------- API ---------- */
 
@@ -58,6 +59,16 @@ export default Component.extend({
    * @type String
    */
   bodyContent: '',
+
+  /**
+   * A custom class to apply to the panel tab element when
+   * the containing panel is expanded. This will be passed to
+   * this component's child panel when if supplied during non-block usage
+   *
+   * @property panelExpandedClass
+   * @type String
+   */
+  panelExpandedTabClass: '',
 
   /**
    * An optional className that can used in addition to the
@@ -123,6 +134,23 @@ export default Component.extend({
    * @default false
    */
   isInMotion: false,
+
+  /* ---------- COMPUTEDS ---------- */
+
+  /**
+   * A custom class to apply to the panel element when
+   * it is expanded.
+   *
+   * @property panelExpandedClass
+   * @type String
+   */
+  expandedClassNames: computed('isExpanded', {
+    get() {
+      if (get(this, 'isExpanded')) {
+        return `tfa-panel--expanded ${get(this, 'expandedClassName')}`;
+      }
+    }
+  }).readOnly(),
 
   /* ---------- LIFECYCLE ---------- */
 
