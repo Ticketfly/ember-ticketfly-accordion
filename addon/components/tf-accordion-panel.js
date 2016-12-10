@@ -147,7 +147,7 @@ export default Component.extend({
   expandedClassNames: computed('isExpanded', {
     get() {
       if (get(this, 'isExpanded')) {
-        return `tfa-panel--expanded ${get(this, 'expandedClassName')}`;
+        return `tfa-panel--expanded ${get(this, 'expandedClassName') || ''}`;
       }
     }
   }).readOnly(),
