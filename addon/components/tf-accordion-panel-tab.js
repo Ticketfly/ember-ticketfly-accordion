@@ -112,7 +112,7 @@ export default Component.extend({
   panelExpandedClassName: computed('isPanelExpanded', {
     get() {
       if (get(this, 'isPanelExpanded')) {
-        return `tfa-panel-tab--expanded ${get(this, 'panelExpandedClass')}`;
+        return `tfa-panel-tab--expanded ${get(this, 'panelExpandedClass') || ''}`;
       }
     }
   }).readOnly(),
