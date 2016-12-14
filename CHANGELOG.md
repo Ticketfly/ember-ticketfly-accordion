@@ -1,3 +1,8 @@
+# 0.2.3 (December 13, 2016)
+
+- Remove necessary (and unused) `ember-hook` dependency. ([#26](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/26]))
+
+
 # 0.2.2 (December 10, 2016)
 
 - Fix `classNameBindings` to prevent `undefined` from being added. ([#25](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/25]))
