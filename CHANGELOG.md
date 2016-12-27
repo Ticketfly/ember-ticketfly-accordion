@@ -1,4 +1,4 @@
-# 0.3.0 (December 13, 2016)
+# 0.3.0 (December 27, 2016)
 
 - **[BREAKING CHANGE]** CSS `contain` value to `layout` and remove `overflow: hidden` 
 on root accordion ([#27](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/27])).
