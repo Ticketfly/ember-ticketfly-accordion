@@ -1,3 +1,8 @@
+# 0.3.1 (December 27, 2016)
+
+- **[PATCH]** Fix CHANGELOG date typo.
+
+
 # 0.3.0 (December 27, 2016)
 
 - **[BREAKING CHANGE]** CSS `contain` value to `layout` and remove `overflow: hidden` 
