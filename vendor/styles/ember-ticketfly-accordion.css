@@ -1,8 +1,7 @@
 .tfa-accordion {
   width: 100%;
-  overflow: hidden;
   position: relative;
-  contain: content;
+  contain: layout;
 }
 
 .tfa-accordion .tfa-panel .tfa-panel-tab {
@@ -10,6 +9,11 @@
   border: none;
   font-size: inherit;
   cursor: pointer;
+
+  /* Prevent any default <button> element styling by browsers */
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 
   /**
    * Browsers ovrride `text-align` to "center" for buttons
