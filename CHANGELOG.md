@@ -1,3 +1,14 @@
+# 0.3.0 (December 13, 2016)
+
+- **[BREAKING CHANGE]** CSS `contain` value to `layout` and remove `overflow: hidden` 
+on root accordion ([#27](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/27])).
+  + `overflow` shouldn't be a concern of the addon. Simultaneously, only `layout` level
+  containment is needed to optimize rendering the accordion's elements, wheras `content` containment
+  prevented [`ink overflow`](https://drafts.csswg.org/css-overflow-3/#ink-overflow).
+
+- **[ENHANCEMENT]** Add `appearance` to `none` to the styling for panel buttons ([#27](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/27])). 
+
+
 # 0.2.3 (December 13, 2016)
 
 - Remove necessary (and unused) `ember-hook` dependency. ([#26](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/26]))
