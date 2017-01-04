@@ -24,7 +24,7 @@ export default Component.extend({
   ],
 
   classNames: ['tfa-panel-tab'],
-  classNameBindings: ['panelExpandedClassName'],
+  classNameBindings: ['_panelExpandedClassNames'],
 
   /**
    * Bound to the `role` attribute of the `tf-accordion-panel-tab` component's element.
@@ -84,12 +84,12 @@ export default Component.extend({
 
   /**
    * A custom class to apply to the panel tab element when
-   * the containing panel is expanded.
+   * its containing panel is expanded.
    *
-   * @property panelExpandedClass
+   * @property expandedClassName
    * @type String
    */
-  panelExpandedClass: '',
+  expandedClassName: '',
 
   /* ---------- COMPUTEDS ---------- */
 
@@ -109,10 +109,18 @@ export default Component.extend({
     }
   }).readOnly(),
 
-  panelExpandedClassName: computed('isPanelExpanded', {
+  /**
+   * Class names to apply to the panel tab element when
+   * its containing panel is expanded.
+   *
+   * @property _panelExpandedClassNames
+   * @type String
+   * @private
+   */
+  _panelExpandedClassNames: computed('isPanelExpanded', 'expandedClassName', {
     get() {
       if (get(this, 'isPanelExpanded')) {
-        return `tfa-panel-tab--expanded ${get(this, 'panelExpandedClass') || ''}`;
+        return `tfa-panel-tab--expanded ${get(this, 'expandedClassName') || ''}`;
       }
     }
   }).readOnly(),

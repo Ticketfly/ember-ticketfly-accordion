@@ -23,7 +23,7 @@ const INLINE_TEMPLATE = hbs`
     accordion=accordion
     expandedClassName=CLASS_NAMES.PANEL_EXPANDED
     tabClassName=CLASS_NAMES.DEFAULT_TAB
-    panelExpandedTabClass=CLASS_NAMES.DEFAULT_TAB_EXPANDED
+    expandedTabClassName=CLASS_NAMES.DEFAULT_TAB_EXPANDED
     bodyClassName=CLASS_NAMES.DEFAULT_BODY
     isExpanded=panelComponentProto.isExpanded
   }}

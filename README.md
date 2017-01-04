@@ -220,21 +220,21 @@ the following attributes are your hooks for doing just that:
 
 ##### `tf-accordion-panel`
 + `class`
-+ `panelExpandedClass`
++ `expandedClassName`
+  + A custom class to apply to the panel element when it is expanded.
 + `tabClassName`
   + passed to the panel's tab component when used with the inline shorthand form.
-+ `panelExpandedTabClass`
-  + passed to the panel's tab component when used with the inline shorthand form.     
++ `expandedTabClassName`
+  + A custom class to apply to the panel tab element when its containing panel is expanded.
+  + Passed to the panel's tab component when used with the inline shorthand form.     
 + `bodyClassName`
   + passed to the panel's body component when used with the inline shorthand form.  
 
 ##### `tf-accordion-panel-tab`
 + `class`
-+ `panelExpandedClass
++ `expandedClassName`
+  + A custom class to apply to the panel tab element when its containing panel is expanded.
   
-##### `tf-accordion-panel-tab`
-+ `class`
-+ `panelExpandedClass
 
 ## Collaborating
 

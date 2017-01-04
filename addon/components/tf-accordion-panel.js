@@ -20,7 +20,7 @@ import { guidFor } from 'ember-metal/utils';
 export default Component.extend({
   layout,
   classNames: ['tfa-panel'],
-  classNameBindings: ['expandedClassNames'],
+  classNameBindings: ['_expandedClassNames'],
 
   /* ---------- API ---------- */
 
@@ -61,14 +61,22 @@ export default Component.extend({
   bodyContent: '',
 
   /**
+   * A custom class to apply to the panel element when it is expanded.
+   *
+   * @property expandedClassName
+   * @type String
+   */
+  expandedClassName: '',
+
+  /**
    * A custom class to apply to the panel tab element when
    * the containing panel is expanded. This will be passed to
    * this component's child panel when if supplied during non-block usage
    *
-   * @property panelExpandedClass
+   * @property expandedTabClassName
    * @type String
    */
-  panelExpandedTabClass: '',
+  expandedTabClassName: '',
 
   /**
    * An optional className that can used in addition to the
@@ -138,13 +146,13 @@ export default Component.extend({
   /* ---------- COMPUTEDS ---------- */
 
   /**
-   * A custom class to apply to the panel element when
-   * it is expanded.
+   * Class names to apply to the panel element when it is expanded.
    *
-   * @property panelExpandedClass
+   * @property _expandedClassNames
    * @type String
+   * @private
    */
-  expandedClassNames: computed('isExpanded', {
+  _expandedClassNames: computed('isExpanded', 'expandedClassName', {
     get() {
       if (get(this, 'isExpanded')) {
         return `tfa-panel--expanded ${get(this, 'expandedClassName') || ''}`;
