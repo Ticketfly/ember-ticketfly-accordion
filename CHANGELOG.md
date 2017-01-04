@@ -1,3 +1,12 @@
+# 0.4.0 (January 3, 2017)
+
+- **[BREAKING CHANGE]** Change name of attributes used to set class names for expanded panels ([#29](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/29])).
+  + `panelExpandedTabClass` on the `tf-accordion-panel` component is now `expandedTabClassName`.
+    + This syntax has a more similar feel to `expandedClassName`.
+  + `panelExpandedClass` on the `tf-accordion-panel-tab` component is now `expandedClassName`.
+    + This is more consistent with the `expandedClassName` property on the `tf-accordion-panel` component
+    and feels more intuitive when declaring in markup.
+
 # 0.3.1 (December 27, 2016)
 
 - **[PATCH]** Fix CHANGELOG date typo.
@@ -6,7 +15,7 @@
 # 0.3.0 (December 27, 2016)
 
 - **[BREAKING CHANGE]** CSS `contain` value to `layout` and remove `overflow: hidden` 
-on root accordion ([#27](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/27])).
+on root accordion ([#28](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/28])).
   + `overflow` shouldn't be a concern of the addon. Simultaneously, only `layout` level
   containment is needed to optimize rendering the accordion's elements, wheras `content` containment
   prevented [`ink overflow`](https://drafts.csswg.org/css-overflow-3/#ink-overflow).

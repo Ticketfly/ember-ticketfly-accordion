@@ -1,6 +1,6 @@
 {
   "name": "ember-ticketfly-accordion",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "An ARIA-compliant, dependency-free accordion system comprised of composable Ember components.",
   "directories": {
     "doc": "doc",
