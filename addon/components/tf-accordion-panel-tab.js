@@ -1,6 +1,7 @@
 import Component from 'ember-component';
 import layout from '../templates/components/tf-accordion-panel-tab';
 import get from 'ember-metal/get';
+import set from 'ember-metal/set';
 import { default as computed, readOnly } from 'ember-computed';
 import { once } from 'ember-runloop';
 
@@ -36,6 +37,19 @@ export default Component.extend({
    * @default 'tab'
    */
   ariaRole: 'tab',
+
+  /**
+   * Bound to the `aria-selected` attribute of the `tf-accordion-panel-tab` component's element.
+   *
+   * @property aria-selected
+   * @type String
+   * @default 'false'
+   * @see https://www.w3.org/TR/wai-aria/states_and_properties#aria-selected
+   * @see https://www.stefanjudis.de/aria-selected-and-when-to-use-it.html
+   */
+  'aria-selected': 'false',
+
+  /* ---------- API ---------- */
 
   /**
    * Tracks whether or not the panel that this tab belongs to is expanded.
@@ -179,20 +193,22 @@ export default Component.extend({
   },
 
   /**
-   * When the `focusIn` DOM event fires on the element, trigger the
-   * root `tf-accordion` component's action with the panel component
-   * and the jQuery event.
+   * When the `focusIn` DOM event fires on the element, updated our
+   * `aria-selected` binding, and then trigger the root `tf-accordion`
+   * component's action with the panel component and the jQuery event.
    */
   focusIn(event) {
+    set(this, 'aria-selected', 'true');
     get(this, 'accordion').handlePanelEvent('onPanelTabFocusIn', get(this, 'panel'), event);
   },
 
   /**
-   * When the `focusOut` DOM event fires on the element, trigger the
-   * root `tf-accordion` component's action with the panel component
-   * and the jQuery event.
+   * When the `focusOut` DOM event fires on the element, updated our
+   * `aria-selected` binding, and then trigger the root `tf-accordion`
+   * component's action with the panel component and the jQuery event.
    */
   focusOut(event) {
+    set(this, 'aria-selected', 'false');
     get(this, 'accordion').handlePanelEvent('onPanelTabFocusOut', get(this, 'panel'), event);
   },
 
