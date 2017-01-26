@@ -1,3 +1,12 @@
+# 0.5.0 (January 25, 2017)
+
+- **[ADDED]**: support for having a proper `aria-selected` value set on each panel tab element.
+within an accordion.
+- A note on the minor version bump: In retrospect, `0.4.1` also should have been a minor version bump,
+since it added some significant improvements. The same applies for the addition above, thus,
+here we are.
+
+
 # 0.4.1 (January 25, 2017)
 
 - **[ADDED]**: `role="heading"` is now applied to the element for the `tfa-panel` component ([#32](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/32])).
