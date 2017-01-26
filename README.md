@@ -83,12 +83,14 @@ ENV['ember-ticketfly-accordion'] = {
 };
 ```
 
+
 ## Usage
+
 
 ### Enabling MultiExpand Mode
 
 By default, `ember-ticketfly-accordion` follows the standard accordion
-interface pattern: that is, it allows for one panel to be expanded while
+interface pattern of allowing one panel to be expanded while
 keeping the other panels closed.
 
 But it's also flexible!
@@ -107,6 +109,7 @@ child panels. These are exposed callbacks that can be set with
 the `action` helper (i.e. `onPanelTabFocusIn=(action "panelTabFocusOut")`), or another template 
 helper that facilitates curried functions (for example, [Ember Concurrency's `perform` helper](http://ember-concurrency.com/#/docs/writing-tasks).
  
+
 #### Focus Event callbacks
 
 In addition to expanding a panel's body when its tab element is 
@@ -235,6 +238,25 @@ the following attributes are your hooks for doing just that:
 + `expandedClassName`
   + A custom class to apply to the panel tab element when its containing panel is expanded.
   
+
+### Working with ARIA Attributes
+
+As part of its adherence to the [WAI-ARIA accordion spec](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion), each 
+part of the component system contains the `attributeBindings` needed to automatically set 
+proper values for attributes such as `aria-expanded`() `aria-multiselectable`(), `aria-controls`(), etc. 
+
+This behavior is built-in for free. 
+
+Some ARIA attribute values are arbitrary, however, and where it's appropriate, components will declare bindings
+for attributes that you can set directly. Currently, this includes:
+
+##### `tf-accordion-panel`
+- `aria-level`: Since the panel functions as a "heading", but isn't any of the standard heading elements
+(`<h1>`, `<h2>`, etc), this value should be set on each panel in the accordion according to 
+how you would define its heading level within your document. Since accordions can be used in just about any 
+context, `tf-accordion-panel` makes no default assumptions about this in advance.
+
+
 
 ## Collaborating
 
