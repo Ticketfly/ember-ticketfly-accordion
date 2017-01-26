@@ -109,6 +109,14 @@ child panels. These are exposed callbacks that can be set with
 the `action` helper (i.e. `onPanelTabFocusIn=(action "panelTabFocusOut")`), or another template 
 helper that facilitates curried functions (for example, [Ember Concurrency's `perform` helper](http://ember-concurrency.com/#/docs/writing-tasks).
  
+#### Panel Body Expansion Changes
+
+`onPanelExpandChanged` fires when a `tf-accordion-panel-body` component detects a change
+to its `isExpanded` attribute. 
+
+When the action fires it sends two arguments: the panel-body's parent `tf-accordion-panel` component,
+and whether or not the panel body is currently (i.e: newly) expanded (boolean).
+ 
 
 #### Focus Event callbacks
 
@@ -135,14 +143,6 @@ Your handler will be called with the following arguments:
 ##### onPanelAnimatedClosed
 
 ***TODO: Document above and link here***
-
-#### Panel Body Expansion Changes
-
-`onPanelExpandChanged` fires when a `tf-accordion-panel-body` component detects a change
-to its `isExpanded` attribute. 
-
-When the action fires it sends two arguments: the panel-body's parent `tf-accordion-panel` component,
-and whether or not the panel body is currently (i.e: newly) expanded (boolean).
 
 #### Making use of Currying
 
