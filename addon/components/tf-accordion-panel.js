@@ -22,7 +22,27 @@ export default Component.extend({
   classNames: ['tfa-panel'],
   classNameBindings: ['_expandedClassNames'],
 
+  attributeBindings: ['aria-level'],
+
+  /**
+   * The container for the panel's button should have
+   * a `heading` role.
+   *
+   * @see https://www.w3.org/TR/wai-aria-practices-1.1/#wai-aria-roles-states-and-properties
+   * @property ariaRole
+   * @type String
+   */
+  ariaRole: 'heading',
+
   /* ---------- API ---------- */
+
+  /**
+   * The conceptual "heading level" that this panel represents
+   *
+   * @property aria-level
+   * @type String
+   */
+  'aria-level': null,
 
   /**
    * a unique ID for this panel's child tab, which will

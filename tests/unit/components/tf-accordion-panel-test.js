@@ -15,7 +15,11 @@ const CLASS_NAMES = {
   BODY: 'test-accordion-panel__body'
 };
 
-let expected, actual, component;
+let message = '';
+let expected;
+let actual;
+let component;
+let accordionComponentStub;
 
 moduleForComponent('tf-accordion-panel', 'Unit | Component | tf accordion panel root', {
   // Specify the other units that are required for this test
@@ -23,12 +27,19 @@ moduleForComponent('tf-accordion-panel', 'Unit | Component | tf accordion panel 
     'component:tf-accordion-panel-tab',
     'component:tf-accordion-panel-body'
   ],
-  unit: true
+
+  unit: true,
+
+  beforeEach() {
+    accordionComponentStub = sinon.stub(AccordionComponentStub);
+  },
+
+  afterEach() {
+    sinon.restore(accordionComponentStub);
+  }
 });
 
 test('registering with its parent accordion', function(assert) {
-  const accordionComponentStub = this.stub(AccordionComponentStub);
-
   run(() => {
     component = this.subject({ accordion: accordionComponentStub });
   });
@@ -47,7 +58,6 @@ test('registering with its parent accordion', function(assert) {
 });
 
 test('generating ids for its child tab and body', function (assert) {
-  const accordionComponentStub = this.stub(AccordionComponentStub);
   const opts = {
     accordion: accordionComponentStub,
     tabClassName: CLASS_NAMES.TAB,
@@ -63,13 +73,47 @@ test('generating ids for its child tab and body', function (assert) {
   const tabElem = component.element.querySelector(`.${CLASS_NAMES.TAB}`);
   const bodyElem = component.element.querySelector(`.${CLASS_NAMES.BODY}`);
 
+  message = 'panel tab uses id passed from parent component';
   expected = component.get('tabID');
   actual = tabElem.getAttribute('id');
 
-  assert.equal(actual, expected, 'panel tab uses id passed from parent component');
+  assert.equal(actual, expected, message);
 
+  message = 'panel body uses id passed from parent component';
   expected = component.get('panelBodyID');
   actual = bodyElem.getAttribute('id');
 
-  assert.equal(actual, expected, 'panel body uses id passed from parent component');
+  assert.equal(actual, expected, message);
 });
+
+test('WAI-ARIA-compliant attributes', function(assert) {
+  run(() => {
+    component = this.subject({ accordion: accordionComponentStub });
+  });
+
+  this.render();
+
+  message = 'the `role` attribute of `"heading"` is present';
+  expected = 'heading';
+  actual = component.element.getAttribute('role');
+
+  assert.equal(actual, expected, message);
+
+  message = 'no `aria-level` value is set or defined by default';
+  expected = null;
+  actual = component.element.getAttribute('aria-level');
+
+  assert.equal(actual, expected, message);
+
+  message = '`aria-level` attribute and value are applied when set';
+  expected = '3';
+
+  run(() => {
+    component.set('aria-level', expected);
+  });
+
+  actual = component.element.getAttribute('aria-level');
+
+  assert.equal(actual, expected, message);
+});
+
