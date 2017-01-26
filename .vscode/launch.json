@@ -80,18 +80,6 @@
       "outFiles": []
     },
     {
-      "name": "Attach",
-      "type": "node",
-      "request": "attach",
-      "port": 5858,
-      "address": "localhost",
-      "restart": false,
-      "sourceMaps": false,
-      "outFiles": [],
-      "localRoot": "${workspaceRoot}",
-      "remoteRoot": null
-    },
-    {
       "name": "Attach to Process",
       "type": "node",
       "request": "attach",
