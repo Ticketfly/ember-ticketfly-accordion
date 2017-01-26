@@ -1,3 +1,9 @@
+# 0.4.1 (January 25, 2017)
+
+- **[ADDED]**: `role="heading"` is now applied to the element for the `tfa-panel` component ([#32](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/32])).
+- **[ADDED]**: The `tfa-panel` component now has an attribute binding for `aria-level` ([#32](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/32])).
+
+
 # 0.4.0 (January 3, 2017)
 
 - **[BREAKING CHANGE]** Change name of attributes used to set class names for expanded panels ([#29](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/29])).
@@ -6,6 +12,7 @@
   + `panelExpandedClass` on the `tf-accordion-panel-tab` component is now `expandedClassName`.
     + This is more consistent with the `expandedClassName` property on the `tf-accordion-panel` component
     and feels more intuitive when declaring in markup.
+
 
 # 0.3.1 (December 27, 2016)
 
