@@ -1,0 +1,5 @@
+.c-shell-snippet {
+  border-radius: var(--border-radius__widget-box);
+  /*background-color: color(var(--color__black) a(33%));*/
+  background-color: var(--theme-color__primary--lighter);
+}

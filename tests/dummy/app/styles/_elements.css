@@ -1,9 +1,8 @@
 /**
  * Styles here directly target HTML elements -- not classes.
  *
- * These are for concerns that rarely, if ever, change, and are meant to be
- * a lighter version of something like normalize.css (https://necolas.github.io/normalize.css/)
- * ("lighter" meaning only add stuff as needed... if needed... while generally trying to compose classes 😀)
+ * These are for concerns that rarely, if ever, change, and
+ * revolve around the fundmental structure of HTML.
  */
 
 html {
@@ -18,8 +17,8 @@ body {
   padding: 0;
 }
 
-ul {
- list-style-type: none;
- margin: 0;
- padding: 0;
+blockquote,
+figure,
+pre {
+  margin: 0;
 }

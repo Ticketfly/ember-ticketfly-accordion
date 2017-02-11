@@ -1,3 +1,20 @@
+@import "./variables/_animation-duration.css";
+@import "./variables/_animation-easing.css";
+@import "./variables/_breakpoints.css";
 @import "./variables/_colors.css";
 @import "./variables/_dimensions.css";
+@import "./variables/_fonts.css";
 @import "./variables/_spacing.css";
+@import "./variables/_ui-components.css";
+
+:root {
+  --min-width__application: var(--breakpoint-threshold--xSmall);
+  --max-width__application: var(--breakpoint-threshold--xLarge);
+
+  /* Widths for content framed within a conceptual article grid (i.e. non-presentationl elements of the page) */
+  --min-width__article-frame: var(--breakpoint-threshold--small);
+  --max-width__article-frame: var(--breakpoint-threshold--medium);
+
+  --min-width__page-frame: var(--breakpoint-threshold--medium);
+  --max-width__page-frame: var(--breakpoint-threshold--large);
+}

@@ -1,172 +1,502 @@
-<section class="p-index u-fill-width u-fill-height u-overflow-hide u-overflow-auto-y">
+<section class="p-home u-fill u-overflow-hide u-overflow-y-auto">
 
-  <section>
-    <h1 class="o-content-box">Ember Ticketfly Accordion</h1>
-  </section>
+  <header class="p-home__banner-container g-bg-primary--darker u-relative">
+    {{home-banner class="u-relative u-width-70 u-fill-height u-mh-auto o-page-frame"}}
+  </header>
 
+  <nav class="p-home__banner-menu-container u-relative g-nearWhite g-bg-primary o-box--inset-stretch-md">
+    {{home-banner-menu class="o-article-frame u-fill u-text-center" on-item-select=(route-action 'sectionSelected')}}
+  </nav>
 
-  <section class="u-width-80 u-m-auto u-mt4">
-    <h2>Installation</h2>
-    <pre>
-      ember install ember-ticketfly-accordion
-    </pre>
+  <article class="c-article u-p-lg o-article-frame">
+    <section class="c-article__section c-article-section u-mh-auto">
+      <h1 id="installation">
+        {{svg-icon fileName="icon-install-arrows" stroke="currentColor" class="u-valign-middle u-mr-sm"}}
+        Installation
+      </h1>
 
-    <h2>Example Usage</h2>
+      <div class="o-grid o-grid--center u-mt-lg">
+        <div class="c-shell-snippet o-content-box u-inline-block u-mh-auto">
+          <code>ember install ember-ticketfly-accordion</code>
+        </div>
+      </div>
+    </section>
 
-    <section class="p-index__accordion-section">
-      <h4>Standard Accordion With Focus Cycling</h4>
+    {{divider-dots dotGapSize=100 numDots=4 class="c-article__section-divider u-block u-mh-auto g-primary"}}
 
-      {{#tf-accordion class="p-index__accordion c-accordion" animatable=false as |accordion|}}
+    <section class="c-article__section c-article-section u-mh-auto">
+      <h1 id="keyboard-support">
+        {{svg-icon fileName="icon-keyboard" fill="currentColor" class="u-valign-middle u-mr-sm"}}
+        Keyboard Support
+      </h1>
 
-        {{accordion.panel
-          class="c-accordion__panel"
-          tabClassName="c-accordion__panel-tab"
-          bodyClassName="c-accordion__panel-body"
-          tabTitle=model.ironMan.synopsis.title
-          bodyContent=model.ironMan.synopsis.content
+      <p>
+        Ember Ticketfly Accordion has been developed to comply fully with the
+        <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#accordion" class="c-markup-link" target="_blank">WAI ARIA Specification for accordions</a>.
+        That means keyboard support. Here's a quick guide:
+      </p>
+
+      <h2 id="keyboard-support-focus">Controlling Focus</h2>
+
+      <h3>Using Arrow Keys</h3>
+      <p>
+        Arrow keys will adjust the focused panel tab <i>within</i> an accordion:
+      </p>
+      <ul>
+        <li><code class="c-code">&darr;</code> | <code class="c-code">&rarr;</code> will move the focus to the next tab in the accordion.</li>
+        <li><code class="c-code">&uarr;</code> | <code class="c-code">&larr;</code> will move the focus to the previous tab in the accordion.</li>
+      </ul>
+      <p>
+        Furthermore, unless <a class="c-markup-link" href="#usage-cycling">`cycleFocus` is disabled</a>,
+        cycling will occur when arrowing past the last panel tab in either direction.
+      </p>
+
+      <h3>Tabbing</h3>
+      <p>
+        Tabbing behaves slightly different than arrowing: It's meant to enable navigation
+        across the entire document.
+      </p>
+      <p>
+        Since accordion panel tabs are interactive <code class="c-code">&lt;button&gt;</code>,
+        this means that you can defintely tab <i>to</i> them. However, tabbing past the last
+        panel tab will take your focus to the next element in the page's <code class="c-code">tabindex</code> -- wherever
+        that may be.
+      </p>
+
+      <h2 id="keyboard-support-expansion">Opening &amp; Closing</h2>
+      <p>
+        Because it's just a native HTML <code class="c-code">&lt;button&gt;</code>,
+        each panel-tab can be interacted with in all of the ways you'd expect: In addition to
+        clicking and touching, its default "activation" event can be triggered by focusing the element,
+        and then
+        <a href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html#kbd_label" class="c-markup-link" target="_blank">
+          pressing <code class="c-code">space</code> or <code class="c-code">enter</code>
+        </a>.
+      </p>
+    </section>
+
+    {{divider-dots class="c-article__section-divider u-block u-mh-auto g-primary" dotGapSize=100 numDots=4}}
+
+    <section class="c-article__section c-article-section u-mh-auto">
+      <h1 id="usage">
+        {{svg-icon fileName="icon-accordion-wireframe" stroke="currentColor" class="u-valign-middle u-mr-sm"}}
+        Usage Patterns
+      </h1>
+
+      <h2>Controlling Basic "Accordion"-like behavior</h2>
+      <p>
+        The following properties can be set on the <code class="c-code">tf-accordion</code> component to control its fundamental
+        behaviors:
+      </p>
+
+      <ul>
+        <li><code class="c-code">multiExpand</code> &mdash; Default: <code class="c-code">false</code></li>
+        <li><code class="c-code">cycleFocus</code> &mdash; Default: <code class="c-code">true</code></li>
+        <li><code class="c-code">animatable</code> &mdash; Default: <code class="c-code">true</code></li>
+      </ul>
+
+      <div class={{concat
+          'c-sample-block '
+          'c-article-section__another-block '
+          'o-grid '
+          'o-grid--guttered '
+          (if media.greaterThanSmall
+            'o-grid--nowrap o-grid--align-top'
+            'o-grid--fill o-grid--align-middle'
+          )
         }}
+      >
+        <div class="c-sample-block__snippet-container o-grid-cell">
+          {{code-snippet class="c-code-snippet g-box-shadow-2" name="accordion-demo-basic-behavior.hbs"}}
+        </div>
 
-        {{#accordion.panel class="c-accordion__panel" as |panel|}}
-          {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
-          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-            <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
-            <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-            <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
-            <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
-            <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
-          {{/panel.body}}
-        {{/accordion.panel}}
+        <div class="c-sample-block__accordion-container o-grid-cell">
+          {{#tf-accordion class="c-accordion g-box-shadow-2" as |accordion|}}
 
-        {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
-          {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.cast.title}}
-          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-            {{#each model.ironMan.cast.content as |castMember|}}
-              <li>{{castMember}}</li>
-            {{/each}}
-          {{/panel.body}}
-        {{/accordion.panel}}
+            {{#accordion.panel class="c-accordion__panel" as |panel|}}
+              {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.synopsis.title}}
+              {{panel.body class="c-accordion__panel-body" content=model.ironMan.synopsis.content}}
+            {{/accordion.panel}}
 
-        {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
-          {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.similarTitles.title}}
-          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-            {{#each model.ironMan.similarTitles.content as |similarTitle|}}
-              <li>{{similarTitle}}</li>
-            {{/each}}
-          {{/panel.body}}
-        {{/accordion.panel}}
+            {{#accordion.panel class="c-accordion__panel" as |panel|}}
+              {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
+              {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
+                <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
+              {{/panel.body}}
+            {{/accordion.panel}}
 
-      {{/tf-accordion}}
+          {{/tf-accordion}}
+        </div>
+      </div>
 
-    </section>
+      <h3 id="usage-multiexpand" class="c-article-section__another-block">Activating Multi-Expand</h3>
 
-    <section class="p-index__accordion-section">
-
-      <h4>Multi-Expand Accordion Without Focus Cycling</h4>
-
-      {{#tf-accordion
-        class="p-index__accordion c-accordion"
-        cycleFocus=false
-        multiExpand=true
-        animatable=false as |accordion|
-      }}
-
-        {{accordion.panel
-          class="c-accordion__panel"
-          tabClassName="c-accordion__panel-tab"
-          bodyClassName="c-accordion__panel-body"
-          tabTitle=model.ironMan.synopsis.title
-          bodyContent=model.ironMan.synopsis.content
+      <div class={{concat
+          'c-sample-block '
+          'o-grid '
+          'o-grid--guttered '
+          (if media.greaterThanSmall
+            'o-grid--nowrap o-grid--align-top'
+            'o-grid--fill o-grid--align-middle'
+          )
         }}
+      >
 
-        {{#accordion.panel class="c-accordion__panel" as |panel|}}
-          {{panel.tab class="c-accordion__panel-tab" title=model.guardians.stats.title}}
-          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-            <li><span class="g-embolden">Release Date:</span> <span>{{model.guardians.stats.releaseDate}}</span></li>
-            <li><span class="g-embolden">Director:</span> <span>{{model.guardians.stats.content.director}}</span></li>
-            <li><span class="g-embolden">Runtime:</span> <span>{{model.guardians.stats.content.runtime}}</span></li>
-            <li><span class="g-embolden">Box Office:</span> <span>{{model.guardians.stats.content.boxOffice}}</span></li>
-            <li><span class="g-embolden">Budget:</span> <span>{{model.guardians.stats.content.budget}}</span></li>
-          {{/panel.body}}
-        {{/accordion.panel}}
+        <div class="c-sample-block__accordion-container o-grid-cell">
+          {{#tf-accordion class="c-accordion g-box-shadow-2" multiExpand=true as |accordion|}}
 
-        {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
-          {{panel.tab class="c-accordion__panel-tab" title=model.guardians.cast.title}}
-          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-            {{#each model.guardians.cast.content as |castMember|}}
-              <li>{{castMember}}</li>
-            {{/each}}
-          {{/panel.body}}
-        {{/accordion.panel}}
+            {{#accordion.panel class="c-accordion__panel" as |panel|}}
+              {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.synopsis.title}}
+              {{panel.body class="c-accordion__panel-body" content=model.ironMan.synopsis.content}}
+            {{/accordion.panel}}
 
-        {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
-          {{panel.tab class="c-accordion__panel-tab" title=model.guardians.similarTitles.title}}
-          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-            {{#each model.guardians.similarTitles.content as |similarTitle|}}
-              <li>{{similarTitle}}</li>
-            {{/each}}
-          {{/panel.body}}
-        {{/accordion.panel}}
+            {{#accordion.panel class="c-accordion__panel" as |panel|}}
+              {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
+              {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
+                <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
+              {{/panel.body}}
+            {{/accordion.panel}}
 
-      {{/tf-accordion}}
+          {{/tf-accordion}}
+        </div>
 
-    </section>
+        <div class="c-sample-block__snippet-container o-grid-cell">
+          {{code-snippet class="c-code-snippet g-box-shadow-2" name="accordion-demo-activate-multi-expand.hbs"}}
+        </div>
 
-    <section class="p-index__accordion-section">
+      </div>
 
-      <h4>Animatable Accordion</h4>
+      <h3 id="usage-cycling" class="c-article-section__another-block">Disabling Focus Cycling</h3>
 
-      {{#tf-accordion class="p-index__accordion c-accordion" animatable=true as |accordion|}}
-
-        {{accordion.panel
-          class="c-accordion__panel"
-          tabClassName="c-accordion__panel-tab"
-          bodyClassName="c-accordion__panel-body"
-          tabTitle=model.ironMan.synopsis.title
-          bodyContent=model.ironMan.synopsis.content
+      <div class={{concat
+          'c-sample-block '
+          'o-grid '
+          'o-grid--guttered '
+          (if media.greaterThanSmall
+            'o-grid--nowrap o-grid--align-top'
+            'o-grid--fill o-grid--align-middle'
+          )
         }}
+      >
+        <div class="c-sample-block__snippet-container o-grid-cell">
+          {{code-snippet class="c-code-snippet g-box-shadow-2" name="accordion-demo-deactivate-focus-cycling.hbs"}}
+        </div>
 
-        {{#accordion.panel class="c-accordion__panel" as |panel|}}
-          {{panel.tab class="c-accordion__panel-tab" title=model.guardians.stats.title}}
-          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-            <li><span class="g-embolden">Release Date:</span> <span>{{model.guardians.stats.releaseDate}}</span></li>
-            <li><span class="g-embolden">Director:</span> <span>{{model.guardians.stats.content.director}}</span></li>
-            <li><span class="g-embolden">Runtime:</span> <span>{{model.guardians.stats.content.runtime}}</span></li>
-            <li><span class="g-embolden">Box Office:</span> <span>{{model.guardians.stats.content.boxOffice}}</span></li>
-            <li><span class="g-embolden">Budget:</span> <span>{{model.guardians.stats.content.budget}}</span></li>
-          {{/panel.body}}
-        {{/accordion.panel}}
+        <div class="c-sample-block__accordion-container o-grid-cell">
+          {{#tf-accordion class="c-accordion g-box-shadow-2" cycleFocus=false as |accordion|}}
 
-        {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
-          {{panel.tab class="c-accordion__panel-tab" title=model.guardians.cast.title}}
-          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-            {{#each model.guardians.cast.content as |castMember|}}
-              <li>{{castMember}}</li>
-            {{/each}}
-          {{/panel.body}}
-        {{/accordion.panel}}
+            {{#accordion.panel class="c-accordion__panel" as |panel|}}
+              {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.synopsis.title}}
+              {{panel.body class="c-accordion__panel-body" content=model.ironMan.synopsis.content}}
+            {{/accordion.panel}}
 
-        {{#accordion.panel class="c-accordion__panel" isExpanded=true as |panel|}}
-          {{panel.tab class="c-accordion__panel-tab" title=model.guardians.similarTitles.title}}
-          {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-            {{#each model.guardians.similarTitles.content as |similarTitle|}}
-              <li>{{similarTitle}}</li>
-            {{/each}}
-          {{/panel.body}}
-        {{/accordion.panel}}
+            {{#accordion.panel class="c-accordion__panel" as |panel|}}
+              {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
+              {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
+                <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
+              {{/panel.body}}
+            {{/accordion.panel}}
 
-      {{/tf-accordion}}
+          {{/tf-accordion}}
+        </div>
 
+      </div>
+
+      <h3 id="usage-disable-default-animation" class="c-article-section__another-block">Disabling Default Animation</h3>
+
+      <div class={{concat
+          'c-sample-block '
+          'o-grid '
+          'o-grid--guttered '
+          (if media.greaterThanSmall
+            'o-grid--nowrap o-grid--align-top'
+            'o-grid--fill o-grid--align-middle'
+          )
+        }}
+      >
+
+        <div class="c-sample-block__accordion-container o-grid-cell">
+          {{#tf-accordion class="c-accordion g-box-shadow-2" animatable=false as |accordion|}}
+
+            {{#accordion.panel class="c-accordion__panel" as |panel|}}
+              {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.synopsis.title}}
+              {{panel.body class="c-accordion__panel-body" content=model.ironMan.synopsis.content}}
+            {{/accordion.panel}}
+
+            {{#accordion.panel class="c-accordion__panel" as |panel|}}
+              {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
+              {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
+                <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
+              {{/panel.body}}
+            {{/accordion.panel}}
+
+          {{/tf-accordion}}
+        </div>
+
+        <div class="c-sample-block__snippet-container o-grid-cell">
+          {{code-snippet class="c-code-snippet g-box-shadow-2" name="accordion-demo-deactivate-animation.hbs"}}
+        </div>
+
+      </div>
     </section>
 
-    {{!-- TODO: Implement accordion that can work as a menu list
-    <section>
-      <h4>Navigaton Menu</h4>
-      <nav>
+    {{divider-dots class="c-article__section-divider u-block u-mh-auto g-primary" dotGapSize=100 numDots=4}}
 
-      </nav>
+    <section class="c-article__section c-article-section u-mh-auto">
+
+      <h1 id="styling">
+        {{svg-icon fileName="icon-brush" fill="currentColor" class="u-valign-middle u-mr-sm"}}
+        Styling Tips
+      </h1>
+
+      <h2 id="styling-built-in-classes">Hooking on Built-in Class Names</h2>
+
+      <p>
+        Each component in the accoridion system has its own namespaced class name, should
+        you wish to target it directly:
+      </p>
+
+      <table class="c-table u-fill-width u-mv-md">
+        <thead>
+          <tr>
+            <th class="c-table__cell c-table__head-cell">Component (Registered Name)</th>
+            <th class="c-table__cell c-table__head-cell">CSS Selector</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="c-table__cell"><code class="c-code">tf-accordion</code></td>
+            <td class="c-table__cell"><code class="c-code">.tfa-accordion</code></td>
+          </tr>
+          <tr>
+            <td class="c-table__cell"><code class="c-code">tf-accordion-panel</code></td>
+            <td class="c-table__cell"><code class="c-code">.tfa-panel</code></td>
+          </tr>
+          <tr>
+            <td class="c-table__cell"><code class="c-code">tf-accordion-panel-body</code></td>
+            <td class="c-table__cell"><code class="c-code">.tfa-panel-body</code></td>
+          </tr>
+          <tr>
+            <td class="c-table__cell"><code class="c-code">tf-accordion-panel-tab</code></td>
+            <td class="c-table__cell"><code class="c-code">.tfa-panel-tab</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="c-article-section__another-block">
+        It's worth noting that by default, <a class="c-markup-link" href="https://github.com/Ticketfly/ember-ticketfly-accordion/blob/master/vendor/styles/ember-ticketfly-accordion.css" target="_blank">minor styling</a>
+        is applied to the accordion system under the hood &mdash; mainly
+        to normalize the appearance of its semantic HTML (primarilly, the <code class="c-code">&lt;button&gt;</code> element used for each panel tab)
+        and ensure that accordions render with an expected initial structure.
+      </p>
+
+      <p>
+        Here's how an accordion will appear with <i>only</i> its base styles:
+      </p>
+
+      <div class={{concat
+        'c-sample-block '
+        'o-grid '
+        'o-grid--guttered '
+        (if media.greaterThanSmall
+          'o-grid--nowrap o-grid--align-top'
+          'o-grid--fill o-grid--align-middle'
+        )
+      }}>
+        <div class="c-sample-block__snippet-container o-grid-cell">
+          {{code-snippet class="c-code-snippet g-box-shadow-2" name="ember-ticketfly-accordion.css"}}
+        </div>
+
+        <div class="c-sample-block__accordion-container o-grid-cell">
+          {{#tf-accordion as |accordion|}}
+
+            {{accordion.panel tabTitle=model.ironMan.synopsis.title bodyContent=model.ironMan.synopsis.content}}
+
+            {{#accordion.panel as |panel|}}
+              {{panel.tab title=model.ironMan.stats.title}}
+              {{#panel.body class="g-list-reset" tagName="ul"}}
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
+                <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
+              {{/panel.body}}
+            {{/accordion.panel}}
+
+          {{/tf-accordion}}
+        </div>
+      </div>
+
+      <p class="c-article-section__another-block">
+        The accordions that you've been seing throughout this page, however,
+        have been styled with a bit of extra polish. You can view the stylesheet use for those
+        <a href="https://github.com/Ticketfly/ember-ticketfly-accordion/blob/dummy-app/tests/dummy/app/styles/ui-components/_accordion.css" class="c-markup-link">
+          here
+        </a>.
+      </p>
+
+      <h2 class="c-article-section__another-block">Expanded Panel Class Names</h2>
+
+      <p>
+        For each panel inside of an accordion, additional classes will be added to the
+        panel container and panel tab elements when that panel is expanded.
+      </p>
+
+      <table class="c-table u-fill-width u-mv-md">
+        <thead>
+          <tr>
+            <th class="c-table__cell c-table__head-cell">Component (Registered Name)</th>
+            <th class="c-table__cell c-table__head-cell">Expanded Class Selector</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="c-table__cell">tf-accordion-panel</td>
+            <td class="c-table__cell"><code class="c-code">.tfa-panel--expanded</code></td>
+          </tr>
+          <tr>
+            <td class="c-table__cell">tf-accordion-panel-tab</td>
+            <td class="c-table__cell"><code class="c-code">.tfa-panel-tab--expanded</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="c-article-section__another-block">
+        Just as with <a class="c-markup-link" href="#styling-built-in-classes">built-in classes</a>, you can play off of these selectors directly.
+        However, you can also specify custom class names to be added when a panel expands.
+      </p>
+
+      <table class="c-table u-fill-width u-mv-md">
+        <thead>
+          <tr>
+            <th class="c-table__cell c-table__head-cell">Component (Registered Name)</th>
+            <th class="c-table__cell c-table__head-cell">Expansion Class Name Hooks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="c-table__cell">tf-accordion-panel</td>
+            <td class="c-table__cell">
+              <ul class="g-list-reset">
+                <li>
+                  <code class="c-code">expandedClassName</code>
+                </li>
+                <li>
+                  <code class="c-code">expandedTabClassName</code>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="c-table__cell">tf-accordion-panel-tab</td>
+            <td class="c-table__cell">
+              <ul class="g-list-reset">
+                <li>
+                  <code class="c-code">expandedClassName</code>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="c-article-section__another-block">Custom Class Names Example</h2>
+
+      <p>
+        As you can see, you have all the flexibility you need to create some
+        powerful custom styling effects.
+      </p>
+
+      <div class={{concat
+          'c-sample-block '
+          'o-grid '
+          'o-grid--guttered '
+          (if media.greaterThanSmall
+            'o-grid--nowrap o-grid--align-top'
+            'o-grid--fill o-grid--align-middle'
+          )
+        }}
+      >
+
+        <div class="c-sample-block__snippet-container o-grid-cell">
+          {{code-snippet class="c-code-snippet g-box-shadow-2 u-mb-md" name="accordion-demo-deactivate-animation.hbs"}}
+          {{code-snippet class="c-code-snippet g-box-shadow-2 u-mb-md" name="accordion-demo-deactivate-animation.hbs"}}
+        </div>
+
+        <div class="c-sample-block__accordion-container o-grid-cell">
+          {{#tf-accordion class="c-accordion c-accordion--fancy g-box-shadow-2" as |accordion|}}
+
+            {{#accordion.panel
+              class="c-accordion__panel"
+              expandedClassName="c-accordion__panel--expanded" as |panel|
+            }}
+
+              {{fancy-demo-panel-tab tabComponent=panel.tab title=model.ironMan.synopsis.title}}
+
+              {{panel.body class="c-accordion__panel-body o-content-box" content=model.ironMan.synopsis.content}}
+            {{/accordion.panel}}
+
+            {{#accordion.panel
+              class="c-accordion__panel"
+              expandedClassName="c-accordion__panel--expanded" as |panel|
+            }}
+
+              {{fancy-demo-panel-tab tabComponent=panel.tab title=model.ironMan.stats.title}}
+
+              {{#panel.body class="c-accordion__panel-body g-list-reset o-content-box" tagName="ul"}}
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
+                <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
+              {{/panel.body}}
+            {{/accordion.panel}}
+
+            {{#accordion.panel
+              class="c-accordion__panel"
+              expandedClassName="c-accordion__panel--expanded" as |panel|
+            }}
+              {{fancy-demo-panel-tab tabComponent=panel.tab title=model.ironMan.cast.title}}
+
+              {{#panel.body class="c-accordion__panel-body g-list-reset o-content-box" tagName="ul"}}
+                {{#each model.ironMan.similarTitles.content as |similarTitle|}}
+                  <li>{{similarTitle}}</li>
+                {{/each}}
+              {{/panel.body}}
+            {{/accordion.panel}}
+
+            {{#accordion.panel
+              class="c-accordion__panel"
+              expandedClassName="c-accordion__panel--expanded" as |panel|
+            }}
+              {{fancy-demo-panel-tab tabComponent=panel.tab title=model.ironMan.similarTitles.title}}
+
+              {{#panel.body class="c-accordion__panel-body g-list-reset o-content-box" tagName="ul"}}
+                {{#each model.ironMan.similarTitles.content as |similarTitle|}}
+                  <li>{{similarTitle}}</li>
+                {{/each}}
+              {{/panel.body}}
+            {{/accordion.panel}}
+
+          {{/tf-accordion}}
+        </div>
+      </div>
     </section>
-    --}}
-
-  </section>
-
+  </article>
 </section>

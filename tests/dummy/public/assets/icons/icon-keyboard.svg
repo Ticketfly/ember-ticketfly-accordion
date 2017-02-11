@@ -1,0 +1,11 @@
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 26.53" aria-labelledby="title description">
+  <title id="title">Keyboard</title>
+  <desc id="description">A set of keys representing a keyboard</desc>
+  <g id="keyboard">
+    <rect id="keyboard__spacebar" y="19.02" width="44" height="7.51" rx="1.38" ry="1.38"/>
+    <rect id="keyboard__arrow_arrow_arrow--down" data-name="keyboard__arrow arrow arrow--down" x="16.9" y="9.51" width="10.21" height="7.51" rx="1.38" ry="1.38"/>
+    <rect id="keyboard__arrow_arrow_arrow--right" data-name="keyboard__arrow arrow arrow--right" x="28.69" y="9.73" width="10.21" height="7.29" rx="1.38" ry="1.38"/>
+    <rect id="keyboard__arrow_arrow_arrow--left" data-name="keyboard__arrow arrow arrow--left" x="5.1" y="9.51" width="10.21" height="7.51" rx="1.38" ry="1.38"/>
+    <rect id="keyboard__arrow_arrow_arrow--up" data-name="keyboard__arrow arrow arrow--up" x="16.9" width="10.21" height="7.51" rx="1.38" ry="1.38"/>
+  </g>
+</svg>

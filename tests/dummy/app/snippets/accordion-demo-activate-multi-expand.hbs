@@ -1,0 +1,22 @@
+{{#tf-accordion multiExpand=true as |accordion|}}
+
+  {{#accordion.panel as |panel|}}
+    {{panel.tab title="Synopsis"}}
+    {{panel.body content="A billionaire industrialist and genius inventor, Tony Stark (Robert Downey Jr.), is conducting weapons tests overseas,
+      but terrorists kidnap him to force him to build a devastating weapon. Instead, he builds an armored suit and upends
+      his captors. Returning to America, Stark refines the suit and uses it to combat crime and terrorism."
+    }}
+  {{/accordion.panel}}
+
+  {{#accordion.panel as |panel|}}
+    {{panel.tab title=model.ironMan.stats.title}}
+    {{#panel.body tagName="ul"}}
+      <li>Release Date: May 2, 2008 (USA)</li>
+      <li>Director: May 2, 2008 (USA)</li>
+      <li>Runtime: 2h 6m</li>
+      <li>Box Office: 585.2 million USD</li>
+      <li>Budget: 140 million USD</li>
+    {{/panel.body}}
+  {{/accordion.panel}}
+
+{{/tf-accordion}}

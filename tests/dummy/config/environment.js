@@ -31,7 +31,6 @@ module.exports = function(environment) {
           easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)' // ease-out-cubic
         }
       }
-
     }
   };
 

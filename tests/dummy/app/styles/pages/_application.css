@@ -1,3 +1,7 @@
+.p-application__navbar {
+  height: var(--height__navbar);
+}
+
 .p-application__main-content {
-  background-color: var(--theme-color__offWhite);
+  padding-top: var(--height__navbar);
 }

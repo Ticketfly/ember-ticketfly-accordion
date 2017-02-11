@@ -4,9 +4,9 @@
 }
 
 .o-content-box {
-  padding: $padding__content-box;
+  padding: var(--padding__content-box);
 }
 
 .o-content-box--lg {
-  padding: $padding__content-box--lg;
+  padding: var(--padding__content-box--lg);
 }

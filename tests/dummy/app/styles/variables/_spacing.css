@@ -16,4 +16,10 @@
   --indentation-1: 1.25em;
   --indentation-2: 2em;
   --indentation-3: 3em;
+
+  /*
+   * 180:130 padding ratio to align content aspect ratio with human FOV
+   */
+  --padding__content-box: 0.75em 1.05em;
+  --padding__content-box--lg: 1.5em 2.10em;
 }

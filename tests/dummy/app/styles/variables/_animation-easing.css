@@ -1,0 +1,15 @@
+:root {
+  --easing__ease-in-quad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+  --easing__ease-in-sine: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+
+  --easing__ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  --easing__ease-out-quad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  --easing__ease-out-cubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  --easing__ease-out-cubic--bounce-25: cubic-bezier(0.27, 0.78, 0.75, 2.15);
+
+  --easing__ease-in-out: cubic-bezier(.42, 0, .58, 1);
+
+  --easing__accelerating-exit: cubic-bezier(0.34, 0, 0, 1);
+  --easing__decelerating-entrance: var(--easing__ease-out-cubic);
+  --easing__point-to-point: var(--easing__ease-in-out);
+}

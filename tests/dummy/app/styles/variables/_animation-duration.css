@@ -1,0 +1,6 @@
+:root {
+  --duration__toggle-opacity: 0.25s;
+  --duration__color-shift: 0.275s;
+  --duration__shift-element: 0.2s;
+  --duration__slide-element: 0.42s;
+}

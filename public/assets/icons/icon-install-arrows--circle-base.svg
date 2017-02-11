@@ -1,0 +1,7 @@
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43.99 43.99" aria-labelledby="title description">
+  <title id="title">Install Arrows</title>
+  <desc id="description">Downward-pointing arrows inside of a circle</desc>>
+  <g id="install-arrows--circle-base">
+    <path id="icon" d="M22,0A22,22,0,1,0,44,22,22,22,0,0,0,22,0Zm9,25.5-8.53,8a.69.69,0,0,1-.94,0L13,25.5a.69.69,0,0,1,.94-1L22,32.05l8.06-7.56a.69.69,0,0,1,.94,1Zm0-7-8.53,8a.69.69,0,0,1-.94,0L13,18.5a.69.69,0,0,1,.94-1L22,25.05l8.06-7.56a.69.69,0,0,1,.94,1Zm0-7-8.53,8a.69.69,0,0,1-.94,0L13,11.5a.69.69,0,0,1,.94-1L22,18.05l8.06-7.56a.69.69,0,0,1,.94,1Z"/>
+  </g>
+</svg>

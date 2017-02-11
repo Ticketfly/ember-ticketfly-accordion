@@ -1,0 +1,37 @@
+/**
+ * UI COMPONENT VARIABLES
+ */
+
+ :root {
+
+  /* ------------ NAVBAR ------------ */
+
+  --height__navbar: 4rem;
+  --font-size__navbar-logo: 2.5rem;
+
+  /* ------------ PAGE BANNER ------------ */
+
+  --background-gradient__page-banner: linear-gradient(
+    to right,
+    var(--theme-color__primary--dark) 0%,
+    var(--theme-color__primary--light)
+  );
+
+  --height__home-banner-area: calc(46.25rem - var(--height__navbar));
+
+  --height__home-banner-menu: 10rem;
+
+  --height__home-banner-main: calc(
+    var(--height__home-banner-area) - var(--height__home-banner-menu)
+  );
+
+  /* ------------ ACCORDION ------------ */
+
+  --border-radius__widget-box: 0.25em;
+
+
+  /* ------------ MARKUP LINKS ------------ */
+
+  --color__markup-link: var(--theme-color__primary);
+  --color__markup-link--highlighted: var(--theme-color__primary--light);
+ }

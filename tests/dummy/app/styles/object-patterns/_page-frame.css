@@ -1,0 +1,15 @@
+/**
+ * Container for blocks within our application's
+ * "page frame".
+ */
+.o-page-frame {
+  min-width: var(--min-width__page-frame);
+
+  max-width: calc(
+    var(--max-width__page-frame) +
+    var(--spacing-3) * 2
+  );
+
+  margin-left: auto;
+  margin-right: auto;
+}

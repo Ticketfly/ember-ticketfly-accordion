@@ -1,0 +1,8 @@
+.c-code-snippet {
+  background-color: var(--color__gray--100);
+  background-color: hsla(276.7, 100%, 84.3%, 1);
+  background-color: var(--theme-color__primary--lighter);
+  border-radius: var(--border-radius__widget-box);
+  border-color: var(--color__gray--300);
+  border-width: 0.0625em;
+}

@@ -26,5 +26,11 @@ export default Route.extend({
       ironMan: IRON_MAN_OVERVIEW,
       guardians: GUARDIANS_OVERVIEW
     }
+  },
+
+  actions: {
+    sectionSelected(/* hash, ev */) {
+      // TODO: Animate scrolling here?
+    }
   }
 });

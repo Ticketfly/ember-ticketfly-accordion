@@ -14,7 +14,25 @@ module.exports = function(defaults) {
           { module: cssNext }
         ]
       }
-    }
+    },
+    svg: {
+      paths: [
+        'tests/dummy/public/assets/inline-svg'
+      ]
+    },
+    svgstore: {
+      excludeSourceFiles: true, // exclude all processed source files
+      files: {
+        sourceDirs: [ 'tests/dummy/public/assets/icons' ],
+        outputFile: '/assets/icons.svg',
+        excludeSourceFiles: true // exclude source files only for this master SVG
+      }
+    },
+    snippetPaths: [
+      'tests/dummy/app/snippets',
+      'tests/dummy/app/styles/ui-components',
+      'vendor/styles'
+    ]
   });
 
   /*
