@@ -1,6 +1,7 @@
 :root {
-  --color__panel-tab: hsla(0, 0%, 92%, 1.00);
-  --background-color__panel-tab: var(--theme-color__primary);
+  --color__panel-tab: var(--theme-color__supporting-1);
+  --color__focus-border: var(--theme-color__accent-1);
+  --background-color__panel-tab: var(--theme-color__primary--darker);
   --background-color__panel-body: hsla(0, 0%, 100%, 1.00);
 }
 
@@ -51,7 +52,7 @@
 }
 
 .c-accordion .c-accordion__panel-tab:focus::after {
-  border: 0.19rem solid var(--theme-color__supporting-1--dark);
+  border: 0.19rem solid var(--color__focus-border);
 }
 
 .c-accordion .c-accordion__panel-tab:focus::-moz-focus-inner {

@@ -20,5 +20,5 @@
 
 .c-navbar .c-navbar__nav-item:hover,
 .c-navbar .c-navbar__nav-item:focus {
-  color: var(--theme-color__supporting-2--light);
+  color: var(--theme-color__supporting-1);
 }

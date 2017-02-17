@@ -1,8 +1,28 @@
+.c-home-banner-menu .c-home-banner-menu__item {
+  position: relative;
+}
+
+.c-home-banner-menu .c-home-banner-menu__item-content {
+  width: 100%;
+  height: 100%;
+  background-color: var(--theme-color__supporting-1--dark);
+  color: var(--theme-color__supporting-1--lighter);
+  /*background-color: var(--theme-color__primary);
+  color: var(--theme-color__supporting-1);*/
+  border-radius: 50%;
+}
+
+.c-home-banner-menu .c-home-banner-menu__item-icon-container {
+  position: relative;
+  height: 50%;
+  width: 50%;
+}
+
 .c-home-banner-menu .c-home-banner-menu__item-icon {
-  /* Allow enough space to give the title 1em of top margin */
   height: calc(100% - 2em);
 }
 
+
 .c-home-banner-menu .c-home-banner-menu__item-title {
-  margin-top: 1em;
+  font-weight: bold;
 }

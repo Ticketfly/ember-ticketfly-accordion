@@ -1,4 +1,5 @@
 /* -------------- PRIMARY -------------- */
+
 .g-primary--lighter {
   color: var(--theme-color__primary--lighter);
 }
@@ -34,7 +35,8 @@
   background-color: var(--theme-color__primary--darker);
 }
 
-/* -------------- ACCENT 1 -------------- */
+/* -------------- SUPPORTING 1 -------------- */
+
 .g-supporting-1--lighter {
   color: var(--theme-color__supporting-1--lighter);
 }
@@ -71,77 +73,41 @@
 }
 
 
-/* -------------- ACCENT 2 -------------- */
-.g-supporting-2--lighter {
-  color: var(--theme-color__supporting-2--lighter);
+/* -------------- ACCENT 1 -------------- */
+
+.g-accent-1--lighter {
+  color: var(--theme-color__accent-1--lighter);
 }
-.g-bg-supporting-2--lighter {
-  background-color: var(--theme-color__supporting-2--lighter);
+.g-bg-accent-1--lighter {
+  background-color: var(--theme-color__accent-1--lighter);
 }
 
-.g-supporting-2--light {
-  color: var(--theme-color__supporting-2--light);
+.g-accent-1--light {
+  color: var(--theme-color__accent-1--light);
 }
-.g-bg-supporting-2--light {
-  background-color: var(--theme-color__supporting-2--light);
-}
-
-.g-supporting-2 {
-  color: var(--theme-color__supporting-2);
-}
-.g-bg-supporting-2 {
-  background-color: var(--theme-color__supporting-2);
+.g-bg-accent-1--light {
+  background-color: var(--theme-color__accent-1--light);
 }
 
-.g-supporting-2--dark {
-  color: var(--theme-color__supporting-2--dark);
+.g-accent-1 {
+  color: var(--theme-color__accent-1);
 }
-.g-bg-supporting-2--dark {
-  background-color: var(--theme-color__supporting-2--dark);
-}
-
-.g-supporting-2--darker {
-  color: var(--theme-color__supporting-2--darker);
-}
-.g-bg-supporting-2--darker {
-  background-color: var(--theme-color__supporting-2--darker);
+.g-bg-accent-1 {
+  background-color: var(--theme-color__accent-1);
 }
 
-
-/* -------------- ACCENT 3 -------------- */
-.g-supporting-2--lighter {
-  color: var(--theme-color__supporting-2--lighter);
+.g-accent-1--dark {
+  color: var(--theme-color__accent-1--dark);
 }
-.g-bg-supporting-2--lighter {
-  background-color: var(--theme-color__supporting-2--lighter);
+.g-bg-accent-1--dark {
+  background-color: var(--theme-color__accent-1--dark);
 }
 
-.g-supporting-2--light {
-  color: var(--theme-color__supporting-2--light);
+.g-accent-1--darker {
+  color: var(--theme-color__accent-1--darker);
 }
-.g-bg-supporting-2--light {
-  background-color: var(--theme-color__supporting-2--light);
-}
-
-.g-supporting-2 {
-  color: var(--theme-color__supporting-2);
-}
-.g-bg-supporting-2 {
-  background-color: var(--theme-color__supporting-2);
-}
-
-.g-supporting-2--dark {
-  color: var(--theme-color__supporting-2--dark);
-}
-.g-bg-supporting-2--dark {
-  background-color: var(--theme-color__supporting-2--dark);
-}
-
-.g-supporting-2--darker {
-  color: var(--theme-color__supporting-2--darker);
-}
-.g-bg-supporting-2--darker {
-  background-color: var(--theme-color__supporting-2--darker);
+.g-bg-accent-1--darker {
+  background-color: var(--theme-color__accent-1--darker);
 }
 
 

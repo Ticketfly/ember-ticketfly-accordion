@@ -15,7 +15,8 @@ export default Component.extend({
     'o-grid--align-center',
     'o-grid--align-middle',
     'o-grid--fit',
-    'g-list-reset'
+    'g-list-reset',
+    'u-text-center'
   ],
 
   'on-item-select'() {},

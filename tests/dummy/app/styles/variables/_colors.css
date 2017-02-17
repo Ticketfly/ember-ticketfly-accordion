@@ -1,64 +1,46 @@
 :root {
-  --theme-color__primary: hsla(261, 43%, 45%, 1.00);
+  --theme-color__primary: #5550DC;
+  --theme-color__primary--lighter: #D2D1FF;
+  --theme-color__primary--dark: #002ab2;
+  --theme-color__primary--darker: #00196B;
 
-  --theme-color__primary--lighter: color(
-    var(--theme-color__primary)
-    tint(50%)
-  );
+
   --theme-color__primary--light: color(
     var(--theme-color__primary)
     tint(20%)
   );
-  --theme-color__primary--dark: color(
-    var(--theme-color__primary)
-    shade(20%)
-  );
-  --theme-color__primary--darker: color(
-    var(--theme-color__primary)
-    shade(80%)
-  );
 
+  --theme-color__supporting-1: #FF5C75;
+  --theme-color__supporting-1--lighter: #FFD9E0;
+  --theme-color__supporting-1--dark: #db002a;
+  --theme-color__supporting-1--darker: #C32A58;
 
-  --theme-color__supporting-1: hsla(158, 78%, 50%, 1.00);
-
-  --theme-color__supporting-1--lighter: color(
-    var(--theme-color__supporting-1)
-    tint(50%)
-  );
   --theme-color__supporting-1--light: color(
     var(--theme-color__supporting-1)
     tint(20%)
   );
-  --theme-color__supporting-1--dark: color(
-    var(--theme-color__supporting-1)
-    shade(20%)
-  );
-  --theme-color__supporting-1--darker: color(
-    var(--theme-color__supporting-1)
-    shade(50%)
-  );
 
 
-  --theme-color__supporting-2: hsla(10, 66%, 63%, 1.00);
 
-  --theme-color__supporting-2--lighter: color(
-    var(--theme-color__supporting-2)
+  --theme-color__accent-1: #DAFF74;
+
+  --theme-color__accent-1--lighter: color(
+    var(--theme-color__accent-1)
     tint(50%)
   );
-  --theme-color__supporting-2--light: color(
-    var(--theme-color__supporting-2)
+  --theme-color__accent-1--light: color(
+    var(--theme-color__accent-1)
     tint(20%)
   );
-  --theme-color__supporting-2--dark: color(
-    var(--theme-color__supporting-2)
+  --theme-color__accent-1--dark: color(
+    var(--theme-color__accent-1)
     shade(20%)
   );
-  --theme-color__supporting-2--darker: color(
-    var(--theme-color__supporting-2)
+  --theme-color__accent-1--darker: color(
+    var(--theme-color__accent-1)
     shade(50%)
   );
 
-  /*--theme-color__page-background: hsla(31, 78%, 95%, 1.00);*/
   --theme-color__page-background: hsla(47, 74%, 94%, 1.00);
 
   --color__dark--100: hsla(249, 9%, 45%, 1.00);
