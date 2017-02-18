@@ -35,10 +35,10 @@ function makeStartingOpenEffect(elem) {
     elem,
     [
       // fun trick that will allow us to measure the element's final height before animating it there from `display: none`
-      { position, visibility: 'inherit' },
-      { position, visibility: 'hidden' }
+      { position, visibility: 'inherit', opacity: 0 },
+      { position, visibility: 'hidden', opacity: 1 }
     ],
-    { duration: 0 }
+    { duration: .00001 }
   );
 }
 
