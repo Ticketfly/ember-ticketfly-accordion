@@ -1,6 +1,6 @@
 .c-code {
-  background-color: var(--theme-color__supporting-1--lighter);
-  color: var(--theme-color__primary--dark);
+  background-color: color(var(--theme-color__primary--light) a(25%));
+  color: var(--theme-color__primary);
   padding: .125rem .25rem;
   font-size: smaller;
   border-radius: 0.125em;

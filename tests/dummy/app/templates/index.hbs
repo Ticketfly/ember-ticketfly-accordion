@@ -1,14 +1,39 @@
 <section class="p-home u-fill u-overflow-hide u-overflow-y-auto">
 
-  <header class="p-home__banner-header g-bg-supporting-1 u-relative o-box--inset-xl">
-    {{home-banner class="u-relative u-width-70 u-fill-height u-mh-auto o-page-frame"}}
-  </header>
+  <section class="p-home__banner">
+    <header
+      class="{{concat
+        'p-home__banner-header '
+        'g-bg-supporting-1 '
+        'u-relative '
+        (if media.greaterThanSmall 'o-box--inset-sm'
+          (if media.greaterThanMedium 'o-box--inset-md'
+            (if media.greaterThanLarge 'o-box--inset-lg'
+              (if media.greaterThanXLarge 'o-box--inset-xl'
+        ))))
+      }}"
+    >
+      {{home-banner class="p-home__banner-header-accordion u-relative u-fill-height u-mh-auto o-page-frame"}}
+    </header>
 
-  <footer class="p-home__banner-footer u-relative g-nearWhite g-bg-supporting-1">
-    <nav class="p-home__banner-footer-menu o-article-frame u-fill-width">
-      {{home-banner-menu class="o-article-frame u-fill" on-item-select=(route-action 'sectionSelected')}}
-    </nav>
-  </footer>
+    <footer class="p-home__banner-footer u-relative g-nearWhite g-bg-supporting-1">
+      <nav
+        class="{{concat
+          'p-home__banner-footer-menu '
+          'u-fill-width '
+          'o-page-frame '
+          (if media.greaterThanSmall 'u-ph-sm'
+            (if media.greaterThanMedium 'u-ph-md'
+              (if media.greaterThanLarge 'u-ph-lg'
+                (if media.greaterThanXLarge 'u-ph-xl'
+          ))))
+        }}"
+      >
+        {{home-banner-menu class="u-fill" on-item-select=(route-action 'sectionSelected')}}
+      </nav>
+    </footer>
+  </section>
+
 
   <article class="c-article u-p-lg o-article-frame">
     <section class="c-article__section c-article-section u-mh-auto">
@@ -123,9 +148,9 @@
             {{#accordion.panel class="c-accordion__panel" as |panel|}}
               {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
               {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -159,9 +184,9 @@
             {{#accordion.panel class="c-accordion__panel" as |panel|}}
               {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
               {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -203,9 +228,9 @@
             {{#accordion.panel class="c-accordion__panel" as |panel|}}
               {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
               {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -240,9 +265,9 @@
             {{#accordion.panel class="c-accordion__panel" as |panel|}}
               {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
               {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -333,9 +358,9 @@
             {{#accordion.panel as |panel|}}
               {{panel.tab title=model.ironMan.stats.title}}
               {{#panel.body class="g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -462,9 +487,9 @@
               {{fancy-demo-panel-tab tabComponent=panel.tab title=model.ironMan.stats.title}}
 
               {{#panel.body class="c-accordion__panel-body g-list-reset o-content-box" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}

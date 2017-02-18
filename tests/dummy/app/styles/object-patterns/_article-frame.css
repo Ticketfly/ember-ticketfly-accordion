@@ -3,7 +3,7 @@
  * "article frame".
  */
 .o-article-frame {
-  min-width: var(--min-width__article-frame);
+  /*min-width: var(--min-width__article-frame);*/
 
   max-width: calc(
     var(--max-width__article-frame) +

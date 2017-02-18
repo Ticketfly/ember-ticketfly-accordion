@@ -1,14 +1,25 @@
 .c-home-banner .c-home-banner__panel-tab {
+  font-size: 2rem;
+  color: var(--theme-color__supporting-1--lighter);
+}
+.media-greater-than-large .c-home-banner .c-home-banner__panel-tab {
   font-size: 3rem;
 }
 
-.c-home-banner .c-home-banner__panel-tab {
-  color: var(--theme-color__supporting-1--lighter);
-}
+
+
 
 .c-home-banner .c-home-banner__panel-body {
+  font-size: 1.5rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+.media-greater-than-large .c-home-banner .c-home-banner__panel-body {
   font-size: 2rem;
 }
+.media-greater-than-x-large .c-home-banner .c-home-banner__panel-body {
+  padding: var(--spacing-lg) var(--spacing-xl);
+}
+
 
 .c-home-banner .c-home-banner__accordion {
   outline-color: var(--theme-color__accent-1);

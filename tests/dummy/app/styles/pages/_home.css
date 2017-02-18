@@ -7,8 +7,16 @@
   font-size: 14rem;
 }*/
 
+.p-home .p-home__banner {
+  min-width: var(--breakpoint-threshold--small);
+}
+
 .p-home .p-home__banner-header {
   height: var(--height__home-banner-main);
+}
+
+.media-greater-than-x-large .p-home .p-home__banner-header-accordion {
+  width: 70%;
 }
 
 .p-home .p-home__banner-footer {

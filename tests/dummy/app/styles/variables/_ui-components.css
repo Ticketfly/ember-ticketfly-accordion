@@ -20,7 +20,7 @@
   /*--height__home-banner-area: calc(46.25rem - var(--height__navbar));*/
   --height__home-banner-area: calc(42.25rem - var(--height__navbar));
 
-  --height__home-banner-menu: 15rem;
+  --height__home-banner-menu: 13rem;
 
   --height__home-banner-main: calc(
     var(--height__home-banner-area) - var(--height__home-banner-menu)

@@ -1,6 +1,6 @@
 <div class="c-home-banner__accordion-container o-grid o-grid--align-middle u-fill-height">
 
-  {{#tf-accordion class="c-accordion c-accordion--fancy c-home-banner__accordio g-box-shadow-2 o-grid-cell" as |accordion|}}
+  {{#tf-accordion class="c-accordion c-accordion--fancy c-home-banner__accordion g-box-shadow-4 o-grid-cell o-grid-cell-12" as |accordion|}}
 
     {{#accordion.panel
       class="c-accordion__panel g-bg-primary"
@@ -14,8 +14,12 @@
         <span class="o-grid-cell o-grid-cell-11 u-text-center">Ember Ticketfly Accordion</span>
       {{/panel.tab}}
 
-      {{#panel.body class="c-home-banner__panel-body c-accordion__panel-body o-content-box"}}
-        An ARIA-compliant, dependency-free, animatable accordion system comprised of composable Ember components.
+      {{#panel.body class="c-home-banner__panel-body c-accordion__panel-body"}}
+        <section class="u-text-center o-content-box o-grid o-grid--align-center o-grid--align-middle">
+          <p class="o-grid-cell">
+            An ARIA-compliant, dependency-free, Web Animations API-powered accordion system comprised of composable Ember components.
+          </p>
+        </section>
       {{/panel.body}}
 
     {{/accordion.panel}}
