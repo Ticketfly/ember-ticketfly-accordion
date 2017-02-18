@@ -1,3 +1,9 @@
+# 0.6.1 &mdash; February 17, 2017
+
+- **[ENHANCEMENT]**: Tweak the start of the opening animation so that 
+there's an extremely small duration set. ([#40](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/40])).
+
+
 # 0.6.0 &mdash; February 17, 2017
 
 - **[BREAKING CHANGE]**: Top-level accordion element no longer has `width: 100%` built-in.
