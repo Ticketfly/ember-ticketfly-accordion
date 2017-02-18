@@ -1,12 +1,39 @@
 <section class="p-home u-fill u-overflow-hide u-overflow-y-auto">
 
-  <header class="p-home__banner-container g-bg-primary--darker u-relative">
-    {{home-banner class="u-relative u-width-70 u-fill-height u-mh-auto o-page-frame"}}
-  </header>
+  <section class="p-home__banner">
+    <header
+      class="{{concat
+        'p-home__banner-header '
+        'g-bg-supporting-1 '
+        'u-relative '
+        (if media.greaterThanSmall 'o-box--inset-sm'
+          (if media.greaterThanMedium 'o-box--inset-md'
+            (if media.greaterThanLarge 'o-box--inset-lg'
+              (if media.greaterThanXLarge 'o-box--inset-xl'
+        ))))
+      }}"
+    >
+      {{home-banner class="p-home__banner-header-accordion u-relative u-fill-height u-mh-auto o-page-frame"}}
+    </header>
 
-  <nav class="p-home__banner-menu-container u-relative g-nearWhite g-bg-primary o-box--inset-stretch-md">
-    {{home-banner-menu class="o-article-frame u-fill u-text-center" on-item-select=(route-action 'sectionSelected')}}
-  </nav>
+    <footer class="p-home__banner-footer u-relative g-nearWhite g-bg-supporting-1">
+      <nav
+        class="{{concat
+          'p-home__banner-footer-menu '
+          'u-fill-width '
+          'o-page-frame '
+          (if media.greaterThanSmall 'u-ph-sm'
+            (if media.greaterThanMedium 'u-ph-md'
+              (if media.greaterThanLarge 'u-ph-lg'
+                (if media.greaterThanXLarge 'u-ph-xl'
+          ))))
+        }}"
+      >
+        {{home-banner-menu class="u-fill" on-item-select=(route-action 'sectionSelected')}}
+      </nav>
+    </footer>
+  </section>
+
 
   <article class="c-article u-p-lg o-article-frame">
     <section class="c-article__section c-article-section u-mh-auto">
@@ -32,7 +59,7 @@
 
       <p>
         Ember Ticketfly Accordion has been developed to comply fully with the
-        <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#accordion" class="c-markup-link" target="_blank">WAI ARIA Specification for accordions</a>.
+        <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#accordion" class="c-markup-link o-color-shifting" target="_blank">WAI ARIA Specification for accordions</a>.
         That means keyboard support. Here's a quick guide:
       </p>
 
@@ -47,7 +74,7 @@
         <li><code class="c-code">&uarr;</code> | <code class="c-code">&larr;</code> will move the focus to the previous tab in the accordion.</li>
       </ul>
       <p>
-        Furthermore, unless <a class="c-markup-link" href="#usage-cycling">`cycleFocus` is disabled</a>,
+        Furthermore, unless <a class="c-markup-link o-color-shifting" href="#usage-cycling">`cycleFocus` is disabled</a>,
         cycling will occur when arrowing past the last panel tab in either direction.
       </p>
 
@@ -69,7 +96,7 @@
         each panel-tab can be interacted with in all of the ways you'd expect: In addition to
         clicking and touching, its default "activation" event can be triggered by focusing the element,
         and then
-        <a href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html#kbd_label" class="c-markup-link" target="_blank">
+        <a href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html#kbd_label" class="c-markup-link o-color-shifting" target="_blank">
           pressing <code class="c-code">space</code> or <code class="c-code">enter</code>
         </a>.
       </p>
@@ -121,9 +148,9 @@
             {{#accordion.panel class="c-accordion__panel" as |panel|}}
               {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
               {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -157,9 +184,9 @@
             {{#accordion.panel class="c-accordion__panel" as |panel|}}
               {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
               {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -201,9 +228,9 @@
             {{#accordion.panel class="c-accordion__panel" as |panel|}}
               {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
               {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -238,9 +265,9 @@
             {{#accordion.panel class="c-accordion__panel" as |panel|}}
               {{panel.tab class="c-accordion__panel-tab" title=model.ironMan.stats.title}}
               {{#panel.body class="c-accordion__panel-body g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -300,7 +327,7 @@
       </table>
 
       <p class="c-article-section__another-block">
-        It's worth noting that by default, <a class="c-markup-link" href="https://github.com/Ticketfly/ember-ticketfly-accordion/blob/master/vendor/styles/ember-ticketfly-accordion.css" target="_blank">minor styling</a>
+        It's worth noting that by default, <a class="c-markup-link o-color-shifting" href="https://github.com/Ticketfly/ember-ticketfly-accordion/blob/master/vendor/styles/ember-ticketfly-accordion.css" target="_blank">minor styling</a>
         is applied to the accordion system under the hood &mdash; mainly
         to normalize the appearance of its semantic HTML (primarilly, the <code class="c-code">&lt;button&gt;</code> element used for each panel tab)
         and ensure that accordions render with an expected initial structure.
@@ -331,9 +358,9 @@
             {{#accordion.panel as |panel|}}
               {{panel.tab title=model.ironMan.stats.title}}
               {{#panel.body class="g-list-reset" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}
@@ -346,7 +373,7 @@
       <p class="c-article-section__another-block">
         The accordions that you've been seing throughout this page, however,
         have been styled with a bit of extra polish. You can view the stylesheet use for those
-        <a href="https://github.com/Ticketfly/ember-ticketfly-accordion/blob/dummy-app/tests/dummy/app/styles/ui-components/_accordion.css" class="c-markup-link">
+        <a href="https://github.com/Ticketfly/ember-ticketfly-accordion/blob/dummy-app/tests/dummy/app/styles/ui-components/_accordion.css" class="c-markup-link o-color-shifting">
           here
         </a>.
       </p>
@@ -378,7 +405,7 @@
       </table>
 
       <p class="c-article-section__another-block">
-        Just as with <a class="c-markup-link" href="#styling-built-in-classes">built-in classes</a>, you can play off of these selectors directly.
+        Just as with <a class="c-markup-link o-color-shifting" href="#styling-built-in-classes">built-in classes</a>, you can play off of these selectors directly.
         However, you can also specify custom class names to be added when a panel expands.
       </p>
 
@@ -460,9 +487,9 @@
               {{fancy-demo-panel-tab tabComponent=panel.tab title=model.ironMan.stats.title}}
 
               {{#panel.body class="c-accordion__panel-body g-list-reset o-content-box" tagName="ul"}}
-                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.releaseDate}}</span></li>
+                <li><span class="g-embolden">Release Date:</span> <span>{{model.ironMan.stats.content.releaseDate}}</span></li>
                 <li><span class="g-embolden">Director:</span> <span>{{model.ironMan.stats.content.director}}</span></li>
-                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runtime}}</span></li>
+                <li><span class="g-embolden">Runtime:</span> <span>{{model.ironMan.stats.content.runTime}}</span></li>
                 <li><span class="g-embolden">Box Office:</span> <span>{{model.ironMan.stats.content.boxOffice}}</span></li>
                 <li><span class="g-embolden">Budget:</span> <span>{{model.ironMan.stats.content.budget}}</span></li>
               {{/panel.body}}

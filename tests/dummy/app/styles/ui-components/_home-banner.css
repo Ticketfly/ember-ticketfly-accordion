@@ -1,19 +1,26 @@
-.c-home-banner .c-home-banner__logo,
-.c-home-banner .c-home-banner__accordion-container,
-.c-home-banner .c-home-banner__menu {
-  left: 50%;
-  transform: translate3d(-50%, 0%, 0);
+.c-home-banner .c-home-banner__panel-tab {
+  font-size: 2rem;
+  color: var(--theme-color__supporting-1--lighter);
+}
+.media-greater-than-large .c-home-banner .c-home-banner__panel-tab {
+  font-size: 3rem;
 }
 
-.c-home-banner .c-home-banner__logo {
-  height: 8rem;
-  top: calc(var(--height__home-banner-main) * .1);
+
+
+
+.c-home-banner .c-home-banner__panel-body {
+  font-size: 1.5rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+.media-greater-than-large .c-home-banner .c-home-banner__panel-body {
+  font-size: 2rem;
+}
+.media-greater-than-x-large .c-home-banner .c-home-banner__panel-body {
+  padding: var(--spacing-lg) var(--spacing-xl);
 }
 
-.c-home-banner .c-home-banner__accordion-container {
-  top: calc(var(--height__home-banner-main) * .5);
-}
 
 .c-home-banner .c-home-banner__accordion {
-  outline-color: var(--theme-color__supporting-1);
+  outline-color: var(--theme-color__accent-1);
 }

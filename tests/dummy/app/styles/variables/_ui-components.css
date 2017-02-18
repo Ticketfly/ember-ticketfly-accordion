@@ -17,9 +17,10 @@
     var(--theme-color__primary--light)
   );
 
-  --height__home-banner-area: calc(46.25rem - var(--height__navbar));
+  /*--height__home-banner-area: calc(46.25rem - var(--height__navbar));*/
+  --height__home-banner-area: calc(42.25rem - var(--height__navbar));
 
-  --height__home-banner-menu: 10rem;
+  --height__home-banner-menu: 13rem;
 
   --height__home-banner-main: calc(
     var(--height__home-banner-area) - var(--height__home-banner-menu)
@@ -32,6 +33,6 @@
 
   /* ------------ MARKUP LINKS ------------ */
 
-  --color__markup-link: var(--theme-color__primary);
-  --color__markup-link--highlighted: var(--theme-color__primary--light);
+  --color__markup-link: var(--theme-color__primary--dark);
+  --color__markup-link--highlighted: var(--theme-color__primary);
  }

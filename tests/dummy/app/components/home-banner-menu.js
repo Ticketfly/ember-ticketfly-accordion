@@ -12,10 +12,11 @@ export default Component.extend({
     'c-home-banner-menu',
     'u-relative',
     'o-grid',
-    'o-grid--align-center',
+    'o-grid--space-between',
     'o-grid--align-middle',
-    'o-grid--fit',
-    'g-list-reset'
+    'o-grid--nowrap',
+    'g-list-reset',
+    'u-text-center'
   ],
 
   'on-item-select'() {},

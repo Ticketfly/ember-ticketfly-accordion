@@ -7,8 +7,11 @@
 
   /*--width-factor__expanded-panel-tab-stripe: 0.018;*/
   --width-factor__expanded-panel-tab-stripe: 0.01;
-  --color__fancy-panel-tab--expanded: var(--theme-color__primary);
-  --background-color__fancy-panel-tab--expanded: hsla(285, 14%, 78%, 1.00);
+  --background-color__panel-body-stripe: var(--theme-color__supporting-1--dark);
+  /*--color__fancy-panel-tab--expanded: var(--theme-color__primary);*/
+  --color__fancy-panel-tab--expanded: var(--theme-color__supporting-1--dark);
+  /*--background-color__fancy-panel-tab--expanded: var(--theme-color__supporting-1--lighter);*/
+  --background-color__fancy-panel-tab--expanded: var(--theme-color__primary--lighter);
 }
 
 
@@ -22,6 +25,10 @@
 .c-accordion--fancy .c-accordion__panel-body {
   /* We're being explicit about this here because we'll be styling pseudoelements */
   position: relative;
+}
+
+.c-accordion--fancy .c-accordion__panel-tab:focus::after {
+  border: 0;
 }
 
 /**
@@ -40,7 +47,7 @@
  */
 .c-accordion--fancy .c-accordion__panel-body::before {
   opacity: 0;
-  background-color: var(--background-color__panel-tab);
+  background-color: var(--background-color__panel-body-stripe);
   transform-origin: 0% 0%;
   transform: scale(var(--width-factor__expanded-panel-tab-stripe), 0.0);
   transition-property: transform;

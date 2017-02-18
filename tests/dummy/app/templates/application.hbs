@@ -6,13 +6,15 @@
          g-bg-white"
 }}
 
-<main class="
-  p-application__main-content
-  u-fill
-  u-relative
-  u-overflow-hide
-  u-z-0
-  g-bg-white"
+<main class="{{concat
+    'p-application__main-content '
+    'u-fill '
+    'u-relative '
+    'u-overflow-hide '
+    'u-z-0 '
+    'g-bg-white '
+    media.classNames
+  }}"
 >
   {{outlet}}
 </main>
