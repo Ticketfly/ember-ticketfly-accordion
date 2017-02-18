@@ -1,0 +1,11 @@
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.45 23.38" aria-labelledby="title description">
+  <title id="title">Install Arrows</title>
+  <desc id="description">Downward-pointing arrows</desc>
+  <g id="install-arrows">
+    <g id="arrowheads">
+      <polyline id="install__arrowhead_arrowhead" data-name="install__arrowhead arrowhead" points="17.76 14.69 9.22 22.69 0.69 14.69" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline id="install__arrowhead_arrowhead-2" data-name="install__arrowhead arrowhead" points="17.76 7.69 9.22 15.69 0.69 7.69" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline id="install__arrowhead_arrowhead-3" data-name="install__arrowhead arrowhead" points="17.76 0.69 9.22 8.69 0.69 0.69" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+</svg>

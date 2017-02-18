@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style>.cls-1,.cls-2{fill:#181616;}.cls-1{fill-rule:evenodd;}</style>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs><symbol id="icon-accordion-wireframe" viewBox="0 0 27.01 35.91" aria-labelledby="title description">
+  <title id="title">Accordion Wireframe Icon</title>
+  <desc id="description">An accordion wireframe</desc>
+  <g id="icon_accordion" data-name="icon accordion" fill="none" stroke-linejoin="round">
+    <path id="accordion__base" d="M26.63,2.18A1.51,1.51,0,0,0,25.15.34H1.86A1.51,1.51,0,0,0,.37,2.18C1.11,5.52,2.55,12.74,2.55,18S1.11,30.4.38,33.74a1.51,1.51,0,0,0,1.48,1.84H25.15a1.51,1.51,0,0,0,1.48-1.84C25.9,30.4,24.46,23.2,24.46,18S25.9,5.52,26.63,2.18Z"/>
+    <g id="accordion__top-fold">
+      <path d="M.79,4.12C1.14,5.91,13.5,5.81,13.5,5.81s12.37.09,12.72-1.69"/>
+      <path d="M1.56,8.17C1.89,10,13.5,9.87,13.5,9.87S25.12,10,25.44,8.17"/>
+      <path d="M2.16,12.23C2.47,14,13.5,13.92,13.5,13.92s11,.09,11.34-1.69"/>
+    </g>
+    <g id="accordion__bottom-fold">
+      <path d="M.79,31.81C1.14,30,13.5,30.12,13.5,30.12S25.87,30,26.22,31.81"/>
+      <path d="M1.56,27.76C1.89,26,13.5,26.07,13.5,26.07S25.11,26,25.44,27.76"/>
+      <path d="M2.16,23.71C2.47,21.93,13.5,22,13.5,22s11-.09,11.34,1.69"/>
+    </g>
+    <line id="accordion__centerline" x1="2.55" y1="17.95" x2="24.46" y2="17.95"/>
+  </g>
+</symbol><symbol id="icon-accordion" viewBox="0 0 21.83 29.91" aria-labelledby="title description">
+  <title id="title">Accordion Icon</title>
+  <desc id="description">An Accordion Icon</desc>
+  <g id="accordion">
+    <path id="accordion__frame" d="M20.61,3.93a1.07,1.07,0,0,0-1.1-1.28H2.32a1.07,1.07,0,0,0-1.1,1.28A56.86,56.86,0,0,1,2.83,15,56.55,56.55,0,0,1,1.23,26a1.07,1.07,0,0,0,1.1,1.28H19.51A1.07,1.07,0,0,0,20.61,26,56.55,56.55,0,0,1,19,15,56.86,56.86,0,0,1,20.61,3.93Z" fill="none" stroke-linejoin="round" stroke-width="0.49"/>
+    <g id="accordion__fold-container">
+      <g id="folds_folds--downward" data-name="folds folds--downward" fill="none">
+        <path id="fold-line" d="M1.53,5.29c.26,1.25,9.38,1.18,9.38,1.18S20,6.53,20.3,5.29" stroke-linejoin="round" stroke-width="0.49"/>
+        <path id="fold-line-2" data-name="fold-line" d="M2.1,8.12c.24,1.25,8.81,1.18,8.81,1.18s8.57.06,8.81-1.18" stroke-linejoin="round" stroke-width="0.49"/>
+        <path id="fold-line-3" data-name="fold-line" d="M2.55,11c.23,1.25,8.37,1.18,8.37,1.18s8.14.06,8.37-1.18" stroke-linejoin="round" stroke-width="0.49"/>
+      </g>
+      <g id="folds_folds--upward" data-name="folds folds--upward" fill="none">
+        <path id="fold-line-4" data-name="fold-line" d="M1.53,24.64c.26-1.25,9.38-1.18,9.38-1.18s9.13-.06,9.38,1.18" stroke-linejoin="round" stroke-width="0.49"/>
+        <path id="fold-line-5" data-name="fold-line" d="M2.1,21.81c.24-1.25,8.81-1.18,8.81-1.18s8.57-.06,8.81,1.18" stroke-linejoin="round" stroke-width="0.49"/>
+        <path id="fold-line-6" data-name="fold-line" d="M2.55,19c.23-1.25,8.37-1.18,8.37-1.18s8.14-.06,8.37,1.18" stroke-linejoin="round" stroke-width="0.49"/>
+      </g>
+      <line id="fold-line_fold-line--center" data-name="fold-line fold-line--center" x1="2.83" y1="14.95" x2="19" y2="14.95" fill="none" stroke-linejoin="round" stroke-width="0.49"/>
+    </g>
+    <rect id="accordion__base_base_base--top" data-name="accordion__base base base--top" stroke="none" width="21.83" height="4.3" rx="1.44" ry="1.44"/>
+    <rect id="accordion__base_base_base--bottom" data-name="accordion__base base base--bottom" y="25.61" stroke="none" width="21.83" height="4.3" rx="1.44" ry="1.44"/>
+  </g>
+</symbol><symbol id="icon-brush" viewBox="0 0 36 35.72" aria-labelledby="title description">
+  <title id="title">Brush Icon</title>
+  <desc id="description">A Paintbrush</desc>
+  <g id="icon_brush" data-name="icon brush" stroke="none">
+    <path id="brush__handle" d="M33.09,5.49C34.59,3.33,36.52.59,35.87.07S33,2,31.19,4,16.32,21,13.48,24.53l1.72,1.38,1.73,1.38C19.73,23.74,31.59,7.64,33.09,5.49Z"/>
+    <path id="brush__head" d="M0,31.07s3.75,1.17,5.91-.1,2.29-4.47,5.1-5.5A3.51,3.51,0,0,1,14.9,27a5.76,5.76,0,0,1,.24,5.36c-.75,1.59-2.83,3.13-6.9,3.33C.28,36.1,0,31.07,0,31.07Z"/>
+  </g>
+</symbol><symbol id="icon-github-logo-mark" viewBox="0 0 32 30.19"><title>github-logo-mark</title><g id="Layer_2" data-name="Layer 2"><g id="github-logo-mark--black-on-white"><g id="logo"><path class="cls-1" d="M16,0A15.74,15.74,0,0,0,0,15.48,15.54,15.54,0,0,0,10.94,30.16c.8.14,1.09-.34,1.09-.74s0-1.59,0-2.88c-4.45.94-5.39-1.83-5.39-1.83a4.14,4.14,0,0,0-1.78-2.26c-1.45-1,.11-.94.11-.94A3.35,3.35,0,0,1,7.41,23.1a3.47,3.47,0,0,0,4.66,1.29,3.26,3.26,0,0,1,1-2.07c-3.55-.39-7.29-1.72-7.29-7.65a5.88,5.88,0,0,1,1.65-4.15,5.39,5.39,0,0,1,.15-4.1S8.94,6,12,8a15.67,15.67,0,0,1,8,0c3.05-2,4.4-1.59,4.4-1.59a5.39,5.39,0,0,1,.16,4.1,5.87,5.87,0,0,1,1.65,4.15c0,5.94-3.74,7.25-7.31,7.64A3.64,3.64,0,0,1,20,25.17c0,2.07,0,3.74,0,4.25s.29.89,1.1.74A15.53,15.53,0,0,0,32,15.48,15.74,15.74,0,0,0,16,0Z"/><path class="cls-2" d="M6.06,22.22c0,.08-.16.1-.27,0s-.18-.16-.14-.23.16-.1.28,0,.18.16.14.23Zm-.2-.14"/><path class="cls-2" d="M6.71,22.92a.25.25,0,0,1-.33-.07c-.1-.11-.12-.25,0-.32a.25.25,0,0,1,.33.07c.1.11.13.25,0,.32Zm-.15-.16"/><path class="cls-2" d="M7.34,23.81c-.1.07-.26,0-.36-.13s-.1-.3,0-.37.26,0,.36.13.1.31,0,.37Zm0,0"/><path class="cls-2" d="M8.2,24.67a.31.31,0,0,1-.41-.06c-.14-.12-.18-.3-.09-.4a.31.31,0,0,1,.41.06c.14.12.18.3.09.4Zm0,0"/><path class="cls-2" d="M9.4,25.17c0,.12-.22.18-.4.12s-.3-.19-.26-.32.22-.18.4-.12.3.19.26.32Zm0,0"/><path class="cls-2" d="M10.71,25.26c0,.13-.15.23-.34.24s-.35-.1-.35-.22.15-.23.34-.24.35.1.35.23Zm0,0"/><path class="cls-2" d="M11.92,25.06c0,.12-.11.25-.3.29s-.36,0-.38-.17.11-.26.3-.29.36,0,.38.17Zm0,0"/></g></g></g></symbol><symbol id="icon-install-arrows--circle-base" viewBox="0 0 43.99 43.99" aria-labelledby="title description">
+  <title id="title">Install Arrows</title>
+  <desc id="description">Downward-pointing arrows inside of a circle</desc>&gt;
+  <g id="install-arrows--circle-base">
+    <path id="icon" d="M22,0A22,22,0,1,0,44,22,22,22,0,0,0,22,0Zm9,25.5-8.53,8a.69.69,0,0,1-.94,0L13,25.5a.69.69,0,0,1,.94-1L22,32.05l8.06-7.56a.69.69,0,0,1,.94,1Zm0-7-8.53,8a.69.69,0,0,1-.94,0L13,18.5a.69.69,0,0,1,.94-1L22,25.05l8.06-7.56a.69.69,0,0,1,.94,1Zm0-7-8.53,8a.69.69,0,0,1-.94,0L13,11.5a.69.69,0,0,1,.94-1L22,18.05l8.06-7.56a.69.69,0,0,1,.94,1Z"/>
+  </g>
+</symbol><symbol id="icon-install-arrows" viewBox="0 0 18.45 23.38" aria-labelledby="title description">
+  <title id="title">Install Arrows</title>
+  <desc id="description">Downward-pointing arrows</desc>
+  <g id="install-arrows">
+    <g id="arrowheads">
+      <polyline id="install__arrowhead_arrowhead" data-name="install__arrowhead arrowhead" points="17.76 14.69 9.22 22.69 0.69 14.69" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline id="install__arrowhead_arrowhead-2" data-name="install__arrowhead arrowhead" points="17.76 7.69 9.22 15.69 0.69 7.69" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline id="install__arrowhead_arrowhead-3" data-name="install__arrowhead arrowhead" points="17.76 0.69 9.22 8.69 0.69 0.69" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+</symbol><symbol id="icon-keyboard" viewBox="0 0 44 28.53"><title>icon-keyboard</title><g id="keyboard"><g id="icon_keyboard" data-name="icon keyboard"><g id="keys"><g id="keys__row-3"><rect id="keyboard__spacebar" y="21.02" width="44" height="7.51" rx="1.38" ry="1.38"/></g><g id="keys__row-2"><rect id="keyboard__arrow_arrow_arrow--down" data-name="keyboard__arrow arrow arrow--down" x="16.9" y="10.51" width="10.21" height="7.51" rx="1.38" ry="1.38"/><rect id="keyboard__arrow_arrow_arrow--right" data-name="keyboard__arrow arrow arrow--right" x="30.1" y="10.51" width="10.21" height="7.51" rx="1.38" ry="1.38"/><rect id="keyboard__arrow_arrow_arrow--left" data-name="keyboard__arrow arrow arrow--left" x="3.69" y="10.51" width="10.21" height="7.51" rx="1.38" ry="1.38"/></g><g id="keys__row-1"><rect id="keyboard__arrow_arrow_arrow--up" data-name="keyboard__arrow arrow arrow--up" x="16.9" width="10.21" height="7.51" rx="1.38" ry="1.38"/></g></g></g></g></symbol><symbol id="icon-plus" viewBox="0 0 32 32">
+  
+  <title>icon-plus</title>
+  <g id="plus--stroke">
+    <g id="icon">
+      <line id="stroke_stroke--horizontal" data-name="stroke stroke--horizontal" class="cls-1" x1="17" x2="17" y2="32"/>
+      <line id="stroke_stroke--vertical" data-name="stroke stroke--vertical" class="cls-1" y1="16.01" x2="32" y2="16.01"/>
+    </g>
+  </g>
+</symbol></svg>
