@@ -4,7 +4,7 @@
   contain: layout;
 }
 
-.tfa-accordion .tfa-panel .tfa-panel-tab {
+.tfa-accordion .tfa-panel-tab {
   width: 100%;
   border: none;
   font-size: inherit;
@@ -22,6 +22,6 @@
   text-align: unset;
 }
 
-.tfa-accordion .tfa-panel .tfa-panel-body {
+.tfa-accordion .tfa-panel-body {
   overflow: hidden;
 }
