@@ -13,6 +13,7 @@ optional built-in animation through the [Web Animations API](https://developer.m
 [![Dependencies][dependencies-badge]][dependencies-badge-url]
 [![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
 
+View 
 
 ## Installing
 
@@ -22,21 +23,25 @@ ember install ember-ticketfly-accordion
 
 ## Features
 
-- Full WAI-ARIA Compliance for Accessibility Winning
-- A robust callback API handling DOM events with closure actions.
-- Optional, built-in, dependency-free and buttery-smooth animation through the Web Animations API.
+- Full [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) Compliance for Accessibility Winning.
+- A robust callback API for handling DOM events with closure actions.
+- Built-in (but configurable) buttery-smooth animation through the [Web-Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) and [`ember-web-animations-next-polyfill`](https://github.com/BrianSipple/ember-web-animations-next-polyfill).
 - Semantic HTML
-  + Tabs are comprised of `<button>` elements instead of anchor tags or divs.    
+  + Tabs are comprised of `<button>` elements instead of plain `<div>`s.
+
 
 ## Compatibility
 
 This addon makes use of [contextual components](http://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_contextual-components), and is therefore
 intended to support versions of Ember >= `2.3.0`.
 
+## Usage
+
+View the [interactive documentation](https://ticketfly.github.io/ember-ticketfly-accordion/) for usage information and tips.
 
 ## Configuration
 
-To provide `ember-ticketfly-accordion` with configuration options, define
+To provide `ember-ticketfly-accordion` with [configuration options](#supported-options), define
 them in a hash on the `'ember-ticketfly-accordion'` property of the object
 exported from your `config/environment.js` file:
 
@@ -84,162 +89,7 @@ ENV['ember-ticketfly-accordion'] = {
 ```
 
 
-## Usage
-
-
-### Enabling MultiExpand Mode
-
-By default, `ember-ticketfly-accordion` follows the standard accordion
-interface pattern of allowing one panel to be expanded while
-keeping the other panels closed.
-
-But it's also flexible!
-
-If you'd like to expand multiple panels simultaneously, simply set
-`multiExpand` to `true` on the root `tf-accordion` component. From there,
-each panel in an accordion will toggle open and closed independently of the others.  
-
-### Actions and Action Arguments
-
-The root `tf-accordion` component handles a number of events for its 
-child panels. These are exposed callbacks that can be set with 
-[Ember actions](https://guides.emberjs.com/v2.9.0/templates/actions/).  
-
-**Please note that all actions are expected to be closure actions**, and so you must use
-the `action` helper (i.e. `onPanelTabFocusIn=(action "panelTabFocusOut")`), or another template 
-helper that facilitates curried functions (for example, [Ember Concurrency's `perform` helper](http://ember-concurrency.com/#/docs/writing-tasks).
- 
-#### Panel Body Expansion Changes
-
-`onPanelExpandChanged` fires when a `tf-accordion-panel-body` component detects a change
-to its `isExpanded` attribute. 
-
-When the action fires it sends two arguments: the panel-body's parent `tf-accordion-panel` component,
-and whether or not the panel body is currently (i.e: newly) expanded (boolean).
- 
-
-#### Focus Event callbacks
-
-In addition to expanding a panel's body when its tab element is 
-clicked, accordions abide by the notion of shifting _focus_ on each
-tab. You can hook in to both the `focus` and `focusOut` event of a panel 
-tab by setting an action on the `onPanelTabFocusIn` and `onPanelTabFocusOut`
-properties respectively.
-
-Your handler will be called with the following arguments:
-
-- `panelComponent` `{Object}`: the instance object of the `tf-accordion-panel`
-  component from which the event was fired.
-
-- `event` `{Object}`: the jQuery event of the action
-
-
-#### Animation Callbacks
-
-##### onPanelAnimatedOpen
-
-***TODO: Document above and link here***
-
-##### onPanelAnimatedClosed
-
-***TODO: Document above and link here***
-
-#### Making use of Currying
-
-Most of the time all you need is the relevant component, but sometimes your action 
-requires more context than just that. This is where closure action currying
-comes in handy. In those cases, you can pass any arguments you need from the template. For example:
-
-```handlebars
-{{tf-accordion onPanelTabFocusOut=(action "panelWasFocusedOut" shouldShowDialogOnFocusOut)}}
-```
-Then, inside your action handler:
-
-```js
-export default Ember.Route.extend({
-  actions: {
-    panelWasFocusedOut(panelComponent, event, shouldShowDialogOnFocusOut) {
-      if (shouldShowDialogOnFocusOut) {
-        // ... do something fancy with dialogs 
-      }
-    }
-  }
-});
-```
-
-### Practical Styling Advice
-
-`ember-ticketfly-accordion` includes a very small set of base
-styles to ensure that its elements lay out correctly in the manner
-of an accordion (that is, as a set of vertically stacked panels, with tabs
-comprised of HTML `<buttons>`).
-
-These can be seen in `app/styles/ember-ticketfly-accordion.css`.
-
-But we can do better! If you'd like to control more styling of
-`ember-ticketfly-accordion`'s elements, you can rely on being able to target
-the following class names:
-
-- `tfa-accordion`
-- `tfa-panel`
-- `tfa-panel-tab`
-- `tfa-panel-body`
-
-The following modifier classes are also added to a panel 
-when it's expanded:
-
-- `tfa-panel--expanded` (added to the panel element when expanded)   
-- `tfa-panel-tab--expanded` (added to the panel's tab element when expanded)
-
-### Composable Components
-
-#### Panels
-
-When used in block form, each `tf-accordion-panel` component in an accordion 
-will yield back a `tab` and a `body` property. Under the hood, these refer to
-the `tf-accordion-panel-tab` and `tf-accordion-panel-body` components, respectively.
-**Using the references provided by the block context, however, ensures that component 
-instances can communicate with their containing panel.**
-
-Additionally, you can forgo block usage, and the panel will will try to render 
-a tab and a body -- provided you supply a few required attributes:
-
-  - `tabTitle`  
-  - `bodyContent`  
-
-#### Panel Tabs and Panel Bodies
-
-The panel tab component also supports block-scoping (all content will be,
-rendered within its `<button>` element) but a string value _can_ 
-be given to its `title` attribute as an inline a shorthand.
-
-The panel body component also supports block-scoping, but a string value _can_ 
-be given to its `content` attribute as an inline a shorthand.
-
-### Configurable Class Names  
-
-For even more [style control](#practices-styling-advice), if you'd like to target your own CSS selectors, 
-the following attributes are your hooks for doing just that:  
-
-##### `tf-accordion-panel`
-+ `class`
-+ `expandedClassName`
-  + A custom class to apply to the panel element when it is expanded.
-+ `tabClassName`
-  + passed to the panel's tab component when used with the inline shorthand form.
-+ `expandedTabClassName`
-  + A custom class to apply to the panel tab element when its containing panel is expanded.
-  + Passed to the panel's tab component when used with the inline shorthand form.     
-+ `bodyClassName`
-  + passed to the panel's body component when used with the inline shorthand form.  
-
-##### `tf-accordion-panel-tab`
-+ `class`
-+ `expandedClassName`
-  + A custom class to apply to the panel tab element when its containing panel is expanded.
-  
-
-### Working with ARIA Attributes
+## Working with ARIA Attributes
 
 As part of its adherence to the [WAI-ARIA accordion spec](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion), each 
 part of the component system contains the `attributeBindings` needed to automatically set 
