@@ -185,14 +185,6 @@ export default Component.extend({
   },
 
   /**
-   * When the `touchEnd` DOM event fires on the element, trigger the
-   * root `tf-accordion` component's action with the panel component
-   */
-  touchEnd(/* event */) {
-    get(this, 'accordion').send('_onPanelSelection', get(this, 'panel'));
-  },
-
-  /**
    * When the `focusIn` DOM event fires on the element, updated our
    * `aria-selected` binding, and then trigger the root `tf-accordion`
    * component's action with the panel component and the jQuery event.
