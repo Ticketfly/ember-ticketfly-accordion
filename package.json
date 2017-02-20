@@ -11,7 +11,8 @@
     "start": "ember server",
     "test": "ember try:each",
     "test:coverage": "cross-env COVERAGE=true ember test",
-    "test:ci:coverage": "npm test && npm run test:coverage"
+    "test:ci:coverage": "npm test && npm run test:coverage",
+    "deploy:gh-pages": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -"
   },
   "repository": "https://github.com/Ticketfly/ember-ticketfly-accordion",
   "engines": {
