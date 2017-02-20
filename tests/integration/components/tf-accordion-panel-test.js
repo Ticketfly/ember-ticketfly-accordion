@@ -94,7 +94,7 @@ test(`dispatching an action to the parent accordion on select`, function (assert
 
   assert.equal(panelSelectActionSpy.callCount, 1);
 
-  panelTabElem.dispatchEvent(new Event('touchend', { bubbles: true }));
+  panelTabElem.click();
 
   assert.equal(panelSelectActionSpy.callCount, 2);
 });
