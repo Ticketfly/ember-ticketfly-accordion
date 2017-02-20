@@ -1,9 +1,12 @@
 {{x-navbar
-  class="p-application__navbar
-         u-fixed
-         u-fill-width
-         u-z-1
-         g-bg-white"
+  class=(concat
+    'p-application__navbar '
+    'u-fixed '
+    'u-fill-width '
+    'u-z-1 '
+    'g-bg-white '
+    media.classNames
+  )
 }}
 
 <main class="{{concat

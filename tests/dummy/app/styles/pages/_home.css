@@ -2,13 +2,9 @@
   scroll-behavior: smooth;
 }
 
-/*.p-home .page-banner__logo {
-  height: 1em;
-  font-size: 14rem;
-}*/
 
 .p-home .p-home__banner {
-  min-width: var(--breakpoint-threshold--small);
+  min-width: var(--breakpoint-threshold--xSmall);
 }
 
 .p-home .p-home__banner-header {
