@@ -1,3 +1,9 @@
+# 0.6.2 &mdash; February 19, 2017
+
+- **[PATCH]**: Remove unecessary extra touch handler that was accidentally inverting panel
+toggling ([#42](https://github.com/Ticketfly/ember-ticketfly-accordion/pull/42])).
+
+
 # 0.6.1 &mdash; February 17, 2017
 
 - **[ENHANCEMENT]**: Tweak the start of the opening animation so that 
