@@ -2,7 +2,7 @@
  * BREAKPOINTS THRESHOLDS
  */
 :root {
-  --breakpoint-threshold--xSmall: 20em;       /* Roughly, a min-width for handsets */
+  --breakpoint-threshold--xSmall: 22em;       /* Roughly, a min-width for handsets */
   --breakpoint-threshold--small: 30em;        /* Roughly, a max-width for handsets in landscape  */
   --breakpoint-threshold--medium: 49.125em;   /* Roughly, a min-width for tablets  */
   --breakpoint-threshold--large: 64em;        /* Roughly, a max-width for tablets in landscape  */

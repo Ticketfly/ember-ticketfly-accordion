@@ -6,11 +6,11 @@
         'p-home__banner-header '
         'g-bg-supporting-1 '
         'u-relative '
-        (if media.greaterThanSmall 'o-box--inset-sm'
-          (if media.greaterThanMedium 'o-box--inset-md'
-            (if media.greaterThanLarge 'o-box--inset-lg'
-              (if media.greaterThanXLarge 'o-box--inset-xl'
-        ))))
+          (if media.isGreaterThanMedium 'o-box--inset-md'
+            (if media.isGreaterThanLarge 'o-box--inset-xl'
+              (if media.isGreaterThanXLarge 'o-box--inset-xl'
+          'o-box--inset-sm'
+        )))
       }}"
     >
       {{home-banner class="p-home__banner-header-accordion u-relative u-fill-height u-mh-auto o-page-frame"}}
@@ -22,11 +22,11 @@
           'p-home__banner-footer-menu '
           'u-fill-width '
           'o-page-frame '
-          (if media.greaterThanSmall 'u-ph-sm'
-            (if media.greaterThanMedium 'u-ph-md'
-              (if media.greaterThanLarge 'u-ph-lg'
-                (if media.greaterThanXLarge 'u-ph-xl'
-          ))))
+            (if media.isGreaterThanMedium 'u-ph-md'
+              (if media.isGreaterThanLarge 'u-ph-lg'
+                (if media.isGreaterThanXLarge 'u-ph-xl'
+            'u-ph-sm'
+          )))
         }}"
       >
         {{home-banner-menu class="u-fill" on-item-select=(route-action 'sectionSelected')}}
@@ -127,7 +127,7 @@
           'c-article-section__another-block '
           'o-grid '
           'o-grid--guttered '
-          (if media.greaterThanSmall
+          (if media.isGreaterThanSmall
             'o-grid--nowrap o-grid--align-top'
             'o-grid--fill o-grid--align-middle'
           )
@@ -166,7 +166,7 @@
           'c-sample-block '
           'o-grid '
           'o-grid--guttered '
-          (if media.greaterThanSmall
+          (if media.isGreaterThanSmall
             'o-grid--nowrap o-grid--align-top'
             'o-grid--fill o-grid--align-middle'
           )
@@ -207,7 +207,7 @@
           'c-sample-block '
           'o-grid '
           'o-grid--guttered '
-          (if media.greaterThanSmall
+          (if media.isGreaterThanSmall
             'o-grid--nowrap o-grid--align-top'
             'o-grid--fill o-grid--align-middle'
           )
@@ -247,7 +247,7 @@
           'c-sample-block '
           'o-grid '
           'o-grid--guttered '
-          (if media.greaterThanSmall
+          (if media.isGreaterThanSmall
             'o-grid--nowrap o-grid--align-top'
             'o-grid--fill o-grid--align-middle'
           )
@@ -341,7 +341,7 @@
         'c-sample-block '
         'o-grid '
         'o-grid--guttered '
-        (if media.greaterThanSmall
+        (if media.isGreaterThanSmall
           'o-grid--nowrap o-grid--align-top'
           'o-grid--fill o-grid--align-middle'
         )
@@ -454,7 +454,7 @@
           'c-sample-block '
           'o-grid '
           'o-grid--guttered '
-          (if media.greaterThanSmall
+          (if media.isGreaterThanSmall
             'o-grid--nowrap o-grid--align-top'
             'o-grid--fill o-grid--align-middle'
           )

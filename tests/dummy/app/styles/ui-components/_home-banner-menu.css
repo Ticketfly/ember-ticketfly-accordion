@@ -2,6 +2,11 @@
   position: relative;
   max-width: var(--height__home-banner-menu);
 
+  width: calc(var(--height__home-banner-menu) * .4);
+  height: calc(var(--height__home-banner-menu) * .4);
+}
+
+.media-greater-than-small .c-home-banner-menu .c-home-banner-menu__item {
   width: calc(var(--height__home-banner-menu) * .6);
   height: calc(var(--height__home-banner-menu) * .6);
 }

@@ -10,9 +10,16 @@
     );
 }
 
+
+
 .c-navbar .c-navbar__logo {
+  font-size: calc(var(--font-size__navbar-logo) * .8);
+}
+
+.media-greater-than-small .c-navbar .c-navbar__logo {
   font-size: var(--font-size__navbar-logo);
 }
+
 
 .c-navbar .c-navbar__nav-item {
   color: var(--color__gray--500);
